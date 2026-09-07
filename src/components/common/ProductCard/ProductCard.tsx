@@ -2,18 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useState } from "react";
 
-interface ProductCardProps {
+import {
+  ArrowRight,
+  Eye,
+  Minus,
+  Plus,
+  ShoppingCart,
+  Star,
+} from "lucide-react";
+
+import "@/components/animations/css/home/product-card.css";
+
+export interface ProductCardProps {
   name: string;
   href: string;
   image: string;
+
+  category: string;
   brand: string;
+  description: string;
+
   price: number;
   oldPrice?: number;
-  rating?: number;
-  reviewCount?: number;
+
+  rating: number;
+  reviewCount: number;
+
   badge?: string;
 }
 
@@ -21,178 +37,156 @@ export function ProductCard({
   name,
   href,
   image,
+  category,
   brand,
+  description,
   price,
   oldPrice,
-  rating = 4.8,
-  reviewCount = 0,
+  rating,
+  reviewCount,
   badge,
 }: ProductCardProps) {
-  const [imageError, setImageError] = useState(false);
-  const [wishlisted, setWishlisted] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   const formatPrice = (value: number) =>
     new Intl.NumberFormat("en-PK").format(value);
 
+  const increaseQuantity = () => {
+    setQuantity((current) => current + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((current) =>
+      current > 1 ? current - 1 : 1
+    );
+  };
+
   return (
-    <article
-      className="
-        group
-        relative
-        overflow-hidden
-        rounded-xl
-        border border-slate-200
-        bg-white
-        shadow-sm
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:border-[#ED2436]/30
-        hover:shadow-lg
-      "
-    >
-      <div className="relative">
-        <Link
-          href={href}
-          className="relative flex h-[230px] items-center justify-center overflow-hidden bg-slate-50 p-5"
-        >
+    <article className="sth-product-card">
+      <div className="sth-product-card__media">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw"
+          className="sth-product-card__image"
+        />
+
+        <div className="sth-product-card__badges">
+          <span className="sth-product-card__category">
+            {category}
+          </span>
+
           {badge && (
-            <span
-              className="
-                absolute left-3 top-3 z-10
-                rounded-md
-                bg-[#ED2436]
-                px-2.5 py-1
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-wide
-                text-white
-              "
-            >
+            <span className="sth-product-card__badge">
               {badge}
             </span>
           )}
+        </div>
 
-          {!imageError ? (
-            <Image
-              src={image}
-              alt={name}
-              width={220}
-              height={190}
-              onError={() => setImageError(true)}
-              className="
-                max-h-[185px]
-                w-auto
-                object-contain
-                transition-transform
-                duration-300
-                group-hover:scale-105
-              "
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center text-xs font-medium text-slate-400">
-              Product Image
-            </div>
-          )}
-        </Link>
-
-        <button
-          type="button"
-          aria-label={
-            wishlisted
-              ? "Remove from wishlist"
-              : "Add to wishlist"
-          }
-          onClick={() => setWishlisted((value) => !value)}
-          className="
-            absolute right-3 top-3 z-20
-            flex h-9 w-9
-            items-center justify-center
-            rounded-full
-            border border-slate-200
-            bg-white
-            text-slate-600
-            shadow-sm
-            transition-all
-            hover:border-[#ED2436]
-            hover:text-[#ED2436]
-          "
+        <Link
+          href={href}
+          aria-label={`View ${name}`}
+          className="sth-product-card__view"
         >
-          <Heart
-            className={`h-4 w-4 ${
-              wishlisted
-                ? "fill-[#ED2436] text-[#ED2436]"
-                : ""
-            }`}
-          />
-        </button>
+          <Eye size={16} strokeWidth={1.8} />
+        </Link>
       </div>
 
-      <div className="p-4">
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-          {brand}
-        </p>
+      <div className="sth-product-card__body">
+        <div className="sth-product-card__meta">
+          <span className="sth-product-card__brand">
+            {brand}
+          </span>
 
-        <Link href={href}>
-          <h3
-            className="
-              mt-1.5
-              line-clamp-2
-              min-h-[42px]
-              text-[14px]
-              font-semibold
-              leading-5
-              text-slate-900
-              transition-colors
-              group-hover:text-[#07143D]
-            "
-          >
+          <div className="sth-product-card__rating">
+            <Star
+              size={13}
+              fill="currentColor"
+              strokeWidth={1.4}
+            />
+
+            <strong>{rating}</strong>
+
+            <span>({reviewCount})</span>
+          </div>
+        </div>
+
+        <Link
+          href={href}
+          className="sth-product-card__title-link"
+        >
+          <h3 className="sth-product-card__title">
             {name}
           </h3>
         </Link>
 
-        <div className="mt-2 flex items-center gap-1.5">
-          <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+        <p className="sth-product-card__description">
+          {description}
+        </p>
 
-          <span className="text-xs font-semibold text-slate-700">
-            {rating}
-          </span>
+        <div className="sth-product-card__divider" />
 
-          <span className="text-[11px] text-slate-400">
-            ({reviewCount})
-          </span>
-        </div>
-
-        <div className="mt-4 flex items-end justify-between gap-3">
+        <div className="sth-product-card__price-row">
           <div>
-            {oldPrice && (
-              <p className="text-xs text-slate-400 line-through">
-                Rs. {formatPrice(oldPrice)}
-              </p>
-            )}
+            <span className="sth-product-card__price-label">
+              Price
+            </span>
 
-            <p className="text-lg font-bold text-[#07143D]">
+            <strong className="sth-product-card__price">
               Rs. {formatPrice(price)}
-            </p>
+            </strong>
           </div>
 
+          {oldPrice && (
+            <span className="sth-product-card__old-price">
+              Rs. {formatPrice(oldPrice)}
+            </span>
+          )}
+        </div>
+
+        <div className="sth-product-card__quantity-row">
+          <span className="sth-product-card__quantity-label">
+            Quantity
+          </span>
+
+          <div className="sth-product-card__quantity">
+            <button
+              type="button"
+              onClick={decreaseQuantity}
+              aria-label="Decrease quantity"
+            >
+              <Minus size={13} />
+            </button>
+
+            <span>{quantity}</span>
+
+            <button
+              type="button"
+              onClick={increaseQuantity}
+              aria-label="Increase quantity"
+            >
+              <Plus size={13} />
+            </button>
+          </div>
+        </div>
+
+        <div className="sth-product-card__actions">
           <button
             type="button"
-            aria-label={`Add ${name} to cart`}
-            className="
-              flex h-10 w-10
-              shrink-0
-              items-center justify-center
-              rounded-md
-              bg-[#07143D]
-              text-white
-              transition-colors
-              hover:bg-[#ED2436]
-            "
+            className="sth-product-card__button sth-product-card__button--cart"
           >
-            <ShoppingCart className="h-4.5 w-4.5" />
+            <ShoppingCart size={14} strokeWidth={1.8} />
+            <span>Add to Cart</span>
           </button>
+
+          <Link
+            href={href}
+            className="sth-product-card__button sth-product-card__button--buy"
+          >
+            <span>Buy Now</span>
+            <ArrowRight size={14} strokeWidth={1.8} />
+          </Link>
         </div>
       </div>
     </article>

@@ -1,37 +1,42 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { CategoryCard } from "@/components/common/CategoryCard/CategoryCard";
 import { homeCategories } from "@/data/categoryData";
 
+import "@/components/animations/css/home/shop-by-category.css";
+
 export function ShopByCategory() {
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED2436]">
+    <section className="sth-shop-category">
+      <div className="sth-shop-category__container">
+        <div className="sth-shop-category__header">
+          <div className="sth-shop-category__heading">
+            <span className="sth-shop-category__eyebrow">
               Browse Products
             </span>
 
-            <h2 className="mt-2 text-2xl font-bold text-[#07143D] sm:text-3xl">
+            <h2 className="sth-shop-category__title">
               Shop By Category
             </h2>
 
-            <p className="mt-2 max-w-[620px] text-sm leading-6 text-slate-500">
-              Explore solar products across major categories for residential,
-              commercial, and industrial requirements.
+            <p className="sth-shop-category__description">
+              Browse essential solar products for residential,
+              commercial and industrial energy projects.
             </p>
           </div>
 
           <Link
             href="/shop"
-            className="hidden text-sm font-semibold text-[#07143D] transition-colors hover:text-[#ED2436] sm:inline-flex"
+            className="sth-shop-category__view-all"
           >
-            View All Categories
+            <span>View All Categories</span>
+
+            <ArrowRight size={14} strokeWidth={1.8} />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+        <div className="sth-shop-category__grid">
           {homeCategories.map((category) => (
             <CategoryCard
               key={category.id}

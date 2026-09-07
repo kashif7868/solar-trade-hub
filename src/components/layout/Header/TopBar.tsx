@@ -1,99 +1,114 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import {
-  CircleUserRound,
-  PackageSearch,
+  Mail,
   Phone,
-  Store,
+  ShieldCheck,
+  Star,
 } from "lucide-react";
 
 import {
-  headerContact,
-  topBarLinks,
-} from "@/data/headerData";
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaWhatsapp,
+  FaYoutube,
+} from "react-icons/fa";
 
-const topBarIcons = [
-  Store,
-  CircleUserRound,
-  PackageSearch,
+import "@/components/animations/css/header/topbar.css";
+
+const socialLinks = [
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/923001234567",
+    icon: FaWhatsapp,
+  },
+  {
+    label: "Facebook",
+    href: "#",
+    icon: FaFacebookF,
+  },
+  {
+    label: "Instagram",
+    href: "#",
+    icon: FaInstagram,
+  },
+  {
+    label: "LinkedIn",
+    href: "#",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "YouTube",
+    href: "#",
+    icon: FaYoutube,
+  },
 ];
 
 export function TopBar() {
   return (
-    <div className="bg-[#07143D] text-white">
-      <div className="mx-auto flex min-h-[78px] max-w-[1480px] items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          aria-label="Solar Trade Hub Home"
-          className="flex shrink-0 items-center"
-        >
-          <Image
-            src="/logos/solar-trade-hub-logo-white.svg"
-            alt="Solar Trade Hub"
-            width={200}
-            height={64}
-            priority
-            className="h-auto w-[185px] object-contain"
-          />
-        </Link>
-
-        <div className="flex items-center gap-5 xl:gap-7">
-          {topBarLinks.map((item, index) => {
-            const Icon = topBarIcons[index];
+    <div className="sth-topbar">
+      <div className="sth-topbar__container">
+        <div className="sth-topbar__socials">
+          {socialLinks.map((item) => {
+            const Icon = item.icon;
 
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
-                className="
-                  group
-                  flex items-center gap-2
-                  text-[12px] font-medium
-                  text-white/80
-                  transition-colors
-                  hover:text-white
-                "
+                aria-label={item.label}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  item.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="sth-topbar__social-link"
               >
-                <span
-                  className="
-                    flex h-7 w-7
-                    shrink-0
-                    items-center justify-center
-                    rounded-full
-                    border border-white/15
-                    bg-white/[0.03]
-                    transition-colors
-                    group-hover:border-[#ED2436]/50
-                  "
-                >
-                  {Icon && (
-                    <Icon className="h-3.5 w-3.5 text-[#ED2436]" />
-                  )}
-                </span>
-
-                <span className="whitespace-nowrap">
-                  {item.label}
-                </span>
+                <Icon />
               </Link>
             );
           })}
+        </div>
 
-          <div className="h-7 w-px bg-white/10" />
+        <div className="sth-topbar__trust">
+          <div className="sth-topbar__trust-item">
+            <ShieldCheck size={15} />
+
+            <span>
+              Pakistan&apos;s Trusted Solar Energy Partner
+            </span>
+          </div>
+
+          <span className="sth-topbar__divider" />
+
+          <div className="sth-topbar__trust-item">
+            <Star size={15} />
+
+            <span>10+ Years of Excellence</span>
+          </div>
+        </div>
+
+        <div className="sth-topbar__contact">
+          <a
+            href="tel:+923001234567"
+            className="sth-topbar__contact-link"
+          >
+            <Phone size={15} />
+
+            <span>+92 300 1234567</span>
+          </a>
+
+          <span className="sth-topbar__divider" />
 
           <a
-            href={`tel:${headerContact.phone.replace(/\s+/g, "")}`}
-            className="
-              flex items-center gap-2
-              whitespace-nowrap
-              text-sm font-semibold
-              text-white
-              transition-colors
-              hover:text-[#ED2436]
-            "
+            href="mailto:info@solartradehub.pk"
+            className="sth-topbar__contact-link"
           >
-            <Phone className="h-4 w-4" />
-            <span>{headerContact.phone}</span>
+            <Mail size={15} />
+
+            <span>info@solartradehub.pk</span>
           </a>
         </div>
       </div>

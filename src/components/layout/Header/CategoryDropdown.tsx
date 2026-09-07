@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+
 import {
   BatteryCharging,
   Boxes,
   Cable,
   ChevronDown,
+  ChevronRight,
   LayoutGrid,
   PanelsTopLeft,
   ShieldCheck,
+  Wrench,
   Zap,
 } from "lucide-react";
 
@@ -21,15 +24,17 @@ import {
 
 import { categoryNavigation } from "@/data/headerData";
 
+import "@/components/animations/css/header/category-dropdown.css";
+
 const categoryIcons = [
   PanelsTopLeft,
-  Zap,
   Zap,
   BatteryCharging,
   Boxes,
   LayoutGrid,
   Cable,
   ShieldCheck,
+  Wrench,
 ];
 
 export function CategoryDropdown() {
@@ -38,93 +43,71 @@ export function CategoryDropdown() {
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="
-            flex h-[52px] min-w-[230px]
-            items-center justify-between
-            gap-4
-            rounded-md
-            border border-slate-200
-            bg-white
-            px-5
-            text-[13px]
-            font-semibold
-            text-[#07143D]
-            shadow-sm
-            outline-none
-            transition-all
-            hover:bg-slate-50
-            data-[state=open]:ring-2
-            data-[state=open]:ring-[#ED2436]/20
-          "
+          className="sth-category-trigger"
+          aria-label="Browse categories"
         >
-          <span className="flex items-center gap-3">
-            <LayoutGrid className="h-[17px] w-[17px]" />
+          <span className="sth-category-trigger__left">
+            <span className="sth-category-trigger__icon">
+              <LayoutGrid size={15} />
+            </span>
 
-            <span>All Categories</span>
+            <span className="sth-category-trigger__label">
+              All Categories
+            </span>
           </span>
 
-          <ChevronDown className="h-4 w-4 text-slate-500" />
+          <ChevronDown
+            size={13}
+            className="sth-category-trigger__chevron"
+          />
         </button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
         align="start"
-        sideOffset={8}
-        className="
-          w-[300px]
-          rounded-xl
-          border
-          border-slate-200
-          bg-white
-          p-2
-          shadow-2xl
-        "
+        sideOffset={2}
+        className="sth-category-menu"
       >
-        {categoryNavigation.map((category, index) => {
-          const Icon = categoryIcons[index] ?? LayoutGrid;
+        <div className="sth-category-menu__list">
+          {categoryNavigation.map((category, index) => {
+            const Icon =
+              categoryIcons[index] ?? LayoutGrid;
 
-          return (
-            <DropdownMenuItem
-              key={category.href}
-              asChild
-              className="
-                cursor-pointer
-                rounded-lg
-                p-0
-                focus:bg-slate-100
-              "
-            >
-              <Link
-                href={category.href}
-                className="
-                  flex w-full
-                  items-center
-                  gap-3
-                  px-3 py-3
-                "
+            return (
+              <DropdownMenuItem
+                key={category.href}
+                asChild
+                className="sth-category-menu__item"
               >
-                <span
-                  className="
-                    flex h-9 w-9
-                    shrink-0
-                    items-center justify-center
-                    rounded-lg
-                    bg-[#07143D]/5
-                    text-[#07143D]
-                  "
+                <Link
+                  href={category.href}
+                  className="sth-category-menu__link"
                 >
-                  <Icon className="h-4 w-4" />
-                </span>
+                  <span className="sth-category-menu__icon">
+                    <Icon size={14} />
+                  </span>
 
-                <span className="flex-1 text-[13px] font-medium text-slate-800">
-                  {category.label}
-                </span>
+                  <span className="sth-category-menu__label">
+                    {category.label}
+                  </span>
 
-                <ChevronDown className="h-3.5 w-3.5 -rotate-90 text-slate-400" />
-              </Link>
-            </DropdownMenuItem>
-          );
-        })}
+                  <ChevronRight
+                    size={12}
+                    className="sth-category-menu__arrow"
+                  />
+                </Link>
+              </DropdownMenuItem>
+            );
+          })}
+        </div>
+
+        <Link
+          href="/shop"
+          className="sth-category-menu__view-all"
+        >
+          <span>View All Products</span>
+          <ChevronRight size={12} />
+        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
   );

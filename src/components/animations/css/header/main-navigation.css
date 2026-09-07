@@ -1,0 +1,235 @@
+.sth-main-nav {
+  width: 100%;
+  padding: 0 0 14px;
+  background: #ffffff;
+}
+
+.sth-main-nav__container {
+  width: 100%;
+  max-width: 1480px;
+
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.sth-main-nav__bar {
+  width: 100%;
+  min-height: 56px;
+
+  padding: 6px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0;
+
+  overflow-x: auto;
+
+  border: 1px solid #2d2d2d;
+  border-radius: 12px;
+
+  background: #1f1f1f;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.08);
+
+  scrollbar-width: none;
+}
+
+.sth-main-nav__bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   NORMAL NAV LINK
+   ======================================== */
+
+.sth-main-nav__link {
+  position: relative;
+
+  height: 42px;
+
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  color: #d8d8d8;
+
+  font-size: 10.5px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+/* subtle separator */
+
+.sth-main-nav__link:not(:last-child)::before {
+  content: "";
+
+  position: absolute;
+  right: 0;
+
+  width: 1px;
+  height: 18px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sth-main-nav__link svg {
+  width: 14px;
+  height: 14px;
+
+  flex-shrink: 0;
+
+  color: #bfc3c7;
+
+  transition: color 0.18s ease;
+}
+
+/* ========================================
+   HOVER
+   ======================================== */
+
+.sth-main-nav__link:hover {
+  background: rgba(255, 255, 255, 0.055);
+  color: #ffffff;
+}
+
+.sth-main-nav__link:hover svg {
+  color: #ffffff;
+}
+
+/* ========================================
+   ACTIVE
+   ======================================== */
+
+.sth-main-nav__link--active {
+  margin-right: 3px;
+
+  background: #ff4b1f;
+  color: #ffffff;
+
+  box-shadow:
+    0 3px 10px rgba(255, 75, 31, 0.18);
+}
+
+.sth-main-nav__link--active::before {
+  display: none;
+}
+
+.sth-main-nav__link--active svg {
+  color: #ffffff;
+}
+
+/* ========================================
+   DEALS
+   ======================================== */
+
+.sth-main-nav__link--accent {
+  margin-left: auto;
+
+  height: 38px;
+
+  padding: 0 15px;
+
+  border: 1px solid rgba(255, 75, 31, 0.22);
+
+  background: #fff7f3;
+  color: #ff4b1f;
+
+  font-weight: 700;
+}
+
+.sth-main-nav__link--accent::before {
+  display: none;
+}
+
+.sth-main-nav__link--accent svg {
+  color: #ff4b1f;
+}
+
+.sth-main-nav__link--accent:hover {
+  border-color: rgba(255, 75, 31, 0.35);
+
+  background: #fff0e9;
+  color: #e53e17;
+}
+
+.sth-main-nav__link--accent:hover svg {
+  color: #e53e17;
+}
+
+/* active deals */
+
+.sth-main-nav__link--accent.sth-main-nav__link--active {
+  border-color: #ff4b1f;
+
+  background: #ff4b1f;
+  color: #ffffff;
+}
+
+.sth-main-nav__link--accent.sth-main-nav__link--active svg {
+  color: #ffffff;
+}
+
+/* ========================================
+   1360
+   ======================================== */
+
+@media (max-width: 1360px) {
+  .sth-main-nav__container {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .sth-main-nav__link {
+    padding-left: 11px;
+    padding-right: 11px;
+
+    gap: 5px;
+
+    font-size: 9.5px;
+  }
+
+  .sth-main-nav__link--accent {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+/* ========================================
+   1180
+   ======================================== */
+
+@media (max-width: 1180px) {
+  .sth-main-nav__link {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .sth-main-nav__link svg {
+    display: none;
+  }
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 1023px) {
+  .sth-main-nav {
+    display: none;
+  }
+}

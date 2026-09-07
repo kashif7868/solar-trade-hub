@@ -3,7 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import {
+  BatteryCharging,
+  BriefcaseBusiness,
+  Boxes,
+  Home,
+  PanelsTopLeft,
+  Store,
+  Tag,
+  Wrench,
+  Zap,
+} from "lucide-react";
+
 import { mainNavigation } from "@/data/headerData";
+
+import "@/components/animations/css/header/main-navigation.css";
+
+const navigationIcons = [
+  Home,
+  PanelsTopLeft,
+  Zap,
+  BatteryCharging,
+  Boxes,
+  Wrench,
+  Store,
+  Tag,
+  BriefcaseBusiness,
+  Tag,
+];
 
 export function MainNavigation() {
   const pathname = usePathname();
@@ -18,54 +45,38 @@ export function MainNavigation() {
 
   return (
     <nav
+      className="sth-main-nav"
       aria-label="Main navigation"
-      className="hidden border-t border-white/10 bg-[#07143D] lg:block"
     >
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[48px] items-center gap-1 overflow-x-auto">
-          {mainNavigation.map((item) => {
+      <div className="sth-main-nav__container">
+        <div className="sth-main-nav__bar">
+          {mainNavigation.map((item, index) => {
+            const Icon =
+              navigationIcons[index] ?? Boxes;
+
             const active = isActive(item.href);
+
+            const className = [
+              "sth-main-nav__link",
+              active
+                ? "sth-main-nav__link--active"
+                : "",
+              item.accent
+                ? "sth-main-nav__link--accent"
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`
-                  group
-                  relative
-                  flex h-full shrink-0
-                  items-center
-                  px-4
-                  text-[13px]
-                  font-medium
-                  transition-colors
-                  ${
-                    active
-                      ? "text-white"
-                      : "text-white/70 hover:text-white"
-                  }
-                `}
+                className={className}
               >
-                {item.label}
+                <Icon size={14} />
 
-                <span
-                  className={`
-                    absolute
-                    bottom-0
-                    left-4
-                    right-4
-                    h-[3px]
-                    rounded-t-full
-                    bg-[#ED2436]
-                    transition-all
-                    duration-200
-                    ${
-                      active
-                        ? "scale-x-100 opacity-100"
-                        : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100"
-                    }
-                  `}
-                />
+                <span>{item.label}</span>
               </Link>
             );
           })}

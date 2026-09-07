@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
+import {
+  Geist,
+  Geist_Mono,
+} from "next/font/google";
 
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav/MobileBottomNav";
+
 import { Providers } from "@/providers/Providers";
 
 import "./globals.css";
@@ -22,8 +28,9 @@ export const metadata: Metadata = {
     default: "Solar Trade Hub",
     template: "%s | Solar Trade Hub",
   },
+
   description:
-    "Pakistan's marketplace for solar products, suppliers, installers, and energy solutions.",
+    "Pakistan's marketplace for solar products, suppliers, installers, pricing insights, and renewable energy solutions.",
 };
 
 export default function RootLayout({
@@ -32,16 +39,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
           <Header />
 
-          <main>{children}</main>
+          <main>
+            {children}
+          </main>
 
           <Footer />
+
+          <MobileBottomNav />
         </Providers>
       </body>
     </html>

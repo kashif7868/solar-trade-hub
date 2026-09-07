@@ -3,6 +3,8 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 
+import "@/components/animations/css/header/search-bar.css";
+
 export function SearchBar() {
   const [query, setQuery] = useState("");
 
@@ -20,15 +22,9 @@ export function SearchBar() {
 
   return (
     <form
+      className="sth-search"
       onSubmit={handleSubmit}
-      className="
-        flex h-[52px] w-full
-        overflow-hidden
-        rounded-md
-        border border-white/10
-        bg-white
-        shadow-sm
-      "
+      role="search"
     >
       <input
         type="search"
@@ -38,31 +34,15 @@ export function SearchBar() {
         }
         placeholder="Search products, brands, categories..."
         aria-label="Search Solar Trade Hub"
-        className="
-          min-w-0 flex-1
-          bg-transparent
-          px-5
-          text-[13px]
-          text-slate-900
-          outline-none
-          placeholder:text-slate-400
-        "
+        className="sth-search__input"
       />
 
       <button
         type="submit"
+        className="sth-search__button"
         aria-label="Search"
-        className="
-          flex w-[64px]
-          shrink-0
-          items-center justify-center
-          bg-[#ED2436]
-          text-white
-          transition-colors
-          hover:bg-[#C91828]
-        "
       >
-        <Search className="h-5 w-5" />
+        <Search size={16} strokeWidth={1.8} />
       </button>
     </form>
   );

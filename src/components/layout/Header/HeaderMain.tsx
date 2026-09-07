@@ -1,20 +1,36 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { CategoryDropdown } from "./CategoryDropdown";
 import { HeaderActions } from "./HeaderActions";
 import { SearchBar } from "./SearchBar";
 
+import "@/components/animations/css/header/header-main.css";
+
 export function HeaderMain() {
   return (
-    <div className="border-t border-white/10 bg-[#07143D]">
-      <div className="mx-auto flex max-w-[1480px] items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="shrink-0">
-          <CategoryDropdown />
-        </div>
+    <div className="sth-header-main">
+      <div className="sth-header-main__container">
+        <Link
+          href="/"
+          aria-label="Solar Trade Hub Home"
+          className="sth-header-main__logo"
+        >
+          <Image
+            src="/logos/solar-trade-hub-logo-dark.svg"
+            alt="Solar Trade Hub"
+            width={190}
+            height={68}
+            priority
+          />
+        </Link>
 
-        <div className="min-w-0 flex-1">
+        <div className="sth-header-main__search-area">
+          <CategoryDropdown />
           <SearchBar />
         </div>
 
-        <div className="shrink-0">
+        <div className="sth-header-main__actions">
           <HeaderActions />
         </div>
       </div>

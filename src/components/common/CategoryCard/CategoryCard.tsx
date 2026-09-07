@@ -1,11 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ImageIcon } from "lucide-react";
-import { useState } from "react";
 
-interface CategoryCardProps {
+import { ArrowRight } from "lucide-react";
+
+import "@/components/animations/css/home/category-card.css";
+
+export interface CategoryCardProps {
   title: string;
   href: string;
   image: string;
@@ -16,92 +16,43 @@ export function CategoryCard({
   href,
   image,
 }: CategoryCardProps) {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <Link
       href={href}
-      className="
-        group
-        flex min-h-[230px]
-        flex-col
-        rounded-xl
-        border border-slate-200
-        bg-white
-        p-4
-        shadow-sm
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:border-[#ED2436]/30
-        hover:shadow-lg
-      "
+      className="sth-category-card"
+      aria-label={`Shop ${title}`}
     >
-      <div
-        className="
-          relative
-          flex h-[145px]
-          items-center
-          justify-center
-          overflow-hidden
-          rounded-lg
-          bg-slate-50
-        "
-      >
-        {!imageError ? (
-          <Image
-            src={image}
-            alt={title}
-            width={150}
-            height={130}
-            onError={() => setImageError(true)}
-            className="
-              h-[120px]
-              w-auto
-              object-contain
-              transition-transform
-              duration-300
-              group-hover:scale-105
-            "
-          />
-        ) : (
-          <div className="flex flex-col items-center justify-center gap-2 text-slate-400">
-            <ImageIcon className="h-8 w-8" />
+      <div className="sth-category-card__media">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 50vw, (max-width: 1180px) 33vw, 16vw"
+          className="sth-category-card__image"
+        />
 
-            <span className="text-[11px] font-medium">
-              Image Coming Soon
-            </span>
-          </div>
-        )}
+        <div className="sth-category-card__overlay" />
+
+        <span className="sth-category-card__pill">
+          {title}
+        </span>
       </div>
 
-      <div className="mt-4">
-        <h3 className="text-[14px] font-semibold text-slate-900">
-          {title}
-        </h3>
+      <div className="sth-category-card__content">
+        <div className="sth-category-card__text">
+          <span className="sth-category-card__label">
+            Shop Category
+          </span>
 
-        <span
-          className="
-            mt-2
-            inline-flex
-            items-center
-            gap-1.5
-            text-xs
-            font-semibold
-            text-[#07143D]
-            transition-colors
-            group-hover:text-[#ED2436]
-          "
-        >
-          View Products
+          <h3 className="sth-category-card__title">
+            {title}
+          </h3>
+        </div>
 
+        <span className="sth-category-card__action">
           <ArrowRight
-            className="
-              h-3.5 w-3.5
-              transition-transform
-              duration-300
-              group-hover:translate-x-1
-            "
+            size={14}
+            strokeWidth={1.8}
           />
         </span>
       </div>

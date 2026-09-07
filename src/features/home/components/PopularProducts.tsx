@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { ProductCard } from "@/components/common/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
+
+import "@/components/animations/css/home/popular-products.css";
 
 export function PopularProducts() {
   const {
@@ -13,67 +16,111 @@ export function PopularProducts() {
   } = useProducts();
 
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED2436]">
+    <section className="sth-popular-products">
+      <div className="sth-popular-products__container">
+        <div className="sth-popular-products__header">
+          <div className="sth-popular-products__heading">
+            <span className="sth-popular-products__eyebrow">
               Trending Now
             </span>
 
-            <h2 className="mt-2 text-2xl font-bold text-[#07143D] sm:text-3xl">
+            <h2 className="sth-popular-products__title">
               Popular Products
             </h2>
 
-            <p className="mt-2 max-w-[620px] text-sm leading-6 text-slate-500">
-              Explore popular solar products selected from major categories
-              including panels, inverters, batteries and accessories.
+            <p className="sth-popular-products__description">
+              Explore popular solar panels, hybrid inverters,
+              lithium batteries, energy storage systems and
+              essential solar accessories.
             </p>
           </div>
 
           <Link
             href="/shop"
-            className="hidden text-sm font-semibold text-[#07143D] transition-colors hover:text-[#ED2436] sm:inline-flex"
+            className="sth-popular-products__view-all"
           >
-            View All Products
+            <span>View All Products</span>
+
+            <ArrowRight
+              size={14}
+              strokeWidth={1.8}
+            />
           </Link>
         </div>
 
         {isLoading && (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="sth-popular-products__grid">
             {Array.from({ length: 8 }).map((_, index) => (
               <div
                 key={index}
-                className="h-[390px] animate-pulse rounded-xl border border-slate-200 bg-slate-100"
-              />
+                className="sth-popular-products__skeleton"
+              >
+                <div className="sth-popular-products__skeleton-image" />
+
+                <div className="sth-popular-products__skeleton-body">
+                  <div className="sth-popular-products__skeleton-meta">
+                    <span />
+                    <span />
+                  </div>
+
+                  <span className="sth-popular-products__skeleton-title" />
+
+                  <span className="sth-popular-products__skeleton-text" />
+
+                  <span className="sth-popular-products__skeleton-text sth-popular-products__skeleton-text--short" />
+
+                  <div className="sth-popular-products__skeleton-divider" />
+
+                  <span className="sth-popular-products__skeleton-price" />
+
+                  <div className="sth-popular-products__skeleton-actions">
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         )}
 
         {isError && (
-          <div className="rounded-xl border border-red-200 bg-red-50 px-5 py-6 text-sm text-red-700">
+          <div className="sth-popular-products__error">
             Unable to load products right now.
           </div>
         )}
 
-        {!isLoading && !isError && products && (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                name={product.name}
-                href={product.href}
-                image={product.image}
-                brand={product.brand}
-                price={product.price}
-                oldPrice={product.oldPrice}
-                rating={product.rating}
-                reviewCount={product.reviewCount}
-                badge={product.badge}
-              />
-            ))}
-          </div>
-        )}
+        {!isLoading &&
+          !isError &&
+          products &&
+          products.length > 0 && (
+            <div className="sth-popular-products__grid">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  name={product.name}
+                  href={product.href}
+                  image={product.image}
+                  category={product.category}
+                  brand={product.brand}
+                  description={product.description}
+                  price={product.price}
+                  oldPrice={product.oldPrice}
+                  rating={product.rating}
+                  reviewCount={product.reviewCount}
+                  badge={product.badge}
+                />
+              ))}
+            </div>
+          )}
+
+        {!isLoading &&
+          !isError &&
+          products &&
+          products.length === 0 && (
+            <div className="sth-popular-products__empty">
+              No products available right now.
+            </div>
+          )}
       </div>
     </section>
   );

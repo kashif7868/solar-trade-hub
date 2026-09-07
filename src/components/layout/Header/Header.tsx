@@ -3,16 +3,20 @@ import { MainNavigation } from "./MainNavigation";
 import { MobileHeader } from "./MobileHeader";
 import { TopBar } from "./TopBar";
 
+import "@/components/animations/css/header/header.css";
+
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full shadow-sm">
-      <div className="hidden lg:block">
+    <header className="sth-header">
+      <div className="sth-header__desktop">
         <TopBar />
         <HeaderMain />
         <MainNavigation />
       </div>
 
-      <MobileHeader />
+      <div className="sth-header__mobile">
+        <MobileHeader />
+      </div>
     </header>
   );
 }

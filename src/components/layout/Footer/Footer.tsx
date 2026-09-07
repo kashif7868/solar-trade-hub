@@ -2,13 +2,14 @@ import { FooterBottom } from "./FooterBottom";
 import { FooterContact } from "./FooterContact";
 import { FooterLinks } from "./FooterLinks";
 
+import "@/components/animations/css/footer/footer.css";
+
 export function Footer() {
   return (
-    <footer className="bg-[#07143D] text-white">
-      <div className="mx-auto max-w-[1480px] px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_1.95fr]">
+    <footer className="sth-footer">
+      <div className="sth-footer__container">
+        <div className="sth-footer__main">
           <FooterContact />
-
           <FooterLinks />
         </div>
       </div>

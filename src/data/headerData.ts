@@ -1,4 +1,19 @@
-export const topBarLinks = [
+export type HeaderNavItem = {
+  label: string;
+  href: string;
+  accent?: boolean;
+};
+
+export type CategoryNavItem = {
+  label: string;
+  href: string;
+};
+
+/* ========================================
+   TOP BAR
+   ======================================== */
+
+export const topBarLinks: HeaderNavItem[] = [
   {
     label: "Become a Seller",
     href: "/seller",
@@ -13,7 +28,11 @@ export const topBarLinks = [
   },
 ];
 
-export const mainNavigation = [
+/* ========================================
+   MAIN NAVIGATION
+   ======================================== */
+
+export const mainNavigation: HeaderNavItem[] = [
   {
     label: "Home",
     href: "/",
@@ -50,9 +69,18 @@ export const mainNavigation = [
     label: "Tenders",
     href: "/tenders",
   },
+  {
+    label: "Deals",
+    href: "/deals",
+    accent: true,
+  },
 ];
 
-export const categoryNavigation = [
+/* ========================================
+   CATEGORY DROPDOWN
+   ======================================== */
+
+export const categoryNavigation: CategoryNavItem[] = [
   {
     label: "Solar Panels",
     href: "/shop/solar-panels",
@@ -86,6 +114,10 @@ export const categoryNavigation = [
     href: "/shop/accessories",
   },
 ];
+
+/* ========================================
+   HEADER CONTACT
+   ======================================== */
 
 export const headerContact = {
   phone: "+92 300 0000000",

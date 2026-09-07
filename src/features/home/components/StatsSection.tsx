@@ -1,9 +1,11 @@
 import {
   Headphones,
-  PackageCheck,
   ShieldCheck,
   Truck,
+  UsersRound,
 } from "lucide-react";
+
+import "@/components/animations/css/home/stats-section.css";
 
 const stats = [
   {
@@ -12,7 +14,7 @@ const stats = [
     label: "Years of Experience",
   },
   {
-    icon: PackageCheck,
+    icon: UsersRound,
     value: "500+",
     label: "Trusted Partners",
   },
@@ -30,42 +32,36 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="relative z-10 bg-white">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="-mt-7 grid overflow-hidden rounded-lg border border-white/10 bg-[#091B52] shadow-xl sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((item, index) => {
-            const Icon = item.icon;
+    <section className="sth-stats">
+      <div className="sth-stats__container">
+        {stats.map((item, index) => {
+          const Icon = item.icon;
 
-            return (
-              <div
-                key={item.label}
-                className={`
-                  flex min-h-[110px] items-center gap-4 px-6 py-5
-                  ${
-                    index !== stats.length - 1
-                      ? "border-b border-white/10 lg:border-b-0 lg:border-r"
-                      : ""
-                  }
-                  ${index === 1 ? "sm:border-b-0 sm:border-r" : ""}
-                `}
-              >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#07143D]">
-                  <Icon className="h-6 w-6 text-[#ED2436]" />
-                </div>
+          return (
+            <div
+              key={item.label}
+              className="sth-stats__item"
+            >
+              <span className="sth-stats__icon">
+                <Icon size={18} strokeWidth={1.8} />
+              </span>
 
-                <div>
-                  <p className="text-2xl font-bold leading-none text-white">
-                    {item.value}
-                  </p>
+              <div className="sth-stats__content">
+                <strong className="sth-stats__value">
+                  {item.value}
+                </strong>
 
-                  <p className="mt-2 text-xs leading-4 text-white/65">
-                    {item.label}
-                  </p>
-                </div>
+                <span className="sth-stats__label">
+                  {item.label}
+                </span>
               </div>
-            );
-          })}
-        </div>
+
+              {index !== stats.length - 1 && (
+                <span className="sth-stats__divider" />
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

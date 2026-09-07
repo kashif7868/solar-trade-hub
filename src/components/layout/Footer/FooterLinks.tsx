@@ -7,6 +7,8 @@ import {
   footerSupportLinks,
 } from "@/data/footerData";
 
+import "@/components/animations/css/footer/footer-links.css";
+
 interface FooterLinkItem {
   label: string;
   href: string;
@@ -22,22 +24,20 @@ function FooterLinkGroup({
   links,
 }: FooterLinkGroupProps) {
   return (
-    <div>
-      <h3 className="text-sm font-semibold text-white">
+    <div className="sth-footer-links__group">
+      <h3 className="sth-footer-links__title">
         {title}
       </h3>
 
-      <ul className="mt-4 space-y-3">
+      <ul className="sth-footer-links__list">
         {links.map((item) => (
-          <li key={item.href}>
+          <li
+            key={item.href}
+            className="sth-footer-links__item"
+          >
             <Link
               href={item.href}
-              className="
-                text-sm
-                text-white/60
-                transition-colors
-                hover:text-[#ED2436]
-              "
+              className="sth-footer-links__link"
             >
               {item.label}
             </Link>
@@ -50,7 +50,7 @@ function FooterLinkGroup({
 
 export function FooterLinks() {
   return (
-    <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+    <div className="sth-footer-links">
       <FooterLinkGroup
         title="Company"
         links={footerCompanyLinks}

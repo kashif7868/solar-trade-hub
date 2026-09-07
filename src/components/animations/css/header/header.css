@@ -1,0 +1,46 @@
+.sth-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.sth-header,
+.sth-header *,
+.sth-header button,
+.sth-header input {
+  box-sizing: border-box;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.sth-header a {
+  text-decoration: none;
+}
+
+.sth-header__desktop {
+  display: block;
+}
+
+.sth-header__mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .sth-header__desktop {
+    display: none;
+  }
+
+  .sth-header__mobile {
+    display: block;
+  }
+}

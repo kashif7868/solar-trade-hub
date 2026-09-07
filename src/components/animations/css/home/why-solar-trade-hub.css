@@ -1,0 +1,756 @@
+/* ========================================
+   WHY SOLAR TRADE HUB
+   ======================================== */
+
+.sth-why {
+  width: 100%;
+  padding: 56px 0 60px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #ffffff 100%
+    );
+}
+
+.sth-why__container {
+  width: 100%;
+  max-width: 1480px;
+
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.sth-why__header {
+  max-width: 760px;
+
+  margin: 0 auto 30px;
+
+  text-align: center;
+}
+
+.sth-why__eyebrow {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #ff4b1f;
+
+  font-size: 8.5px;
+  font-weight: 700;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.sth-why__title {
+  margin: 0;
+
+  color: #181818;
+
+  font-size: clamp(30px, 3.1vw, 40px);
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -0.038em;
+}
+
+.sth-why__title span {
+  color: #ff4b1f;
+}
+
+.sth-why__intro {
+  max-width: 650px;
+
+  margin: 11px auto 0;
+
+  color: #757a80;
+
+  font-size: 11px;
+  line-height: 1.68;
+}
+
+/* ========================================
+   MAIN GRID
+   ======================================== */
+
+.sth-why__main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(0, 1.15fr);
+
+  gap: 18px;
+}
+
+/* ========================================
+   TUTORIAL CARD
+   ======================================== */
+
+.sth-why__tutorial {
+  overflow: hidden;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 9px 26px rgba(0, 0, 0, 0.045);
+}
+
+/* VIDEO */
+
+.sth-why__tutorial-media {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: #111111;
+}
+
+.sth-why__tutorial-video {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border: 0;
+}
+
+/* VIDEO CONTENT */
+
+.sth-why__tutorial-content {
+  padding: 18px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 18px;
+}
+
+.sth-why__tutorial-copy {
+  max-width: 440px;
+}
+
+.sth-why__tutorial-eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #ff4b1f;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sth-why__tutorial-content h3 {
+  margin: 0;
+
+  color: #1d1d1d;
+
+  font-size: 19px;
+  font-weight: 800;
+
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.sth-why__tutorial-content p {
+  margin: 7px 0 0;
+
+  color: #777c82;
+
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sth-why__tutorial-link {
+  min-height: 34px;
+
+  padding: 0 11px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #292d31;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-why__tutorial-link:hover {
+  border-color: #ffd4c6;
+
+  background: #fff6f2;
+  color: #ff4b1f;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   BENEFITS GRID
+   ======================================== */
+
+.sth-why__benefits {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.sth-why__benefit {
+  min-height: 118px;
+
+  padding: 15px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  border: 1px solid #e7e7e7;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.sth-why__benefit:hover {
+  border-color: #ffd8cd;
+
+  background: #fffdfc;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.sth-why__benefit-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #fff1ec;
+  color: #ff4b1f;
+}
+
+.sth-why__benefit-content {
+  min-width: 0;
+}
+
+.sth-why__benefit h3 {
+  margin: 1px 0 0;
+
+  color: #202020;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sth-why__benefit p {
+  margin: 5px 0 0;
+
+  color: #767b80;
+
+  font-size: 9.5px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   PROCESS
+   ======================================== */
+
+.sth-why__process {
+  margin-top: 18px;
+  padding: 20px 22px 22px;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 13px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 7px 22px rgba(0, 0, 0, 0.035);
+}
+
+.sth-why__process-header {
+  margin-bottom: 21px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 22px;
+}
+
+.sth-why__process-eyebrow {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #ff4b1f;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sth-why__process-header h3 {
+  margin: 0;
+
+  color: #1e1e1e;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.sth-why__process-header p {
+  margin: 5px 0 0;
+
+  color: #7b8085;
+
+  font-size: 9.5px;
+  line-height: 1.5;
+}
+
+.sth-why__process-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  color: #383d42;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  transition:
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-why__process-link:hover {
+  color: #ff4b1f;
+
+  transform: translateX(1px);
+}
+
+/* ========================================
+   PROCESS STEPS
+   ======================================== */
+
+.sth-why__steps {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+}
+
+.sth-why__step {
+  position: relative;
+
+  min-width: 0;
+
+  text-align: center;
+}
+
+.sth-why__step-top {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sth-why__step-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ffd8cb;
+  border-radius: 50%;
+
+  background: #fff5f1;
+  color: #ff4b1f;
+
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-why__step:hover
+.sth-why__step-icon {
+  background: #ff4b1f;
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.sth-why__step-line {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffd8cb 0%,
+      #e7e7e7 100%
+    );
+}
+
+.sth-why__step-number {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #ff4b1f;
+
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.sth-why__step strong {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #33373c;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sth-why__step-description {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #92969a;
+
+  font-size: 7.5px;
+  line-height: 1.3;
+}
+
+/* ========================================
+   FOOTER CTA
+   ======================================== */
+
+.sth-why__footer {
+  margin-top: 18px;
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 22px;
+
+  border: 1px solid #2b2b2b;
+  border-radius: 12px;
+
+  background: #222222;
+  color: #ffffff;
+}
+
+.sth-why__footer > div {
+  max-width: 650px;
+}
+
+.sth-why__footer-eyebrow {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #ff6a44;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sth-why__footer h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.sth-why__footer p {
+  margin: 5px 0 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 9.5px;
+  line-height: 1.5;
+}
+
+.sth-why__footer-cta {
+  min-height: 38px;
+
+  padding: 0 13px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  background: #ff4b1f;
+  color: #ffffff;
+
+  font-size: 9.5px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-why__footer-cta:hover {
+  background: #e83c12;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   LARGE TABLET
+   ======================================== */
+
+@media (max-width: 1100px) {
+  .sth-why__main {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+  }
+
+  .sth-why__benefit {
+    min-height: 110px;
+
+    padding: 13px;
+  }
+}
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+  .sth-why {
+    padding-top: 48px;
+    padding-bottom: 50px;
+  }
+
+  .sth-why__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .sth-why__main {
+    grid-template-columns: 1fr;
+  }
+
+  .sth-why__tutorial {
+    max-width: 780px;
+
+    margin: 0 auto;
+  }
+
+  .sth-why__benefits {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 700px) {
+  .sth-why {
+    padding: 40px 0 44px;
+  }
+
+  .sth-why__container {
+    padding: 0 16px;
+  }
+
+  .sth-why__header {
+    margin-bottom: 22px;
+  }
+
+  .sth-why__title {
+    font-size: 28px;
+  }
+
+  .sth-why__intro {
+    font-size: 10.5px;
+  }
+
+  .sth-why__tutorial-content {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .sth-why__tutorial-link {
+    align-self: flex-start;
+  }
+
+  .sth-why__benefits {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .sth-why__process {
+    padding: 17px 16px 18px;
+  }
+
+  .sth-why__process-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .sth-why__steps {
+    grid-template-columns:
+      repeat(5, 92px);
+
+    overflow-x: auto;
+
+    padding: 2px 0 7px;
+
+    scrollbar-width: none;
+  }
+
+  .sth-why__steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sth-why__footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 440px) {
+  .sth-why__title {
+    font-size: 25px;
+  }
+
+  .sth-why__benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .sth-why__benefit {
+    min-height: 92px;
+  }
+
+  .sth-why__tutorial-content h3 {
+    font-size: 17px;
+  }
+
+  .sth-why__tutorial-content {
+    padding: 15px;
+  }
+
+  .sth-why__footer {
+    padding: 16px;
+  }
+
+  .sth-why__footer-cta {
+    width: 100%;
+  }
+}

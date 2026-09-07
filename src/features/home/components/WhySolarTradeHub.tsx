@@ -1,9 +1,20 @@
+import Link from "next/link";
+
 import {
+  ArrowRight,
   BadgeCheck,
+  CircleDollarSign,
   Headphones,
+  PackageCheck,
+  RefreshCcw,
   ShieldCheck,
   Truck,
+  UsersRound,
+  Wrench,
+  Zap,
 } from "lucide-react";
+
+import "@/components/animations/css/home/why-solar-trade-hub.css";
 
 const benefits = [
   {
@@ -16,82 +27,232 @@ const benefits = [
     icon: ShieldCheck,
     title: "Trusted Products",
     description:
-      "Explore quality solar panels, inverters, batteries and accessories.",
+      "Compare quality solar panels, inverters, batteries and accessories.",
+  },
+  {
+    icon: CircleDollarSign,
+    title: "Transparent Choices",
+    description:
+      "Compare products, specifications and market options before you buy.",
+  },
+  {
+    icon: RefreshCcw,
+    title: "Reliable Support",
+    description:
+      "Get practical support for product selection and supplier coordination.",
+  },
+  {
+    icon: UsersRound,
+    title: "Industry Network",
+    description:
+      "Access installers, suppliers and solar professionals across Pakistan.",
   },
   {
     icon: Headphones,
-    title: "Engineering Support",
+    title: "Engineering Guidance",
     description:
       "Get technical guidance for residential, commercial and industrial projects.",
   },
+];
+
+const processSteps = [
   {
+    number: "01",
+    icon: PackageCheck,
+    label: "Explore",
+    description: "Browse products",
+  },
+  {
+    number: "02",
+    icon: Wrench,
+    label: "Compare",
+    description: "Check specifications",
+  },
+  {
+    number: "03",
+    icon: ShieldCheck,
+    label: "Verify",
+    description: "Review suppliers",
+  },
+  {
+    number: "04",
+    icon: Zap,
+    label: "Get Quote",
+    description: "Request pricing",
+  },
+  {
+    number: "05",
     icon: Truck,
-    title: "Nationwide Access",
-    description:
-      "Find solar products and suppliers across major cities in Pakistan.",
+    label: "Delivery",
+    description: "Receive products",
   },
 ];
 
 export function WhySolarTradeHub() {
   return (
-    <section className="bg-[#07143D] py-14 text-white sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-10 max-w-[760px] text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED2436]">
-            Why Choose Us
+    <section className="sth-why">
+      <div className="sth-why__container">
+        <div className="sth-why__header">
+          <span className="sth-why__eyebrow">
+            Why Solar Trade Hub
           </span>
 
-          <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
-            Why Solar Trade Hub
+          <h2 className="sth-why__title">
+            Better Solar Decisions.
+            <span> Fewer Shortcuts.</span>
           </h2>
 
-          <p className="mt-3 text-sm leading-6 text-white/65">
-            A focused solar marketplace designed to make product discovery,
-            supplier access and technical decision-making easier.
+          <p className="sth-why__intro">
+            Product discovery, supplier access, technical guidance
+            and market transparency in one focused solar marketplace.
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((item) => {
-            const Icon = item.icon;
+        <div className="sth-why__main">
+          <article className="sth-why__tutorial">
+            <div className="sth-why__tutorial-media">
+              <iframe
+                src="https://www.youtube.com/embed/Mti18r6fUzo?rel=0&modestbranding=1"
+                title="Solar Trade Hub tutorial video"
+                className="sth-why__tutorial-video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
 
-            return (
-              <div
-                key={item.title}
-                className="
-                  rounded-2xl
-                  border border-white/10
-                  bg-white/[0.04]
-                  p-6
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#ED2436]/40
-                  hover:bg-white/[0.06]
-                "
-              >
-                <div
-                  className="
-                    flex h-12 w-12
-                    items-center justify-center
-                    rounded-xl
-                    border border-white/10
-                    bg-white/5
-                  "
-                >
-                  <Icon className="h-5 w-5 text-[#ED2436]" />
-                </div>
+            <div className="sth-why__tutorial-content">
+              <div className="sth-why__tutorial-copy">
+                <span className="sth-why__tutorial-eyebrow">
+                  Video Guide
+                </span>
 
-                <h3 className="mt-5 text-lg font-semibold">
-                  {item.title}
+                <h3>
+                  Understand the System Before You Invest
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-white/60">
-                  {item.description}
+                <p>
+                  Learn how to evaluate solar panels, inverters,
+                  batteries, system sizing and supplier claims before
+                  making a purchase.
                 </p>
               </div>
-            );
-          })}
+
+              <Link
+                href="/shop"
+                className="sth-why__tutorial-link"
+              >
+                <span>Explore Products</span>
+                <ArrowRight size={14} strokeWidth={1.8} />
+              </Link>
+            </div>
+          </article>
+
+          <div className="sth-why__benefits">
+            {benefits.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article
+                  key={item.title}
+                  className="sth-why__benefit"
+                >
+                  <span className="sth-why__benefit-icon">
+                    <Icon size={17} strokeWidth={1.8} />
+                  </span>
+
+                  <div className="sth-why__benefit-content">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="sth-why__process">
+          <div className="sth-why__process-header">
+            <div>
+              <span className="sth-why__process-eyebrow">
+                How It Works
+              </span>
+
+              <h3>
+                From Product Search to Solar Delivery
+              </h3>
+
+              <p>
+                A simple path from product discovery to a verified
+                purchase decision.
+              </p>
+            </div>
+
+            <Link
+              href="/shop"
+              className="sth-why__process-link"
+            >
+              <span>Start Exploring</span>
+              <ArrowRight size={14} strokeWidth={1.8} />
+            </Link>
+          </div>
+
+          <div className="sth-why__steps">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+
+              return (
+                <div
+                  key={step.number}
+                  className="sth-why__step"
+                >
+                  <div className="sth-why__step-top">
+                    <span className="sth-why__step-icon">
+                      <Icon size={17} strokeWidth={1.8} />
+                    </span>
+
+                    {index !== processSteps.length - 1 && (
+                      <span className="sth-why__step-line" />
+                    )}
+                  </div>
+
+                  <span className="sth-why__step-number">
+                    {step.number}
+                  </span>
+
+                  <strong>{step.label}</strong>
+
+                  <span className="sth-why__step-description">
+                    {step.description}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="sth-why__footer">
+          <div>
+            <span className="sth-why__footer-eyebrow">
+              Need Technical Help?
+            </span>
+
+            <h3>
+              Talk to Solar Trade Hub Before You Buy
+            </h3>
+
+            <p>
+              Get support with product selection, compatibility
+              and supplier evaluation.
+            </p>
+          </div>
+
+          <Link
+            href="/get-quote"
+            className="sth-why__footer-cta"
+          >
+            Get Solar Quote
+            <ArrowRight size={14} strokeWidth={1.8} />
+          </Link>
         </div>
       </div>
     </section>

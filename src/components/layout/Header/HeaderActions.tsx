@@ -1,108 +1,85 @@
 "use client";
 
 import Link from "next/link";
+
 import {
   FileText,
+  Heart,
   ShoppingCart,
   UserRound,
 } from "lucide-react";
 
+import "@/components/animations/css/header/header-actions.css";
+
 export function HeaderActions() {
+  const wishlistCount = 0;
   const cartCount = 0;
 
   return (
-    <div className="flex items-center text-white">
+    <div className="sth-header-actions">
       <Link
         href="/get-quote"
-        className="
-          flex items-center gap-3
-          border-l border-r border-white/10
-          px-5 py-1
-          transition-colors
-          hover:bg-white/5
-        "
+        className="sth-header-action"
       >
-        <span
-          className="
-            flex h-10 w-10
-            shrink-0
-            items-center justify-center
-            rounded-full
-            border border-white/15
-            bg-white/[0.02]
-          "
-        >
-          <FileText className="h-4 w-4 text-[#ED2436]" />
+        <span className="sth-header-action__icon sth-header-action__icon--accent">
+          <FileText size={16} />
         </span>
 
-        <span className="leading-tight">
-          <span className="block text-[10px] text-white/55">
-            Get
-          </span>
-
-          <span className="block whitespace-nowrap text-[13px] font-semibold">
-            Solar Quote
-          </span>
+        <span className="sth-header-action__label">
+          Get Quote
         </span>
       </Link>
 
+      <span className="sth-header-actions__divider" />
+
       <Link
         href="/login"
-        className="
-          flex items-center gap-3
-          border-r border-white/10
-          px-5 py-1
-          transition-colors
-          hover:bg-white/5
-        "
+        className="sth-header-action"
       >
-        <span
-          className="
-            flex h-10 w-10
-            shrink-0
-            items-center justify-center
-            rounded-full
-            border border-white/15
-            bg-white/[0.02]
-          "
-        >
-          <UserRound className="h-4 w-4 text-[#ED2436]" />
+        <span className="sth-header-action__icon">
+          <UserRound size={17} />
         </span>
 
-        <span className="whitespace-nowrap text-[13px] font-medium">
+        <span className="sth-header-action__label">
           Login / Signup
+        </span>
+      </Link>
+
+      <span className="sth-header-actions__divider" />
+
+      <Link
+        href="/wishlist"
+        className="sth-header-action"
+        aria-label="Wishlist"
+      >
+        <span className="sth-header-action__icon sth-header-action__icon--badge">
+          <Heart size={18} />
+
+          <span className="sth-header-action__badge">
+            {wishlistCount}
+          </span>
+        </span>
+
+        <span className="sth-header-action__label">
+          Wishlist
         </span>
       </Link>
 
       <Link
         href="/cart"
-        aria-label="Shopping cart"
-        className="
-          relative ml-4
-          flex h-11 w-11
-          items-center justify-center
-          rounded-md
-          text-white
-          transition-colors
-          hover:bg-white/10
-        "
+        className="sth-header-action"
+        aria-label="Cart"
       >
-        <ShoppingCart className="h-6 w-6" />
+        <span className="sth-header-action__icon sth-header-action__icon--badge">
+          <ShoppingCart size={18} />
 
-        <span
-          className="
-            absolute -right-1 -top-1
-            flex h-5 min-w-5
-            items-center justify-center
-            rounded-full
-            bg-[#ED2436]
-            px-1
-            text-[10px]
-            font-bold
-            text-white
-          "
-        >
-          {cartCount}
+          <span className="sth-header-action__badge">
+            {cartCount}
+          </span>
+        </span>
+
+        <span className="sth-header-action__label">
+          Cart
         </span>
       </Link>
     </div>

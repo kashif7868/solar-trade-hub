@@ -1,10 +1,13 @@
 import Link from "next/link";
+
 import {
   ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
   Minus,
 } from "lucide-react";
+
+import "@/components/animations/css/home/solar-prices-section.css";
 
 const solarPrices = [
   {
@@ -47,19 +50,19 @@ const solarPrices = [
 
 export function SolarPricesSection() {
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED2436]">
+    <section className="sth-prices">
+      <div className="sth-prices__container">
+        <div className="sth-prices__header">
+          <div className="sth-prices__heading">
+            <span className="sth-prices__eyebrow">
               Market Watch
             </span>
 
-            <h2 className="mt-2 text-2xl font-bold text-[#07143D] sm:text-3xl">
+            <h2 className="sth-prices__title">
               Latest Solar Prices
             </h2>
 
-            <p className="mt-2 max-w-[650px] text-sm leading-6 text-slate-500">
+            <p className="sth-prices__description">
               Track indicative market prices for popular solar panels,
               inverters, batteries and related equipment.
             </p>
@@ -67,15 +70,15 @@ export function SolarPricesSection() {
 
           <Link
             href="/solar-prices"
-            className="hidden items-center gap-2 text-sm font-semibold text-[#07143D] transition-colors hover:text-[#ED2436] sm:inline-flex"
+            className="sth-prices__view-all"
           >
-            View All Prices
-            <ArrowRight className="h-4 w-4" />
+            <span>View All Prices</span>
+            <ArrowRight size={14} strokeWidth={1.8} />
           </Link>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="hidden grid-cols-[1.1fr_1.5fr_1.4fr_1fr_0.7fr] gap-4 bg-[#07143D] px-6 py-4 text-xs font-semibold uppercase tracking-wide text-white md:grid">
+        <div className="sth-prices__table">
+          <div className="sth-prices__table-head">
             <span>Category</span>
             <span>Product</span>
             <span>Specification</span>
@@ -83,108 +86,104 @@ export function SolarPricesSection() {
             <span>Change</span>
           </div>
 
-          {solarPrices.map((item, index) => (
-            <div
-              key={item.id}
-              className={`
-                grid gap-3 px-5 py-5
-                md:grid-cols-[1.1fr_1.5fr_1.4fr_1fr_0.7fr]
-                md:items-center md:gap-4 md:px-6
-                ${
-                  index !== solarPrices.length - 1
-                    ? "border-b border-slate-100"
-                    : ""
-                }
-              `}
-            >
-              <div>
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400 md:hidden">
-                  Category
-                </span>
+          <div className="sth-prices__rows">
+            {solarPrices.map((item) => (
+              <div
+                key={item.id}
+                className="sth-prices__row"
+              >
+                <div className="sth-prices__cell">
+                  <span className="sth-prices__mobile-label">
+                    Category
+                  </span>
 
-                <span className="text-sm font-medium text-slate-600">
-                  {item.category}
-                </span>
+                  <span className="sth-prices__category">
+                    {item.category}
+                  </span>
+                </div>
+
+                <div className="sth-prices__cell">
+                  <span className="sth-prices__mobile-label">
+                    Product
+                  </span>
+
+                  <span className="sth-prices__product">
+                    {item.product}
+                  </span>
+                </div>
+
+                <div className="sth-prices__cell">
+                  <span className="sth-prices__mobile-label">
+                    Specification
+                  </span>
+
+                  <span className="sth-prices__spec">
+                    {item.specification}
+                  </span>
+                </div>
+
+                <div className="sth-prices__cell">
+                  <span className="sth-prices__mobile-label">
+                    Price
+                  </span>
+
+                  <span className="sth-prices__price">
+                    {item.price}
+                  </span>
+                </div>
+
+                <div className="sth-prices__cell">
+                  <span className="sth-prices__mobile-label">
+                    Change
+                  </span>
+
+                  <span
+                    className={[
+                      "sth-prices__change",
+                      `sth-prices__change--${item.trend}`,
+                    ].join(" ")}
+                  >
+                    {item.trend === "up" && (
+                      <ArrowUpRight
+                        size={14}
+                        strokeWidth={1.8}
+                      />
+                    )}
+
+                    {item.trend === "down" && (
+                      <ArrowDownRight
+                        size={14}
+                        strokeWidth={1.8}
+                      />
+                    )}
+
+                    {item.trend === "same" && (
+                      <Minus
+                        size={14}
+                        strokeWidth={1.8}
+                      />
+                    )}
+
+                    {item.change}
+                  </span>
+                </div>
               </div>
-
-              <div>
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400 md:hidden">
-                  Product
-                </span>
-
-                <span className="text-sm font-semibold text-slate-900">
-                  {item.product}
-                </span>
-              </div>
-
-              <div>
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400 md:hidden">
-                  Specification
-                </span>
-
-                <span className="text-sm text-slate-500">
-                  {item.specification}
-                </span>
-              </div>
-
-              <div>
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400 md:hidden">
-                  Price
-                </span>
-
-                <span className="text-sm font-bold text-[#07143D]">
-                  {item.price}
-                </span>
-              </div>
-
-              <div>
-                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-slate-400 md:hidden">
-                  Change
-                </span>
-
-                <span
-                  className={`
-                    inline-flex items-center gap-1
-                    text-sm font-semibold
-                    ${
-                      item.trend === "up"
-                        ? "text-emerald-600"
-                        : item.trend === "down"
-                        ? "text-[#ED2436]"
-                        : "text-slate-500"
-                    }
-                  `}
-                >
-                  {item.trend === "up" && (
-                    <ArrowUpRight className="h-4 w-4" />
-                  )}
-
-                  {item.trend === "down" && (
-                    <ArrowDownRight className="h-4 w-4" />
-                  )}
-
-                  {item.trend === "same" && (
-                    <Minus className="h-4 w-4" />
-                  )}
-
-                  {item.change}
-                </span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="sth-prices__footer">
           <p>
-            Indicative marketplace prices. Final supplier quotations may vary.
+            Indicative marketplace prices. Final supplier quotations
+            may vary.
           </p>
 
           <Link
             href="/solar-prices"
-            className="inline-flex shrink-0 items-center gap-1 font-semibold text-[#07143D] sm:hidden"
+            className="sth-prices__mobile-link"
           >
             All Prices
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight size={13} strokeWidth={1.8} />
           </Link>
         </div>
       </div>

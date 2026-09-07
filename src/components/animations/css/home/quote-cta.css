@@ -1,0 +1,396 @@
+/* ========================================
+   QUOTE CTA
+   ======================================== */
+
+.sth-quote-cta {
+  width: 100%;
+
+  padding: 48px 0 54px;
+
+  background: #ffffff;
+}
+
+.sth-quote-cta__container {
+  width: 100%;
+  max-width: 1480px;
+
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ========================================
+   PANEL
+   ======================================== */
+
+.sth-quote-cta__panel {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 38px 42px;
+
+  border: 1px solid #2d2d2d;
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f1f1f 0%,
+      #242424 56%,
+      #2a201d 100%
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.1);
+}
+
+/* GLOW */
+
+.sth-quote-cta__glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(15px);
+}
+
+.sth-quote-cta__glow--top {
+  top: -120px;
+  right: -80px;
+
+  width: 310px;
+  height: 310px;
+
+  background: rgba(255, 75, 31, 0.16);
+}
+
+.sth-quote-cta__glow--bottom {
+  bottom: -150px;
+  left: 32%;
+
+  width: 270px;
+  height: 270px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* ========================================
+   CONTENT GRID
+   ======================================== */
+
+.sth-quote-cta__content {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.18fr)
+    minmax(320px, 0.72fr);
+
+  align-items: center;
+
+  gap: 46px;
+}
+
+/* ========================================
+   LEFT COPY
+   ======================================== */
+
+.sth-quote-cta__copy {
+  max-width: 760px;
+}
+
+/* BADGE */
+
+.sth-quote-cta__badge {
+  width: fit-content;
+
+  padding: 6px 9px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 8.5px;
+  font-weight: 700;
+}
+
+.sth-quote-cta__badge svg {
+  color: #ff5d34;
+}
+
+/* TITLE */
+
+.sth-quote-cta__title {
+  max-width: 700px;
+
+  margin: 17px 0 0;
+
+  color: #ffffff;
+
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 800;
+
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.sth-quote-cta__title span {
+  color: #ff5a31;
+}
+
+/* DESCRIPTION */
+
+.sth-quote-cta__description {
+  max-width: 650px;
+
+  margin: 14px 0 0;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 11px;
+  line-height: 1.72;
+}
+
+/* BENEFITS */
+
+.sth-quote-cta__benefits {
+  margin-top: 19px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap:
+    9px
+    18px;
+}
+
+.sth-quote-cta__benefit {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.sth-quote-cta__benefit svg {
+  color: #ff5a31;
+}
+
+/* ========================================
+   RIGHT INQUIRY CARD
+   ======================================== */
+
+.sth-quote-cta__card {
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  backdrop-filter: blur(8px);
+}
+
+.sth-quote-cta__card-header {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.sth-quote-cta__card-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: rgba(255, 75, 31, 0.14);
+  color: #ff5a31;
+}
+
+.sth-quote-cta__card-header h3 {
+  margin: 1px 0 0;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sth-quote-cta__card-header p {
+  margin: 5px 0 0;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   ACTIONS
+   ======================================== */
+
+.sth-quote-cta__actions {
+  margin-top: 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.sth-quote-cta__button {
+  width: 100%;
+  min-height: 40px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border-radius: 7px;
+
+  font-size: 9.5px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-quote-cta__button:hover {
+  transform: translateY(-1px);
+}
+
+/* PRIMARY */
+
+.sth-quote-cta__button--primary {
+  border: 1px solid #ff4b1f;
+
+  background: #ff4b1f;
+  color: #ffffff;
+}
+
+.sth-quote-cta__button--primary:hover {
+  border-color: #e83c12;
+
+  background: #e83c12;
+}
+
+/* SECONDARY */
+
+.sth-quote-cta__button--secondary {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  background: rgba(255, 255, 255, 0.045);
+  color: #ffffff;
+}
+
+.sth-quote-cta__button--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* NOTE */
+
+.sth-quote-cta__note {
+  margin: 11px 0 0;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 7.5px;
+  line-height: 1.45;
+
+  text-align: center;
+}
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 950px) {
+  .sth-quote-cta__panel {
+    padding: 32px;
+  }
+
+  .sth-quote-cta__content {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .sth-quote-cta__card {
+    max-width: 560px;
+  }
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 650px) {
+  .sth-quote-cta {
+    padding: 38px 0 42px;
+  }
+
+  .sth-quote-cta__container {
+    padding: 0 16px;
+  }
+
+  .sth-quote-cta__panel {
+    padding: 24px 18px;
+
+    border-radius: 13px;
+  }
+
+  .sth-quote-cta__title {
+    font-size: 28px;
+  }
+
+  .sth-quote-cta__description {
+    font-size: 10.5px;
+  }
+
+  .sth-quote-cta__benefits {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .sth-quote-cta__card {
+    padding: 16px;
+  }
+}

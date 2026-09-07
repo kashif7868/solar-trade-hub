@@ -19,7 +19,7 @@ export const footerCompanyLinks = [
 
 export const footerMarketplaceLinks = [
   {
-    label: "Shop",
+    label: "Shop Products",
     href: "/shop",
   },
   {
@@ -35,6 +35,10 @@ export const footerMarketplaceLinks = [
     href: "/solar-prices",
   },
   {
+    label: "Solar Tenders",
+    href: "/tenders",
+  },
+  {
     label: "Get Solar Quote",
     href: "/get-quote",
   },
@@ -46,6 +50,10 @@ export const footerCategoryLinks = [
     href: "/shop/solar-panels",
   },
   {
+    label: "On-Grid Inverters",
+    href: "/shop/on-grid-inverters",
+  },
+  {
     label: "Hybrid Inverters",
     href: "/shop/hybrid-inverters",
   },
@@ -54,7 +62,7 @@ export const footerCategoryLinks = [
     href: "/shop/lithium-batteries",
   },
   {
-    label: "Energy Storage Systems",
+    label: "Energy Storage",
     href: "/shop/energy-storage-systems",
   },
   {
@@ -65,12 +73,20 @@ export const footerCategoryLinks = [
 
 export const footerSupportLinks = [
   {
+    label: "Help Center",
+    href: "/help",
+  },
+  {
     label: "Track Order",
     href: "/track-order",
   },
   {
-    label: "Help Center",
-    href: "/help",
+    label: "Become a Seller",
+    href: "/seller",
+  },
+  {
+    label: "Join Community",
+    href: "/community",
   },
   {
     label: "Privacy Policy",

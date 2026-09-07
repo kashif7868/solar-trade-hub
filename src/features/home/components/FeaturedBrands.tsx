@@ -1,44 +1,51 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { BrandCard } from "@/components/common/BrandCard/BrandCard";
 import { featuredBrands } from "@/data/brandData";
+
+import "@/components/animations/css/home/featured-brands.css";
 
 export function FeaturedBrands() {
   return (
-    <section className="bg-slate-50 py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
+    <section className="sth-featured-brands">
+      <div className="sth-featured-brands__container">
+        <div className="sth-featured-brands__header">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED2436]">
+            <span className="sth-featured-brands__eyebrow">
               Trusted Manufacturers
             </span>
 
-            <h2 className="mt-2 text-2xl font-bold text-[#07143D] sm:text-3xl">
+            <h2 className="sth-featured-brands__title">
               Featured Brands
             </h2>
-
-            <p className="mt-2 max-w-[620px] text-sm leading-6 text-slate-500">
-              Explore leading solar technology brands available through
-              Solar Trade Hub.
-            </p>
           </div>
 
           <Link
             href="/brands"
-            className="hidden text-sm font-semibold text-[#07143D] transition-colors hover:text-[#ED2436] sm:inline-flex"
+            className="sth-featured-brands__view-all"
           >
-            View All Brands
+            <span>View All Brands</span>
+            <ArrowRight size={14} strokeWidth={1.8} />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
+        <div className="sth-featured-brands__strip">
           {featuredBrands.map((brand) => (
-            <BrandCard
+            <Link
               key={brand.id}
-              name={brand.name}
               href={brand.href}
-              logo={brand.logo}
-            />
+              className="sth-featured-brands__item"
+              aria-label={`View ${brand.name}`}
+            >
+              <Image
+                src={brand.logo}
+                alt={`${brand.name} logo`}
+                width={150}
+                height={70}
+                className="sth-featured-brands__logo"
+              />
+            </Link>
           ))}
         </div>
       </div>

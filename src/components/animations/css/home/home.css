@@ -1,0 +1,431 @@
+/* ========================================
+   SOLAR TRADE HUB - HOME PAGE
+   ======================================== */
+
+.sth-home {
+  width: 100%;
+
+  overflow-x: hidden;
+
+  background: #ffffff;
+}
+
+/* ========================================
+   GLOBAL SECTION RHYTHM
+   ======================================== */
+
+.sth-home section {
+  position: relative;
+}
+
+/*
+  Default content section spacing.
+  Hero and special CTA sections can override
+  this inside their own CSS files.
+*/
+
+.sth-home__section {
+  width: 100%;
+
+  padding-top: 54px;
+  padding-bottom: 54px;
+}
+
+/* ========================================
+   SECTION BACKGROUNDS
+   ======================================== */
+
+.sth-home__section--white {
+  background: #ffffff;
+}
+
+.sth-home__section--soft {
+  background: #fafafa;
+}
+
+.sth-home__section--warm {
+  background: #fff9f6;
+}
+
+.sth-home__section--dark {
+  background: #222222;
+}
+
+/* ========================================
+   GLOBAL HOME CONTAINER
+   ======================================== */
+
+.sth-home__container {
+  width: 100%;
+  max-width: 1480px;
+
+  margin: 0 auto;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+/* ========================================
+   SECTION HEADER
+   ======================================== */
+
+.sth-home__heading {
+  margin-bottom: 28px;
+
+  text-align: center;
+}
+
+.sth-home__heading--left {
+  text-align: left;
+}
+
+.sth-home__eyebrow {
+  margin: 0 0 7px;
+
+  color: #ff4b1f;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.sth-home__title {
+  margin: 0;
+
+  color: #181818;
+
+  font-size: clamp(23px, 2.5vw, 32px);
+  font-weight: 800;
+
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.sth-home__description {
+  max-width: 620px;
+
+  margin: 10px auto 0;
+
+  color: #777777;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+.sth-home__heading--left
+.sth-home__description {
+  margin-left: 0;
+}
+
+/* ========================================
+   SMALL TITLE ACCENT
+   ======================================== */
+
+.sth-home__title-accent {
+  width: 42px;
+  height: 3px;
+
+  margin: 11px auto 0;
+
+  border-radius: 999px;
+
+  background: #ff4b1f;
+}
+
+.sth-home__heading--left
+.sth-home__title-accent {
+  margin-left: 0;
+}
+
+/* ========================================
+   CONTENT DIVIDER
+   ======================================== */
+
+.sth-home__divider {
+  width: 100%;
+  height: 1px;
+
+  background: #eeeeee;
+}
+
+/* ========================================
+   GENERIC CARD GRID
+   ======================================== */
+
+.sth-home__grid {
+  display: grid;
+
+  gap: 18px;
+}
+
+.sth-home__grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sth-home__grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sth-home__grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sth-home__grid--5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.sth-home__grid--6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+/* ========================================
+   GENERIC CARD
+   ======================================== */
+
+.sth-home__card {
+  border: 1px solid #e8e8e8;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.03);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.sth-home__card:hover {
+  border-color: #ffd7ca;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   GENERIC BUTTONS
+   ======================================== */
+
+.sth-home__button {
+  min-height: 40px;
+
+  padding: 0 15px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border-radius: 8px;
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.sth-home__button:hover {
+  transform: translateY(-1px);
+}
+
+.sth-home__button--primary {
+  border: 1px solid #ff4b1f;
+
+  background: #ff4b1f;
+  color: #ffffff;
+}
+
+.sth-home__button--primary:hover {
+  border-color: #e83c12;
+
+  background: #e83c12;
+}
+
+.sth-home__button--secondary {
+  border: 1px solid #e0e0e0;
+
+  background: #ffffff;
+  color: #222222;
+}
+
+.sth-home__button--secondary:hover {
+  border-color: #ffbca9;
+
+  color: #ff4b1f;
+}
+
+/* ========================================
+   SECTION ORDER / VISUAL RHYTHM
+   ======================================== */
+
+/* Stats joins visually with hero */
+
+.sth-home__stats {
+  position: relative;
+  z-index: 5;
+}
+
+/* Category area */
+
+.sth-home__categories {
+  background: #ffffff;
+}
+
+/* Brand strip */
+
+.sth-home__brands {
+  background: #fafafa;
+}
+
+/* Product area */
+
+.sth-home__products {
+  background: #ffffff;
+}
+
+/* Promo */
+
+.sth-home__promos {
+  background: #fff9f6;
+}
+
+/* Why Solar Trade Hub */
+
+.sth-home__why {
+  background: #fafafa;
+}
+
+/* Suppliers */
+
+.sth-home__suppliers {
+  background: #ffffff;
+}
+
+/* Solar Prices */
+
+.sth-home__prices {
+  background: #fafafa;
+}
+
+/* Quote CTA */
+
+.sth-home__quote {
+  background: #ffffff;
+}
+
+/* WhatsApp */
+
+.sth-home__whatsapp {
+  background: #ffffff;
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
+@media (max-width: 1100px) {
+  .sth-home__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .sth-home__section {
+    padding-top: 46px;
+    padding-bottom: 46px;
+  }
+
+  .sth-home__grid--5,
+  .sth-home__grid--6 {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .sth-home__grid--4 {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+
+@media (max-width: 767px) {
+  .sth-home__container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sth-home__section {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .sth-home__heading {
+    margin-bottom: 22px;
+  }
+
+  .sth-home__title {
+    font-size: 23px;
+  }
+
+  .sth-home__description {
+    max-width: 100%;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .sth-home__grid--2,
+  .sth-home__grid--3,
+  .sth-home__grid--4,
+  .sth-home__grid--5,
+  .sth-home__grid--6 {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 440px) {
+  .sth-home__section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .sth-home__grid--3,
+  .sth-home__grid--4,
+  .sth-home__grid--5,
+  .sth-home__grid--6 {
+    grid-template-columns: 1fr;
+  }
+
+  .sth-home__button {
+    min-height: 38px;
+
+    font-size: 10px;
+  }
+}

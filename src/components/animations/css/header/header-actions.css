@@ -1,0 +1,148 @@
+.sth-header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  flex-shrink: 0;
+}
+
+.sth-header-action {
+  min-width: 58px;
+
+  padding: 2px 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  color: #25292e;
+
+  text-decoration: none;
+
+  transition:
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-header-action:hover {
+  color: #ff4b1f;
+
+  transform: translateY(-1px);
+}
+
+.sth-header-action__icon {
+  position: relative;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e7e9ec;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #25292e;
+
+  transition:
+    border-color 0.16s ease,
+    color 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.sth-header-action__icon--accent {
+  color: #ff4b1f;
+}
+
+.sth-header-action:hover
+.sth-header-action__icon {
+  border-color: #ffd7cb;
+
+  background: #fff8f5;
+
+  color: #ff4b1f;
+}
+
+.sth-header-action__label {
+  color: inherit;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.sth-header-actions__divider {
+  width: 1px;
+  height: 32px;
+
+  margin: 0 2px;
+
+  flex-shrink: 0;
+
+  background: #e5e7ea;
+}
+
+/* BADGE */
+
+.sth-header-action__badge {
+  position: absolute;
+
+  top: -5px;
+  right: -5px;
+
+  min-width: 15px;
+  height: 15px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+
+  background: #ff4b1f;
+  color: #ffffff;
+
+  font-size: 7px;
+  font-weight: 800;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1360px) {
+  .sth-header-action {
+    min-width: 52px;
+
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .sth-header-action__label {
+    font-size: 8.5px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .sth-header-action {
+    min-width: 36px;
+  }
+
+  .sth-header-action__label {
+    display: none;
+  }
+
+  .sth-header-actions__divider {
+    height: 26px;
+  }
+}
