@@ -1,15 +1,24 @@
-import { api } from "../api";
+import { api } from "@/services/api";
+import type { Product } from "@/types/product";
 
-import type { ProductItem } from "@/data/productData";
+export const productService = {
+  async getProducts(): Promise<Product[]> {
+    const response = await api.get<Product[]>("/products");
+    return response.data;
+  },
 
-interface ProductsResponse {
-  success: boolean;
-  message: string;
-  data: ProductItem[];
-}
+  async getProductById(id: number): Promise<Product> {
+    const response = await api.get<Product>(`/products/${id}`);
+    return response.data;
+  },
 
-export async function getProducts(): Promise<ProductItem[]> {
-  const response = await api.get<ProductsResponse>("/products");
+  async getProductBySlug(slug: string): Promise<Product | null> {
+    const response = await api.get<Product[]>("/products", {
+      params: {
+        slug,
+      },
+    });
 
-  return response.data.data;
-}
+    return response.data[0] ?? null;
+  },
+};

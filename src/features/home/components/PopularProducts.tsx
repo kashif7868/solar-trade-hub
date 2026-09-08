@@ -18,22 +18,28 @@ import "@/components/animations/css/home/popular-products.css";
 
 export function PopularProducts() {
   const {
-    data: products,
+    data: products = [],
     isLoading,
     isError,
   } = useProducts();
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollProducts = (direction: "left" | "right") => {
+  const scrollProducts = (
+    direction: "left" | "right"
+  ) => {
     const slider = sliderRef.current;
 
     if (!slider) return;
 
     const card =
-      slider.querySelector<HTMLElement>(".sth-product-card");
+      slider.querySelector<HTMLElement>(
+        ".sth-product-card"
+      );
 
-    const cardWidth = card?.offsetWidth ?? 260;
+    const cardWidth =
+      card?.offsetWidth ?? 270;
+
     const gap = 14;
 
     slider.scrollBy({
@@ -41,6 +47,7 @@ export function PopularProducts() {
         direction === "right"
           ? cardWidth + gap
           : -(cardWidth + gap),
+
       behavior: "smooth",
     });
   };
@@ -52,6 +59,7 @@ export function PopularProducts() {
           <div className="sth-popular-products__heading">
             <span className="sth-popular-products__eyebrow">
               <span className="sth-popular-products__eyebrow-dot" />
+
               Trending Now
             </span>
 
@@ -60,9 +68,10 @@ export function PopularProducts() {
             </h2>
 
             <p className="sth-popular-products__description">
-              Explore popular solar panels, hybrid inverters,
-              lithium batteries, energy storage systems and
-              essential solar accessories.
+              Explore popular solar panels, hybrid
+              inverters, lithium batteries, energy
+              storage systems and essential solar
+              accessories.
             </p>
           </div>
 
@@ -70,7 +79,10 @@ export function PopularProducts() {
             <div className="sth-popular-products__benefits">
               <div className="sth-popular-products__benefit">
                 <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--orange">
-                  <ShieldCheck size={16} strokeWidth={1.8} />
+                  <ShieldCheck
+                    size={17}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <span>
@@ -81,7 +93,10 @@ export function PopularProducts() {
 
               <div className="sth-popular-products__benefit">
                 <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--purple">
-                  <Truck size={16} strokeWidth={1.8} />
+                  <Truck
+                    size={17}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <span>
@@ -92,7 +107,10 @@ export function PopularProducts() {
 
               <div className="sth-popular-products__benefit">
                 <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--green">
-                  <Headphones size={16} strokeWidth={1.8} />
+                  <Headphones
+                    size={17}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <span>
@@ -107,7 +125,11 @@ export function PopularProducts() {
               className="sth-popular-products__view-all"
             >
               <span>View All Products</span>
-              <ArrowRight size={15} strokeWidth={1.8} />
+
+              <ArrowRight
+                size={16}
+                strokeWidth={1.8}
+              />
             </Link>
           </div>
         </div>
@@ -115,7 +137,9 @@ export function PopularProducts() {
         {isLoading && (
           <div className="sth-popular-products__slider">
             <div className="sth-popular-products__grid">
-              {Array.from({ length: 6 }).map((_, index) => (
+              {Array.from({
+                length: 5,
+              }).map((_, index) => (
                 <div
                   key={index}
                   className="sth-popular-products__skeleton"
@@ -129,7 +153,9 @@ export function PopularProducts() {
                     </div>
 
                     <span className="sth-popular-products__skeleton-title" />
+
                     <span className="sth-popular-products__skeleton-text" />
+
                     <span className="sth-popular-products__skeleton-text sth-popular-products__skeleton-text--short" />
 
                     <div className="sth-popular-products__skeleton-divider" />
@@ -155,16 +181,20 @@ export function PopularProducts() {
 
         {!isLoading &&
           !isError &&
-          products &&
           products.length > 0 && (
             <div className="sth-popular-products__slider">
               <button
                 type="button"
                 aria-label="Previous products"
                 className="sth-popular-products__slider-btn sth-popular-products__slider-btn--left"
-                onClick={() => scrollProducts("left")}
+                onClick={() =>
+                  scrollProducts("left")
+                }
               >
-                <ArrowLeft size={18} strokeWidth={1.8} />
+                <ArrowLeft
+                  size={18}
+                  strokeWidth={1.8}
+                />
               </button>
 
               <div
@@ -175,15 +205,21 @@ export function PopularProducts() {
                   <ProductCard
                     key={product.id}
                     name={product.name}
-                    href={product.href}
+                    href={`/products/${product.slug}`}
                     image={product.image}
                     category={product.category}
                     brand={product.brand}
-                    description={product.description}
+                    description={
+                      product.description
+                    }
                     price={product.price}
-                    oldPrice={product.oldPrice}
+                    oldPrice={
+                      product.oldPrice
+                    }
                     rating={product.rating}
-                    reviewCount={product.reviewCount}
+                    reviewCount={
+                      product.reviewCount
+                    }
                     badge={product.badge}
                   />
                 ))}
@@ -193,16 +229,20 @@ export function PopularProducts() {
                 type="button"
                 aria-label="Next products"
                 className="sth-popular-products__slider-btn sth-popular-products__slider-btn--right"
-                onClick={() => scrollProducts("right")}
+                onClick={() =>
+                  scrollProducts("right")
+                }
               >
-                <ArrowRight size={18} strokeWidth={1.8} />
+                <ArrowRight
+                  size={18}
+                  strokeWidth={1.8}
+                />
               </button>
             </div>
           )}
 
         {!isLoading &&
           !isError &&
-          products &&
           products.length === 0 && (
             <div className="sth-popular-products__empty">
               No products available right now.

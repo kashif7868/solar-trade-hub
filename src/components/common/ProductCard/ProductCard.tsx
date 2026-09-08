@@ -24,6 +24,7 @@ export interface ProductCardProps {
   rating: number;
   reviewCount: number;
   badge?: string;
+  sku?: string;
 }
 
 export function ProductCard({
@@ -38,6 +39,7 @@ export function ProductCard({
   rating,
   reviewCount,
   badge,
+  sku,
 }: ProductCardProps) {
   const formatPrice = (value: number) =>
     new Intl.NumberFormat("en-PK").format(value);
@@ -58,7 +60,7 @@ export function ProductCard({
           aria-label={`Add ${name} to wishlist`}
           className="sth-product-card__wishlist"
         >
-          <Heart size={15} strokeWidth={1.8} />
+          <Heart size={16} strokeWidth={1.8} />
         </button>
 
         <Link
@@ -70,7 +72,7 @@ export function ProductCard({
             src={image}
             alt={name}
             fill
-            sizes="(max-width: 767px) 80vw, (max-width: 1023px) 33vw, 16vw"
+            sizes="(max-width: 767px) 90vw, (max-width: 1023px) 46vw, 22vw"
             className="sth-product-card__image"
           />
         </Link>
@@ -82,21 +84,33 @@ export function ProductCard({
             {category}
           </span>
 
+          <span className="sth-product-card__meta-dot">
+            •
+          </span>
+
           <span className="sth-product-card__brand">
             {brand}
           </span>
         </div>
 
-        <div className="sth-product-card__rating">
-          <Star
-            size={12}
-            fill="currentColor"
-            strokeWidth={1.4}
-          />
+        <div className="sth-product-card__rating-row">
+          <div className="sth-product-card__rating">
+            <Star
+              size={13}
+              fill="currentColor"
+              strokeWidth={1.4}
+            />
 
-          <strong>{rating}</strong>
+            <strong>{rating}</strong>
 
-          <span>({reviewCount})</span>
+            <span>({reviewCount})</span>
+          </div>
+
+          {sku && (
+            <span className="sth-product-card__sku">
+              SKU: {sku}
+            </span>
+          )}
         </div>
 
         <Link
@@ -129,7 +143,11 @@ export function ProductCard({
             type="button"
             className="sth-product-card__cart"
           >
-            <ShoppingCart size={14} strokeWidth={1.8} />
+            <ShoppingCart
+              size={15}
+              strokeWidth={1.8}
+            />
+
             <span>Add to Cart</span>
           </button>
 
@@ -138,7 +156,10 @@ export function ProductCard({
             aria-label={`Compare or view ${name}`}
             className="sth-product-card__compare"
           >
-            <ArrowLeftRight size={15} strokeWidth={1.8} />
+            <ArrowLeftRight
+              size={16}
+              strokeWidth={1.8}
+            />
           </Link>
         </div>
       </div>

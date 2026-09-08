@@ -1,0 +1,172 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Jinko Tiger Neo N-Type Solar Panel",
+      "slug": "jinko-tiger-neo-n-type-solar-panel",
+      "sku": "M-JIN-585W-NT",
+      "category": "Solar Panels",
+      "brand": "Jinko Solar",
+      "type": "Material",
+      "capacity": "585W",
+      "price": 29900,
+      "oldPrice": 32000,
+      "stock": 42,
+      "status": "In Stock",
+      "rating": 4.9,
+      "reviewCount": 48,
+      "badge": "Featured",
+      "image": "https://pngimg.com/uploads/solar_panel/solar_panel_PNG42.png",
+      "description": "High-efficiency N-Type solar panel designed for residential and commercial solar systems."
+    },
+    {
+      "id": 2,
+      "name": "JA Solar DeepBlue N-Type Solar Panel",
+      "slug": "ja-solar-deepblue-n-type-solar-panel",
+      "sku": "M-JAS-585W-NT",
+      "category": "Solar Panels",
+      "brand": "JA Solar",
+      "type": "Material",
+      "capacity": "585W",
+      "price": 28750,
+      "oldPrice": 30500,
+      "stock": 35,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 32,
+      "badge": "Popular",
+      "image": "https://pngimg.com/uploads/solar_panel/solar_panel_PNG42.png",
+      "description": "Reliable N-Type solar module with strong performance and high conversion efficiency."
+    },
+    {
+      "id": 3,
+      "name": "Solis 12kW Three Phase Hybrid Solar Inverter",
+      "slug": "solis-12kw-three-phase-hybrid-inverter",
+      "sku": "I-SOL-12KW-HYB",
+      "category": "Inverters",
+      "brand": "Solis",
+      "type": "Equipment",
+      "capacity": "12kW",
+      "price": 545000,
+      "oldPrice": 565000,
+      "stock": 12,
+      "status": "In Stock",
+      "rating": 4.9,
+      "reviewCount": 21,
+      "badge": "Hot",
+      "image": "https://www.solisinverters.com/uploads/20230323/641c14cb1bfa5.png",
+      "description": "Three-phase hybrid inverter for modern solar and battery energy systems."
+    },
+    {
+      "id": 4,
+      "name": "GoodWe 10kW Smart Hybrid Inverter",
+      "slug": "goodwe-10kw-smart-hybrid-inverter",
+      "sku": "I-GOO-10KW-HYB",
+      "category": "Inverters",
+      "brand": "GoodWe",
+      "type": "Equipment",
+      "capacity": "10kW",
+      "price": 399000,
+      "oldPrice": 420000,
+      "stock": 18,
+      "status": "In Stock",
+      "rating": 4.7,
+      "reviewCount": 18,
+      "badge": "Featured",
+      "image": "https://www.goodwe.com/Ftp/EN/Downloads/User%20Manual/GW_ET_PLUS+_Series.png",
+      "description": "Smart hybrid inverter designed for efficient solar generation and battery integration."
+    },
+    {
+      "id": 5,
+      "name": "KNOX 16kWh LiFePO4 Solar Battery",
+      "slug": "knox-16kwh-lifepo4-solar-battery",
+      "sku": "B-KNO-16KWH-LFP",
+      "category": "Batteries",
+      "brand": "KNOX",
+      "type": "Equipment",
+      "capacity": "16kWh",
+      "price": 598000,
+      "oldPrice": 625000,
+      "stock": 9,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 26,
+      "badge": "Best Seller",
+      "image": "https://placehold.co/700x700/ffffff/5b2eff?text=KNOX+16kWh+Battery",
+      "description": "LiFePO4 battery storage solution for long-duration solar backup and hybrid systems."
+    },
+    {
+      "id": 6,
+      "name": "Huawei LUNA Smart Energy Storage Battery",
+      "slug": "huawei-luna-smart-energy-storage-battery",
+      "sku": "B-HUA-LUNA-ESS",
+      "category": "Batteries",
+      "brand": "Huawei",
+      "type": "Equipment",
+      "capacity": "14kWh",
+      "price": 485000,
+      "oldPrice": 510000,
+      "stock": 7,
+      "status": "In Stock",
+      "rating": 4.9,
+      "reviewCount": 14,
+      "badge": "Premium",
+      "image": "https://placehold.co/700x700/ffffff/ff4b1f?text=Huawei+LUNA+ESS",
+      "description": "Smart modular residential energy storage system for Huawei solar installations."
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Solar Panels",
+      "slug": "solar-panels"
+    },
+    {
+      "id": 2,
+      "name": "Inverters",
+      "slug": "inverters"
+    },
+    {
+      "id": 3,
+      "name": "Batteries",
+      "slug": "batteries"
+    },
+    {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories"
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "name": "Jinko Solar",
+      "slug": "jinko-solar"
+    },
+    {
+      "id": 2,
+      "name": "JA Solar",
+      "slug": "ja-solar"
+    },
+    {
+      "id": 3,
+      "name": "Solis",
+      "slug": "solis"
+    },
+    {
+      "id": 4,
+      "name": "GoodWe",
+      "slug": "goodwe"
+    },
+    {
+      "id": 5,
+      "name": "KNOX",
+      "slug": "knox"
+    },
+    {
+      "id": 6,
+      "name": "Huawei",
+      "slug": "huawei"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+.sth-shop {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 0 0 76px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 88% 2%,
+      rgba(91, 46, 255, 0.085) 0%,
+      rgba(91, 46, 255, 0.028) 22%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 3% 39%,
+      rgba(255, 75, 31, 0.045) 0%,
+      transparent 29%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fdfcff 46%,
+      #ffffff 100%
+    );
+}
+
+/* ========================================
+   DECORATIVE BACKGROUND
+   ======================================== */
+
+.sth-shop::before {
+  content: "";
+
+  position: absolute;
+
+  top: -150px;
+  right: -160px;
+
+  width: 560px;
+  height: 560px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(91, 46, 255, 0.075);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(91, 46, 255, 0.02),
+      transparent 69%
+    );
+
+  pointer-events: none;
+}
+
+.sth-shop::after {
+  content: "";
+
+  position: absolute;
+
+  top: 330px;
+  left: -125px;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255, 75, 31, 0.07);
+
+  pointer-events: none;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.sth-shop__container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1480px;
+
+  margin: 0 auto;
+
+  padding: 0 30px;
+}
+
+/* ========================================
+   MAIN SHOP AREA
+   ======================================== */
+
+.sth-shop__layout {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    250px
+    minmax(0, 1fr);
+
+  gap: 20px;
+
+  align-items: start;
+
+  margin-top: 6px;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+
+.sth-shop__sidebar {
+  min-width: 0;
+
+  position: relative;
+}
+
+/* subtle connector visual */
+.sth-shop__sidebar::after {
+  content: "";
+
+  position: absolute;
+
+  top: 30px;
+  right: -10px;
+
+  width: 1px;
+  height: 74%;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(91, 46, 255, 0.08),
+      rgba(255, 75, 31, 0.06),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.sth-shop__content {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   DECORATIVE DOT MATRIX
+   ======================================== */
+
+.sth-shop__content::before {
+  content: "";
+
+  position: absolute;
+
+  top: 88px;
+  right: -22px;
+
+  width: 108px;
+  height: 108px;
+
+  opacity: 0.08;
+
+  background-image:
+    radial-gradient(
+      var(--sth-purple) 1px,
+      transparent 1px
+    );
+
+  background-size: 12px 12px;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   SOFT MARKETPLACE BACKPLATE
+   ======================================== */
+
+.sth-shop__content::after {
+  content: "";
+
+  position: absolute;
+
+  top: 76px;
+  left: 12%;
+
+  width: 76%;
+  height: 160px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(91, 46, 255, 0.028),
+      transparent 68%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1260px) {
+  .sth-shop__layout {
+    grid-template-columns:
+      230px
+      minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+  .sth-shop__sidebar::after {
+    right: -9px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sth-shop {
+    padding-bottom: 58px;
+  }
+
+  .sth-shop__container {
+    padding: 0 22px;
+  }
+
+  .sth-shop__layout {
+    grid-template-columns: 1fr;
+
+    margin-top: 4px;
+  }
+
+  .sth-shop__sidebar {
+    display: none;
+  }
+
+  .sth-shop__sidebar::after,
+  .sth-shop__content::before,
+  .sth-shop__content::after {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .sth-shop {
+    padding-bottom: 46px;
+  }
+
+  .sth-shop__container {
+    padding: 0 16px;
+  }
+
+  .sth-shop__layout {
+    gap: 14px;
+
+    margin-top: 0;
+  }
+}
