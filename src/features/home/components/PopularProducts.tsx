@@ -1,7 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+
+import {
+  ArrowLeft,
+  ArrowRight,
+  Headphones,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
 
 import { ProductCard } from "@/components/common/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
@@ -15,17 +23,40 @@ export function PopularProducts() {
     isError,
   } = useProducts();
 
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollProducts = (direction: "left" | "right") => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    const card =
+      slider.querySelector<HTMLElement>(".sth-product-card");
+
+    const cardWidth = card?.offsetWidth ?? 260;
+    const gap = 14;
+
+    slider.scrollBy({
+      left:
+        direction === "right"
+          ? cardWidth + gap
+          : -(cardWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="sth-popular-products">
       <div className="sth-popular-products__container">
         <div className="sth-popular-products__header">
           <div className="sth-popular-products__heading">
             <span className="sth-popular-products__eyebrow">
+              <span className="sth-popular-products__eyebrow-dot" />
               Trending Now
             </span>
 
             <h2 className="sth-popular-products__title">
-              Popular Products
+              Popular <span>Products</span>
             </h2>
 
             <p className="sth-popular-products__description">
@@ -35,51 +66,84 @@ export function PopularProducts() {
             </p>
           </div>
 
-          <Link
-            href="/shop"
-            className="sth-popular-products__view-all"
-          >
-            <span>View All Products</span>
+          <div className="sth-popular-products__header-right">
+            <div className="sth-popular-products__benefits">
+              <div className="sth-popular-products__benefit">
+                <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--orange">
+                  <ShieldCheck size={16} strokeWidth={1.8} />
+                </span>
 
-            <ArrowRight
-              size={14}
-              strokeWidth={1.8}
-            />
-          </Link>
+                <span>
+                  Trusted
+                  <strong>Quality</strong>
+                </span>
+              </div>
+
+              <div className="sth-popular-products__benefit">
+                <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--purple">
+                  <Truck size={16} strokeWidth={1.8} />
+                </span>
+
+                <span>
+                  Fast
+                  <strong>Delivery</strong>
+                </span>
+              </div>
+
+              <div className="sth-popular-products__benefit">
+                <span className="sth-popular-products__benefit-icon sth-popular-products__benefit-icon--green">
+                  <Headphones size={16} strokeWidth={1.8} />
+                </span>
+
+                <span>
+                  Expert
+                  <strong>Support</strong>
+                </span>
+              </div>
+            </div>
+
+            <Link
+              href="/shop"
+              className="sth-popular-products__view-all"
+            >
+              <span>View All Products</span>
+              <ArrowRight size={15} strokeWidth={1.8} />
+            </Link>
+          </div>
         </div>
 
         {isLoading && (
-          <div className="sth-popular-products__grid">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <div
-                key={index}
-                className="sth-popular-products__skeleton"
-              >
-                <div className="sth-popular-products__skeleton-image" />
+          <div className="sth-popular-products__slider">
+            <div className="sth-popular-products__grid">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="sth-popular-products__skeleton"
+                >
+                  <div className="sth-popular-products__skeleton-image" />
 
-                <div className="sth-popular-products__skeleton-body">
-                  <div className="sth-popular-products__skeleton-meta">
-                    <span />
-                    <span />
-                  </div>
+                  <div className="sth-popular-products__skeleton-body">
+                    <div className="sth-popular-products__skeleton-meta">
+                      <span />
+                      <span />
+                    </div>
 
-                  <span className="sth-popular-products__skeleton-title" />
+                    <span className="sth-popular-products__skeleton-title" />
+                    <span className="sth-popular-products__skeleton-text" />
+                    <span className="sth-popular-products__skeleton-text sth-popular-products__skeleton-text--short" />
 
-                  <span className="sth-popular-products__skeleton-text" />
+                    <div className="sth-popular-products__skeleton-divider" />
 
-                  <span className="sth-popular-products__skeleton-text sth-popular-products__skeleton-text--short" />
+                    <span className="sth-popular-products__skeleton-price" />
 
-                  <div className="sth-popular-products__skeleton-divider" />
-
-                  <span className="sth-popular-products__skeleton-price" />
-
-                  <div className="sth-popular-products__skeleton-actions">
-                    <span />
-                    <span />
+                    <div className="sth-popular-products__skeleton-actions">
+                      <span />
+                      <span />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
@@ -93,23 +157,46 @@ export function PopularProducts() {
           !isError &&
           products &&
           products.length > 0 && (
-            <div className="sth-popular-products__grid">
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  name={product.name}
-                  href={product.href}
-                  image={product.image}
-                  category={product.category}
-                  brand={product.brand}
-                  description={product.description}
-                  price={product.price}
-                  oldPrice={product.oldPrice}
-                  rating={product.rating}
-                  reviewCount={product.reviewCount}
-                  badge={product.badge}
-                />
-              ))}
+            <div className="sth-popular-products__slider">
+              <button
+                type="button"
+                aria-label="Previous products"
+                className="sth-popular-products__slider-btn sth-popular-products__slider-btn--left"
+                onClick={() => scrollProducts("left")}
+              >
+                <ArrowLeft size={18} strokeWidth={1.8} />
+              </button>
+
+              <div
+                ref={sliderRef}
+                className="sth-popular-products__grid"
+              >
+                {products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    name={product.name}
+                    href={product.href}
+                    image={product.image}
+                    category={product.category}
+                    brand={product.brand}
+                    description={product.description}
+                    price={product.price}
+                    oldPrice={product.oldPrice}
+                    rating={product.rating}
+                    reviewCount={product.reviewCount}
+                    badge={product.badge}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                aria-label="Next products"
+                className="sth-popular-products__slider-btn sth-popular-products__slider-btn--right"
+                onClick={() => scrollProducts("right")}
+              >
+                <ArrowRight size={18} strokeWidth={1.8} />
+              </button>
             </div>
           )}
 

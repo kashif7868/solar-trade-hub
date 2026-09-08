@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
+  BatteryCharging,
   CircleDollarSign,
   Headphones,
   PackageCheck,
@@ -22,36 +23,42 @@ const benefits = [
     title: "Verified Suppliers",
     description:
       "Connect with trusted solar suppliers and verified marketplace partners.",
+    variant: "purple",
   },
   {
     icon: ShieldCheck,
     title: "Trusted Products",
     description:
       "Compare quality solar panels, inverters, batteries and accessories.",
+    variant: "orange",
   },
   {
     icon: CircleDollarSign,
     title: "Transparent Choices",
     description:
       "Compare products, specifications and market options before you buy.",
+    variant: "purple",
   },
   {
     icon: RefreshCcw,
     title: "Reliable Support",
     description:
       "Get practical support for product selection and supplier coordination.",
+    variant: "orange",
   },
   {
     icon: UsersRound,
     title: "Industry Network",
     description:
       "Access installers, suppliers and solar professionals across Pakistan.",
+    variant: "purple",
   },
   {
     icon: Headphones,
     title: "Engineering Guidance",
     description:
       "Get technical guidance for residential, commercial and industrial projects.",
+    variant: "orange",
   },
 ];
 
@@ -92,23 +99,52 @@ export function WhySolarTradeHub() {
   return (
     <section className="sth-why">
       <div className="sth-why__container">
-        <div className="sth-why__header">
-          <span className="sth-why__eyebrow">
-            Why Solar Trade Hub
-          </span>
+        <div className="sth-why__hero">
+          <div className="sth-why__left">
+            <div className="sth-why__header">
+              <span className="sth-why__eyebrow">
+                <span className="sth-why__eyebrow-line" />
+                Why Solar Trade Hub
+              </span>
 
-          <h2 className="sth-why__title">
-            Better Solar Decisions.
-            <span> Fewer Shortcuts.</span>
-          </h2>
+              <h2 className="sth-why__title">
+                Better Solar Decisions.
+                <span> Fewer Shortcuts.</span>
+              </h2>
 
-          <p className="sth-why__intro">
-            Product discovery, supplier access, technical guidance
-            and market transparency in one focused solar marketplace.
-          </p>
-        </div>
+              <p className="sth-why__intro">
+                Product discovery, supplier access, technical guidance and
+                market transparency in one focused solar marketplace.
+              </p>
+            </div>
 
-        <div className="sth-why__main">
+            <div className="sth-why__benefits">
+              {benefits.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <article
+                    key={item.title}
+                    className={`sth-why__benefit sth-why__benefit--${item.variant}`}
+                  >
+                    <span className="sth-why__benefit-icon">
+                      <Icon
+                        size={17}
+                        strokeWidth={1.8}
+                      />
+                    </span>
+
+                    <div className="sth-why__benefit-content">
+                      <h3>{item.title}</h3>
+
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
           <article className="sth-why__tutorial">
             <div className="sth-why__tutorial-media">
               <iframe
@@ -123,6 +159,7 @@ export function WhySolarTradeHub() {
             <div className="sth-why__tutorial-content">
               <div className="sth-why__tutorial-copy">
                 <span className="sth-why__tutorial-eyebrow">
+                  <span />
                   Video Guide
                 </span>
 
@@ -131,9 +168,8 @@ export function WhySolarTradeHub() {
                 </h3>
 
                 <p>
-                  Learn how to evaluate solar panels, inverters,
-                  batteries, system sizing and supplier claims before
-                  making a purchase.
+                  Learn how to evaluate solar panels, inverters, batteries,
+                  system sizing and supplier claims before making a purchase.
                 </p>
               </div>
 
@@ -142,58 +178,32 @@ export function WhySolarTradeHub() {
                 className="sth-why__tutorial-link"
               >
                 <span>Explore Products</span>
-                <ArrowRight size={14} strokeWidth={1.8} />
+
+                <ArrowRight
+                  size={15}
+                  strokeWidth={1.8}
+                />
               </Link>
             </div>
           </article>
-
-          <div className="sth-why__benefits">
-            {benefits.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="sth-why__benefit"
-                >
-                  <span className="sth-why__benefit-icon">
-                    <Icon size={17} strokeWidth={1.8} />
-                  </span>
-
-                  <div className="sth-why__benefit-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
         </div>
 
         <div className="sth-why__process">
-          <div className="sth-why__process-header">
-            <div>
-              <span className="sth-why__process-eyebrow">
-                How It Works
-              </span>
+          <div className="sth-why__process-intro">
+            <span className="sth-why__process-eyebrow">
+              <span />
+              How It Works
+            </span>
 
-              <h3>
-                From Product Search to Solar Delivery
-              </h3>
+            <h3>
+              From Product Search
+              <span> to Solar Delivery</span>
+            </h3>
 
-              <p>
-                A simple path from product discovery to a verified
-                purchase decision.
-              </p>
-            </div>
-
-            <Link
-              href="/shop"
-              className="sth-why__process-link"
-            >
-              <span>Start Exploring</span>
-              <ArrowRight size={14} strokeWidth={1.8} />
-            </Link>
+            <p>
+              A simple path from product discovery to a verified
+              purchase decision.
+            </p>
           </div>
 
           <div className="sth-why__steps">
@@ -207,11 +217,19 @@ export function WhySolarTradeHub() {
                 >
                   <div className="sth-why__step-top">
                     <span className="sth-why__step-icon">
-                      <Icon size={17} strokeWidth={1.8} />
+                      <Icon
+                        size={18}
+                        strokeWidth={1.8}
+                      />
                     </span>
 
                     {index !== processSteps.length - 1 && (
-                      <span className="sth-why__step-line" />
+                      <span className="sth-why__step-line">
+                        <ArrowRight
+                          size={13}
+                          strokeWidth={1.7}
+                        />
+                      </span>
                     )}
                   </div>
 
@@ -228,16 +246,32 @@ export function WhySolarTradeHub() {
               );
             })}
           </div>
+
+          <Link
+            href="/shop"
+            className="sth-why__process-link"
+          >
+            <span>Start Exploring</span>
+
+            <ArrowRight
+              size={15}
+              strokeWidth={1.8}
+            />
+          </Link>
         </div>
 
         <div className="sth-why__footer">
-          <div>
+          <div className="sth-why__footer-glow" />
+
+          <div className="sth-why__footer-content">
             <span className="sth-why__footer-eyebrow">
+              <span />
               Need Technical Help?
             </span>
 
             <h3>
-              Talk to Solar Trade Hub Before You Buy
+              Talk to Solar Trade Hub
+              <span> Before You Buy</span>
             </h3>
 
             <p>
@@ -250,9 +284,47 @@ export function WhySolarTradeHub() {
             href="/get-quote"
             className="sth-why__footer-cta"
           >
-            Get Solar Quote
-            <ArrowRight size={14} strokeWidth={1.8} />
+            <span>Get Solar Quote</span>
+
+            <ArrowRight
+              size={15}
+              strokeWidth={1.8}
+            />
           </Link>
+
+          <div className="sth-why__footer-features">
+            <span>
+              <UsersRound
+                size={14}
+                strokeWidth={1.8}
+              />
+              People
+            </span>
+
+            <span>
+              <PackageCheck
+                size={14}
+                strokeWidth={1.8}
+              />
+              Products
+            </span>
+
+            <span>
+              <BadgeCheck
+                size={14}
+                strokeWidth={1.8}
+              />
+              Partnerships
+            </span>
+
+            <span>
+              <BatteryCharging
+                size={14}
+                strokeWidth={1.8}
+              />
+              Cleaner Pakistan
+            </span>
+          </div>
         </div>
       </div>
     </section>

@@ -4,26 +4,20 @@
 
 .sth-promos {
   width: 100%;
-
-  padding: 42px 0 48px;
-
-  background: #fff9f6;
+  padding: 34px 0 42px;
+  background: #ffffff;
 }
 
 .sth-promos__container {
   width: 100%;
   max-width: 1480px;
-
   margin: 0 auto;
   padding: 0 28px;
 }
 
 .sth-promos__grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -33,39 +27,162 @@
 
 .sth-promo-card {
   position: relative;
-
-  min-height: 250px;
-
-  padding: 24px;
-
+  min-height: 330px;
   overflow: hidden;
-
-  border-radius: 14px;
-
+  border-radius: 22px;
+  border: 1px solid transparent;
+  isolation: isolate;
   transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .sth-promo-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.sth-promo-card--purple {
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(255, 255, 255, 0.16),
+      transparent 26%
+    ),
+    linear-gradient(
+      135deg,
+      #4d28df 0%,
+      #5b2eff 48%,
+      #6f48ff 100%
+    );
+
+  color: #ffffff;
 
   box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.08);
+    0 14px 34px
+    rgba(91, 46, 255, 0.16);
 }
+
+.sth-promo-card--purple:hover {
+  box-shadow:
+    0 18px 40px
+    rgba(91, 46, 255, 0.22);
+}
+
+.sth-promo-card--orange {
+  background:
+    radial-gradient(
+      circle at 84% 15%,
+      rgba(255, 255, 255, 0.18),
+      transparent 26%
+    ),
+    linear-gradient(
+      135deg,
+      #f74416 0%,
+      #ff4b1f 46%,
+      #ff6b45 100%
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 14px 34px
+    rgba(255, 75, 31, 0.16);
+}
+
+.sth-promo-card--orange:hover {
+  box-shadow:
+    0 18px 40px
+    rgba(255, 75, 31, 0.22);
+}
+
+.sth-promo-card--light {
+  border-color:
+    var(--sth-border-purple);
+
+  background:
+    radial-gradient(
+      circle at 82% 10%,
+      rgba(91, 46, 255, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #faf8ff 0%,
+      #f4f0ff 55%,
+      #ebe5ff 100%
+    );
+
+  color:
+    var(--sth-black);
+
+  box-shadow:
+    0 14px 32px
+    rgba(91, 46, 255, 0.08);
+}
+
+.sth-promo-card--light:hover {
+  border-color:
+    rgba(91, 46, 255, 0.35);
+
+  box-shadow:
+    0 18px 38px
+    rgba(91, 46, 255, 0.13);
+}
+
+/* ========================================
+   DECORATIVE GLOW
+   ======================================== */
 
 .sth-promo-card__glow {
   position: absolute;
+  z-index: -1;
 
   top: -70px;
-  right: -70px;
+  right: -60px;
 
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
 
   border-radius: 50%;
 
+  background:
+    rgba(255, 255, 255, 0.08);
+
   pointer-events: none;
+}
+
+.sth-promo-card__glow::after {
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  left: -48px;
+  bottom: -42px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+}
+
+.sth-promo-card--light .sth-promo-card__glow {
+  background:
+    rgba(91, 46, 255, 0.07);
+}
+
+.sth-promo-card--light
+  .sth-promo-card__glow::after {
+  border-color:
+    rgba(91, 46, 255, 0.1);
 }
 
 /* ========================================
@@ -74,275 +191,493 @@
 
 .sth-promo-card__content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
 
-  height: 100%;
+  width: 62%;
 
-  display: flex;
-  flex-direction: column;
+  padding:
+    28px
+    24px
+    90px;
 }
 
-/* ICON */
+/* ========================================
+   EYEBROW
+   ======================================== */
 
-.sth-promo-card__icon {
-  width: 38px;
-  height: 38px;
-
-  margin-bottom: 18px;
-
+.sth-promo-card__eyebrow-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
 
-  border-radius: 9px;
+  margin-bottom: 16px;
 }
 
-/* EYEBROW */
-
-.sth-promo-card__eyebrow {
-  margin-bottom: 7px;
-
-  font-size: 8.5px;
-  font-weight: 700;
-
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* TITLE */
-
-.sth-promo-card__title {
-  max-width: 330px;
-
-  margin: 0;
-
-  font-size: 21px;
-  font-weight: 800;
-
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-}
-
-/* DESCRIPTION */
-
-.sth-promo-card__description {
-  max-width: 360px;
-
-  margin: 11px 0 0;
-
-  font-size: 10.5px;
-  font-weight: 400;
-
-  line-height: 1.65;
-}
-
-/* CTA */
-
-.sth-promo-card__cta {
-  width: fit-content;
-
-  min-height: 36px;
-
-  margin-top: auto;
-  padding: 0 12px;
+.sth-promo-card__icon {
+  width: 31px;
+  height: 31px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  gap: 6px;
+  flex-shrink: 0;
 
-  border-radius: 7px;
+  border-radius: 9px;
 
-  font-size: 9.5px;
-  font-weight: 700;
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  color: #ffffff;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+}
+
+.sth-promo-card__eyebrow {
+  font-size: 8.5px;
+  font-weight: 800;
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color:
+    rgba(255, 255, 255, 0.86);
+}
+
+.sth-promo-card--light
+  .sth-promo-card__icon {
+  background:
+    rgba(91, 46, 255, 0.09);
+
+  border-color:
+    rgba(91, 46, 255, 0.12);
+
+  color:
+    var(--sth-purple);
+}
+
+.sth-promo-card--light
+  .sth-promo-card__eyebrow {
+  color:
+    var(--sth-purple);
+}
+
+/* ========================================
+   TITLE
+   ======================================== */
+
+.sth-promo-card__title {
+  margin: 0;
+
+  max-width: 330px;
+
+  font-size:
+    clamp(
+      22px,
+      1.7vw,
+      29px
+    );
+
+  font-weight: 850;
+  line-height: 1.08;
+
+  letter-spacing: -0.04em;
+}
+
+.sth-promo-card--light
+  .sth-promo-card__title {
+  color:
+    var(--sth-black);
+}
+
+/* ========================================
+   DESCRIPTION
+   ======================================== */
+
+.sth-promo-card__description {
+  max-width: 320px;
+
+  margin:
+    12px
+    0
+    18px;
+
+  color:
+    rgba(255, 255, 255, 0.75);
+
+  font-size: 10.2px;
+  line-height: 1.65;
+}
+
+.sth-promo-card--light
+  .sth-promo-card__description {
+  color:
+    #6d7180;
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+
+.sth-promo-card__cta {
+  width: fit-content;
+
+  min-height: 38px;
+
+  padding:
+    0
+    14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  color:
+    var(--sth-purple);
 
   text-decoration: none;
 
+  font-size: 9.5px;
+  font-weight: 800;
+
   transition:
-    background-color 0.16s ease,
-    color 0.16s ease,
-    border-color 0.16s ease;
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
-/* ========================================
-   DARK VARIANT
-   ======================================== */
-
-.sth-promo-card--dark {
-  border: 1px solid #2d2d2d;
-
-  background: #222222;
-  color: #ffffff;
+.sth-promo-card--orange
+  .sth-promo-card__cta {
+  color:
+    var(--sth-orange);
 }
 
-.sth-promo-card--dark
-.sth-promo-card__glow {
-  background: rgba(255, 75, 31, 0.16);
+.sth-promo-card--light
+  .sth-promo-card__cta {
+  background:
+    var(--sth-purple);
+
+  color:
+    #ffffff;
 }
 
-.sth-promo-card--dark
-.sth-promo-card__icon {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ff5c34;
-}
-
-.sth-promo-card--dark
-.sth-promo-card__eyebrow {
-  color: #ff7a5b;
-}
-
-.sth-promo-card--dark
-.sth-promo-card__description {
-  color: rgba(255, 255, 255, 0.64);
-}
-
-.sth-promo-card--dark
-.sth-promo-card__cta {
-  background: #ffffff;
-  color: #222222;
-}
-
-.sth-promo-card--dark
 .sth-promo-card__cta:hover {
-  background: #f3f3f3;
+  transform: translateX(2px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(0, 0, 0, 0.12);
 }
 
 /* ========================================
-   ORANGE VARIANT
+   PRODUCT IMAGE
    ======================================== */
 
-.sth-promo-card--orange {
-  border: 1px solid #ff4b1f;
+.sth-promo-card__product {
+  position: absolute;
 
-  background: #ff4b1f;
-  color: #ffffff;
+  z-index: 3;
+
+  right: -8px;
+  bottom: 70px;
+
+  width: 43%;
+  height: 205px;
+
+  pointer-events: none;
 }
 
-.sth-promo-card--orange
-.sth-promo-card__glow {
-  background: rgba(255, 255, 255, 0.14);
+.sth-promo-card__product-image {
+  object-fit: contain;
+
+  object-position:
+    center
+    bottom;
+
+  filter:
+    drop-shadow(
+      0 15px 18px
+      rgba(0, 0, 0, 0.16)
+    );
+
+  transform:
+    scale(1);
+
+  transition:
+    transform 0.25s ease;
 }
 
-.sth-promo-card--orange
-.sth-promo-card__icon {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-}
-
-.sth-promo-card--orange
-.sth-promo-card__eyebrow {
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.sth-promo-card--orange
-.sth-promo-card__description {
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.sth-promo-card--orange
-.sth-promo-card__cta {
-  background: #ffffff;
-  color: #ff4b1f;
-}
-
-.sth-promo-card--orange
-.sth-promo-card__cta:hover {
-  background: #fff4ef;
+.sth-promo-card:hover
+  .sth-promo-card__product-image {
+  transform:
+    scale(1.035);
 }
 
 /* ========================================
-   LIGHT VARIANT
+   BENEFITS
    ======================================== */
 
-.sth-promo-card--light {
-  border: 1px solid #e7e7e7;
+.sth-promo-card__benefits {
+  position: absolute;
 
-  background: #ffffff;
-  color: #1d1d1d;
+  z-index: 5;
+
+  left: 16px;
+  right: 16px;
+  bottom: 15px;
+
+  min-height: 58px;
+
+  padding:
+    10px
+    12px;
+
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 8px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+
+  backdrop-filter:
+    blur(10px);
 }
 
 .sth-promo-card--light
-.sth-promo-card__glow {
-  background: rgba(255, 75, 31, 0.07);
-}
+  .sth-promo-card__benefits {
+  background:
+    rgba(255, 255, 255, 0.7);
 
-.sth-promo-card--light
-.sth-promo-card__icon {
-  background: #fff1ec;
-  color: #ff4b1f;
-}
-
-.sth-promo-card--light
-.sth-promo-card__eyebrow {
-  color: #ff4b1f;
-}
-
-.sth-promo-card--light
-.sth-promo-card__description {
-  color: #777c82;
-}
-
-.sth-promo-card--light
-.sth-promo-card__cta {
-  border: 1px solid #e4e4e4;
-
-  background: #ffffff;
-  color: #272b30;
-}
-
-.sth-promo-card--light
-.sth-promo-card__cta:hover {
-  border-color: #ffcdbc;
-
-  background: #fff7f4;
-  color: #ff4b1f;
+  border-color:
+    rgba(91, 46, 255, 0.11);
 }
 
 /* ========================================
-   TABLET
+   BENEFIT ITEM
    ======================================== */
 
-@media (max-width: 1000px) {
+.sth-promo-card__benefit {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.sth-promo-card__benefit-icon {
+  width: 27px;
+  height: 27px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  color:
+    rgba(255, 255, 255, 0.95);
+}
+
+.sth-promo-card__benefit-label {
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  font-size: 7.8px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.sth-promo-card--light
+  .sth-promo-card__benefit-icon {
+  background:
+    var(--sth-purple-soft);
+
+  color:
+    var(--sth-purple);
+}
+
+.sth-promo-card--light
+  .sth-promo-card__benefit-label {
+  color:
+    #4a4f5d;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
   .sth-promos__grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
 
   .sth-promo-card:last-child {
-    grid-column: 1 / -1;
+    grid-column:
+      1 / -1;
+
+    min-height: 300px;
+  }
+
+  .sth-promo-card:last-child
+    .sth-promo-card__content {
+    width: 50%;
+  }
+
+  .sth-promo-card:last-child
+    .sth-promo-card__product {
+    width: 34%;
   }
 }
 
-/* ========================================
-   MOBILE
-   ======================================== */
-
-@media (max-width: 650px) {
+@media (max-width: 1023px) {
   .sth-promos {
-    padding: 34px 0 38px;
+    padding:
+      30px
+      0
+      36px;
   }
 
   .sth-promos__container {
-    padding: 0 16px;
+    padding:
+      0
+      24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sth-promos {
+    padding:
+      24px
+      0
+      30px;
+  }
+
+  .sth-promos__container {
+    padding:
+      0
+      16px;
   }
 
   .sth-promos__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
 
-    gap: 12px;
+    gap: 14px;
   }
 
   .sth-promo-card,
   .sth-promo-card:last-child {
     grid-column: auto;
 
-    min-height: 220px;
+    min-height: 345px;
 
-    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .sth-promo-card__content,
+  .sth-promo-card:last-child
+    .sth-promo-card__content {
+    width: 68%;
+
+    padding:
+      24px
+      18px
+      94px;
+  }
+
+  .sth-promo-card__product,
+  .sth-promo-card:last-child
+    .sth-promo-card__product {
+    width: 42%;
+    height: 190px;
+
+    right: -5px;
+    bottom: 73px;
   }
 
   .sth-promo-card__title {
-    font-size: 19px;
+    font-size: 24px;
+  }
+
+  .sth-promo-card__benefits {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sth-promo-card {
+    min-height: 385px;
+  }
+
+  .sth-promo-card__content,
+  .sth-promo-card:last-child
+    .sth-promo-card__content {
+    width: 100%;
+
+    padding:
+      22px
+      18px
+      156px;
+  }
+
+  .sth-promo-card__description {
+    max-width: 88%;
+  }
+
+  .sth-promo-card__product,
+  .sth-promo-card:last-child
+    .sth-promo-card__product {
+    width: 52%;
+    height: 145px;
+
+    right: 4px;
+    bottom: 76px;
+  }
+
+  .sth-promo-card__benefits {
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    padding:
+      9px;
+  }
+
+  .sth-promo-card__benefit {
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 4px;
+  }
+
+  .sth-promo-card__benefit-label {
+    font-size: 7px;
   }
 }

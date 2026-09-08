@@ -2,7 +2,7 @@ import { FeaturedBrands } from "./components/FeaturedBrands";
 import { FeaturedSuppliers } from "./components/FeaturedSuppliers";
 import { HeroSection } from "./components/HeroSection";
 import { PopularProducts } from "./components/PopularProducts";
-import { QuoteCTA } from "./components/QuoteCTA";
+import { PromoBanners } from "./components/PromoBanners";
 import { ShopByCategory } from "./components/ShopByCategory";
 import { SolarPricesSection } from "./components/SolarPricesSection";
 import { WhySolarTradeHub } from "./components/WhySolarTradeHub";
@@ -16,18 +16,15 @@ export function HomePage() {
 
       <div className="sth-home__marketplace-group">
         <ShopByCategory />
-        <FeaturedBrands />
         <PopularProducts />
       </div>
 
       <div className="sth-home__trust-group">
-        <WhySolarTradeHub />
         <FeaturedSuppliers />
+        <WhySolarTradeHub />
         <SolarPricesSection />
-      </div>
-
-      <div className="sth-home__conversion-group">
-        <QuoteCTA />
+        <FeaturedBrands />
+        <PromoBanners />
       </div>
     </div>
   );
