@@ -76,7 +76,9 @@ export function MainNavigation() {
               >
                 <Icon size={14} />
 
-                <span>{item.label}</span>
+                <span>
+                  {item.label}
+                </span>
               </Link>
             );
           })}

@@ -42,7 +42,10 @@ export function SearchBar() {
         className="sth-search__button"
         aria-label="Search"
       >
-        <Search size={16} strokeWidth={1.8} />
+        <Search
+          size={16}
+          strokeWidth={1.8}
+        />
       </button>
     </form>
   );

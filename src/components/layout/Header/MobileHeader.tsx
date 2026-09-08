@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   ChevronRight,
@@ -23,14 +24,28 @@ import { mainNavigation } from "@/data/headerData";
 import "@/components/animations/css/header/mobile-header.css";
 
 export function MobileHeader() {
+  const pathname = usePathname();
+
   const cartCount = 0;
 
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    return pathname.startsWith(href);
+  };
+
   return (
-    <div className="sth-mobile-header">
+    <header className="sth-mobile-header">
+      {/* Trust strip */}
       <div className="sth-mobile-header__trust">
-        <span>Pakistan&apos;s Trusted Solar Energy Partner</span>
+        <span>
+          Pakistan&apos;s Trusted Solar Energy Partner
+        </span>
       </div>
 
+      {/* Main mobile header */}
       <div className="sth-mobile-header__main">
         <Link
           href="/"
@@ -40,8 +55,8 @@ export function MobileHeader() {
           <Image
             src="/logos/solar-trade-hub-logo-dark.svg"
             alt="Solar Trade Hub"
-            width={122}
-            height={42}
+            width={140}
+            height={50}
             priority
           />
         </Link>
@@ -52,7 +67,7 @@ export function MobileHeader() {
             aria-label="Search"
             className="sth-mobile-header__action"
           >
-            <Search size={18} strokeWidth={1.7} />
+            <Search size={18} strokeWidth={1.8} />
           </Link>
 
           <Link
@@ -60,23 +75,27 @@ export function MobileHeader() {
             aria-label="Shopping cart"
             className="sth-mobile-header__action"
           >
-            <ShoppingCart size={19} strokeWidth={1.7} />
+            <ShoppingCart
+              size={18}
+              strokeWidth={1.8}
+            />
 
-            {cartCount > 0 && (
-              <span className="sth-mobile-header__badge">
-                {cartCount}
-              </span>
-            )}
+            <span className="sth-mobile-header__badge">
+              {cartCount}
+            </span>
           </Link>
 
           <Sheet>
             <SheetTrigger asChild>
               <button
                 type="button"
-                className="sth-mobile-header__menu-trigger"
+                className="sth-mobile-header__action sth-mobile-header__menu-trigger"
                 aria-label="Open navigation"
               >
-                <Menu size={20} strokeWidth={1.7} />
+                <Menu
+                  size={19}
+                  strokeWidth={1.8}
+                />
               </button>
             </SheetTrigger>
 
@@ -84,6 +103,7 @@ export function MobileHeader() {
               side="left"
               className="sth-mobile-menu"
             >
+              {/* Drawer header */}
               <div className="sth-mobile-menu__header">
                 <SheetClose asChild>
                   <Link
@@ -94,8 +114,8 @@ export function MobileHeader() {
                     <Image
                       src="/logos/solar-trade-hub-logo-dark.svg"
                       alt="Solar Trade Hub"
-                      width={132}
-                      height={46}
+                      width={140}
+                      height={50}
                     />
                   </Link>
                 </SheetClose>
@@ -106,11 +126,15 @@ export function MobileHeader() {
                     className="sth-mobile-menu__close"
                     aria-label="Close navigation"
                   >
-                    <X size={18} strokeWidth={1.8} />
+                    <X
+                      size={18}
+                      strokeWidth={1.8}
+                    />
                   </button>
                 </SheetClose>
               </div>
 
+              {/* Drawer body */}
               <div className="sth-mobile-menu__body">
                 <p className="sth-mobile-menu__title">
                   Navigation
@@ -120,34 +144,47 @@ export function MobileHeader() {
                   className="sth-mobile-menu__nav"
                   aria-label="Mobile navigation"
                 >
-                  {mainNavigation.map((item) => (
-                    <SheetClose
-                      key={item.href}
-                      asChild
-                    >
-                      <Link
-                        href={item.href}
-                        className={[
-                          "sth-mobile-menu__link",
-                          item.accent
-                            ? "sth-mobile-menu__link--accent"
-                            : "",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                      >
-                        <span>{item.label}</span>
+                  {mainNavigation.map((item) => {
+                    const active =
+                      isActive(item.href);
 
-                        <ChevronRight
-                          size={14}
-                          strokeWidth={1.7}
-                        />
-                      </Link>
-                    </SheetClose>
-                  ))}
+                    const className = [
+                      "sth-mobile-menu__link",
+                      active
+                        ? "sth-mobile-menu__link--active"
+                        : "",
+                      item.accent
+                        ? "sth-mobile-menu__link--accent"
+                        : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ");
+
+                    return (
+                      <SheetClose
+                        key={item.href}
+                        asChild
+                      >
+                        <Link
+                          href={item.href}
+                          className={className}
+                        >
+                          <span>
+                            {item.label}
+                          </span>
+
+                          <ChevronRight
+                            size={14}
+                            strokeWidth={1.7}
+                          />
+                        </Link>
+                      </SheetClose>
+                    );
+                  })}
                 </nav>
               </div>
 
+              {/* Drawer footer */}
               <div className="sth-mobile-menu__footer">
                 <SheetClose asChild>
                   <Link
@@ -162,6 +199,6 @@ export function MobileHeader() {
           </Sheet>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

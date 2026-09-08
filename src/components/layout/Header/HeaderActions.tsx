@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-
 import {
   FileText,
   Heart,
@@ -21,8 +20,8 @@ export function HeaderActions() {
         href="/get-quote"
         className="sth-header-action"
       >
-        <span className="sth-header-action__icon sth-header-action__icon--accent">
-          <FileText size={16} />
+        <span className="sth-header-action__icon">
+          <FileText size={17} />
         </span>
 
         <span className="sth-header-action__label">
@@ -52,8 +51,8 @@ export function HeaderActions() {
         className="sth-header-action"
         aria-label="Wishlist"
       >
-        <span className="sth-header-action__icon sth-header-action__icon--badge">
-          <Heart size={18} />
+        <span className="sth-header-action__icon">
+          <Heart size={17} />
 
           <span className="sth-header-action__badge">
             {wishlistCount}
@@ -70,8 +69,8 @@ export function HeaderActions() {
         className="sth-header-action"
         aria-label="Cart"
       >
-        <span className="sth-header-action__icon sth-header-action__icon--badge">
-          <ShoppingCart size={18} />
+        <span className="sth-header-action__icon">
+          <ShoppingCart size={17} />
 
           <span className="sth-header-action__badge">
             {cartCount}

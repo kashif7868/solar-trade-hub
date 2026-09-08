@@ -1,69 +1,94 @@
+/* ========================================
+   TOP BAR
+   ======================================== */
+
 .sth-topbar {
   width: 100%;
 
-  background: #ffffff;
+  background: var(--sth-white);
 
-  border-bottom: 1px solid #ececec;
+  border-bottom:
+    1px solid
+    #ececec;
 }
+
+/* ========================================
+   CONTAINER
+   ======================================== */
 
 .sth-topbar__container {
   width: 100%;
   max-width: 1800px;
+
   min-height: 48px;
 
   margin: 0 auto;
   padding: 0 34px;
 
   display: grid;
-  grid-template-columns: auto 1fr auto;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
   align-items: center;
 
   gap: 28px;
 }
 
-/* ==============================
-   SOCIAL ICONS
-   ============================== */
+/* ========================================
+   SOCIALS
+   ======================================== */
 
 .sth-topbar__socials {
   display: flex;
   align-items: center;
 
-  gap: 16px;
+  gap: 15px;
 }
 
 .sth-topbar__social-link {
+  width: 24px;
+  height: 24px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  color: #222222;
+  color: var(--sth-dark);
 
-  font-size: 16px;
-
+  font-size: 14px;
   line-height: 1;
 
+  border-radius: 6px;
+
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.18s ease,
+    background-color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .sth-topbar__social-link:hover {
-  color: #ff4b1f;
+  color: var(--sth-purple);
 
-  transform: translateY(-1px);
+  background:
+    var(--sth-purple-soft);
+
+  transform:
+    translateY(-1px);
 }
 
-/* ==============================
-   TRUST / EXPERIENCE
-   ============================== */
+/* ========================================
+   TRUST
+   ======================================== */
 
 .sth-topbar__trust {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 22px;
+  gap: 20px;
 }
 
 .sth-topbar__trust-item {
@@ -72,10 +97,10 @@
 
   gap: 7px;
 
-  color: #2c2c2c;
+  color: #292929;
 
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
 
   white-space: nowrap;
 }
@@ -83,19 +108,19 @@
 .sth-topbar__trust-item svg {
   flex-shrink: 0;
 
-  color: #ff4b1f;
+  color: var(--sth-orange);
 }
 
-/* ==============================
+/* ========================================
    CONTACT
-   ============================== */
+   ======================================== */
 
 .sth-topbar__contact {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
-  gap: 18px;
+  gap: 16px;
 }
 
 .sth-topbar__contact-link {
@@ -104,42 +129,43 @@
 
   gap: 7px;
 
-  color: #1f1f1f;
+  color: var(--sth-dark);
 
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
 
   white-space: nowrap;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.18s ease;
 }
 
 .sth-topbar__contact-link svg {
   flex-shrink: 0;
 
-  color: #ff4b1f;
+  color: var(--sth-orange);
 }
 
 .sth-topbar__contact-link:hover {
-  color: #ff4b1f;
+  color: var(--sth-purple);
 }
 
-/* ==============================
-   DIVIDERS
-   ============================== */
+/* ========================================
+   DIVIDER
+   ======================================== */
 
 .sth-topbar__divider {
   width: 1px;
-  height: 20px;
+  height: 19px;
 
   flex-shrink: 0;
 
   background: #dedede;
 }
 
-/* ==============================
-   RESPONSIVE DESKTOP
-   ============================== */
+/* ========================================
+   LARGE DESKTOP
+   ======================================== */
 
 @media (max-width: 1500px) {
   .sth-topbar__container {
@@ -151,13 +177,17 @@
   }
 
   .sth-topbar__trust {
-    gap: 17px;
+    gap: 16px;
   }
 
   .sth-topbar__contact {
     gap: 14px;
   }
 }
+
+/* ========================================
+   MEDIUM DESKTOP
+   ======================================== */
 
 @media (max-width: 1250px) {
   .sth-topbar__container {
@@ -167,28 +197,26 @@
   }
 
   .sth-topbar__socials {
-    gap: 12px;
+    gap: 10px;
   }
 
   .sth-topbar__trust {
-    gap: 12px;
+    gap: 11px;
   }
 
   .sth-topbar__trust-item,
   .sth-topbar__contact-link {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .sth-topbar__divider {
-    height: 18px;
+    height: 17px;
   }
 }
 
-/* ==============================
+/* ========================================
    MOBILE
-   Desktop topbar hidden.
-   MobileHeader handles mobile.
-   ============================== */
+   ======================================== */
 
 @media (max-width: 1023px) {
   .sth-topbar {

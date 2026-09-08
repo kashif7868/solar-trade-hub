@@ -27,6 +27,7 @@ export function HeaderMain() {
 
         <div className="sth-header-main__search-area">
           <CategoryDropdown />
+
           <SearchBar />
         </div>
 

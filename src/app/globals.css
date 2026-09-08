@@ -45,30 +45,17 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  /* Solar Trade Hub brand colors */
+  /* Solar Trade Hub */
   --color-brand-orange: var(--brand-orange);
-  --color-brand-orange-dark: var(--brand-orange-dark);
-  --color-brand-orange-soft: var(--brand-orange-soft);
-
+  --color-brand-purple: var(--brand-purple);
   --color-brand-black: var(--brand-black);
-  --color-brand-dark: var(--brand-dark);
-
-  --color-brand-gray: var(--brand-gray);
-  --color-brand-light: var(--brand-light);
+  --color-brand-white: var(--brand-white);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
@@ -80,14 +67,34 @@
   --brand-orange-dark: #e83c12;
   --brand-orange-soft: #fff1ec;
 
-  --brand-black: #111111;
-  --brand-dark: #1c1c1c;
+  --brand-purple: #6d36ff;
+  --brand-purple-dark: #5121d9;
+  --brand-purple-soft: #f2edff;
 
-  --brand-gray: #6b6b6b;
-  --brand-light: #f7f7f7;
+  --brand-black: #111111;
+  --brand-dark: #1d1d1d;
+
+  --brand-white: #ffffff;
+
+  --brand-gray: #6b6f75;
+  --brand-light: #f8f8f8;
+
+  /* reusable aliases */
+
+  --sth-orange: var(--brand-orange);
+  --sth-orange-hover: var(--brand-orange-dark);
+  --sth-orange-soft: var(--brand-orange-soft);
+
+  --sth-purple: var(--brand-purple);
+  --sth-purple-hover: var(--brand-purple-dark);
+  --sth-purple-soft: var(--brand-purple-soft);
+
+  --sth-black: var(--brand-black);
+  --sth-dark: var(--brand-dark);
+  --sth-white: var(--brand-white);
 
   /* ========================================
-     SHADCN LIGHT THEME
+     SHADCN LIGHT
      ======================================== */
 
   --background: #ffffff;
@@ -102,53 +109,33 @@
   --primary: #ff4b1f;
   --primary-foreground: #ffffff;
 
-  --secondary: #f7f7f7;
-  --secondary-foreground: #111111;
+  --secondary: #f2edff;
+  --secondary-foreground: #5121d9;
 
   --muted: #f5f5f5;
-  --muted-foreground: #6b6b6b;
+  --muted-foreground: #6b6f75;
 
-  --accent: #fff1ec;
-  --accent-foreground: #ff4b1f;
+  --accent: #f2edff;
+  --accent-foreground: #6d36ff;
 
   --destructive: #dc2626;
 
   --border: #e7e7e7;
   --input: #e7e7e7;
-
-  --ring: #ff4b1f;
-
-  /* ========================================
-     CHART COLORS
-     ======================================== */
-
-  --chart-1: #ff4b1f;
-  --chart-2: #ff7a55;
-  --chart-3: #111111;
-  --chart-4: #6b6b6b;
-  --chart-5: #d8d8d8;
-
-  /* ========================================
-     RADII
-     ======================================== */
+  --ring: #6d36ff;
 
   --radius: 0.625rem;
 
-  /* ========================================
-     SIDEBAR
-     ======================================== */
+  /* sidebar */
 
   --sidebar: #ffffff;
   --sidebar-foreground: #111111;
-
-  --sidebar-primary: #ff4b1f;
+  --sidebar-primary: #6d36ff;
   --sidebar-primary-foreground: #ffffff;
-
-  --sidebar-accent: #fff1ec;
-  --sidebar-accent-foreground: #ff4b1f;
-
+  --sidebar-accent: #f2edff;
+  --sidebar-accent-foreground: #5121d9;
   --sidebar-border: #e7e7e7;
-  --sidebar-ring: #ff4b1f;
+  --sidebar-ring: #6d36ff;
 }
 
 .dark {
@@ -164,39 +151,29 @@
   --primary: #ff4b1f;
   --primary-foreground: #ffffff;
 
-  --secondary: #222222;
+  --secondary: #2b214a;
   --secondary-foreground: #ffffff;
 
   --muted: #222222;
   --muted-foreground: #a3a3a3;
 
-  --accent: #2a1812;
-  --accent-foreground: #ff6a43;
+  --accent: #2b214a;
+  --accent-foreground: #d9ceff;
 
   --destructive: #ef4444;
 
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.14);
-
-  --ring: #ff4b1f;
-
-  --chart-1: #ff4b1f;
-  --chart-2: #ff7a55;
-  --chart-3: #ffffff;
-  --chart-4: #a3a3a3;
-  --chart-5: #525252;
+  --ring: #8e64ff;
 
   --sidebar: #151515;
   --sidebar-foreground: #ffffff;
-
-  --sidebar-primary: #ff4b1f;
+  --sidebar-primary: #6d36ff;
   --sidebar-primary-foreground: #ffffff;
-
-  --sidebar-accent: #2a1812;
-  --sidebar-accent-foreground: #ff6a43;
-
+  --sidebar-accent: #2b214a;
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #ff4b1f;
+  --sidebar-ring: #8e64ff;
 }
 
 @layer base {
@@ -206,11 +183,13 @@
 
   html {
     @apply font-sans;
+
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground;
+
     margin: 0;
     min-height: 100vh;
   }
@@ -222,12 +201,13 @@
 }
 
 /* ========================================
-   SOLAR TRADE HUB UTILITIES
+   GLOBAL CONTAINER
    ======================================== */
 
 .sth-container {
   width: 100%;
   max-width: 1480px;
+
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
@@ -236,50 +216,4 @@
   .sth-container {
     padding-inline: 1rem;
   }
-}
-
-.sth-section {
-  padding-block: 4rem;
-}
-
-.sth-section-light {
-  background: var(--brand-light);
-}
-
-.sth-orange-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--brand-orange) 0%,
-    #ff6a35 100%
-  );
-}
-
-.sth-text-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--brand-orange),
-    #ff7a45
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.sth-card {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 0.875rem;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.sth-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 75, 31, 0.35);
-  box-shadow:
-    0 16px 35px
-    rgba(17, 17, 17, 0.08);
 }

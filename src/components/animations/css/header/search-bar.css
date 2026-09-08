@@ -1,7 +1,10 @@
+/* ========================================
+   SEARCH BAR
+   ======================================== */
+
 .sth-search {
   width: 100%;
   max-width: 720px;
-
   min-width: 0;
   height: 42px;
 
@@ -11,7 +14,7 @@
   border: 1px solid #e1e4e8;
   border-radius: 9px;
 
-  background: #ffffff;
+  background: var(--sth-white);
 
   overflow: hidden;
 
@@ -21,15 +24,19 @@
 }
 
 .sth-search:hover {
-  border-color: #d4d8dd;
+  border-color: #d8d2ef;
 }
 
 .sth-search:focus-within {
-  border-color: #c9cdd2;
+  border-color: var(--sth-purple);
 
   box-shadow:
-    0 0 0 3px rgba(0, 0, 0, 0.02);
+    0 0 0 3px rgba(109, 54, 255, 0.08);
 }
+
+/* ========================================
+   INPUT
+   ======================================== */
 
 .sth-search__input {
   min-width: 0;
@@ -44,7 +51,7 @@
 
   background: transparent;
 
-  color: #20242a;
+  color: var(--sth-black);
 
   font-size: 11.5px;
   font-weight: 400;
@@ -60,6 +67,10 @@
 .sth-search__input::-webkit-search-results-decoration {
   display: none;
 }
+
+/* ========================================
+   SEARCH BUTTON
+   ======================================== */
 
 .sth-search__button {
   width: 40px;
@@ -78,7 +89,8 @@
   outline: 0;
 
   background: transparent;
-  color: #17191c;
+
+  color: var(--sth-black);
 
   cursor: pointer;
 
@@ -93,12 +105,16 @@
 }
 
 .sth-search__button:hover {
-  color: #ff4b1f;
+  color: var(--sth-purple);
 }
 
 .sth-search__button:active {
   transform: scale(0.9);
 }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 1360px) {
   .sth-search {

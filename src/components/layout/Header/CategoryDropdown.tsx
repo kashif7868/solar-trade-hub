@@ -65,7 +65,7 @@ export function CategoryDropdown() {
 
       <DropdownMenuContent
         align="start"
-        sideOffset={2}
+        sideOffset={4}
         className="sth-category-menu"
       >
         <div className="sth-category-menu__list">

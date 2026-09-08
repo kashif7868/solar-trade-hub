@@ -1,15 +1,20 @@
+/* ========================================
+   HEADER ACTIONS
+   ======================================== */
+
 .sth-header-actions {
   display: flex;
   align-items: center;
-
   gap: 3px;
-
   flex-shrink: 0;
 }
 
+/* ========================================
+   ACTION
+   ======================================== */
+
 .sth-header-action {
   min-width: 58px;
-
   padding: 2px 6px;
 
   display: flex;
@@ -19,20 +24,13 @@
 
   gap: 3px;
 
-  color: #25292e;
-
+  color: var(--sth-black);
   text-decoration: none;
-
-  transition:
-    color 0.16s ease,
-    transform 0.16s ease;
 }
 
-.sth-header-action:hover {
-  color: #ff4b1f;
-
-  transform: translateY(-1px);
-}
+/* ========================================
+   ALL ICONS
+   ======================================== */
 
 .sth-header-action__icon {
   position: relative;
@@ -44,41 +42,40 @@
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   border: 1px solid #e7e9ec;
   border-radius: 50%;
 
-  background: #ffffff;
-  color: #25292e;
+  background: var(--sth-white);
 
-  transition:
-    border-color 0.16s ease,
-    color 0.16s ease,
-    background-color 0.16s ease;
+  /* all icons orange */
+  color: var(--sth-orange);
 }
 
-.sth-header-action__icon--accent {
-  color: #ff4b1f;
+.sth-header-action__icon svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.8;
 }
 
-.sth-header-action:hover
-.sth-header-action__icon {
-  border-color: #ffd7cb;
-
-  background: #fff8f5;
-
-  color: #ff4b1f;
-}
+/* ========================================
+   LABEL
+   ======================================== */
 
 .sth-header-action__label {
-  color: inherit;
+  color: var(--sth-black);
 
   font-size: 9px;
-  font-weight: 600;
-
+  font-weight: 650;
   line-height: 1;
 
   white-space: nowrap;
 }
+
+/* ========================================
+   DIVIDER
+   ======================================== */
 
 .sth-header-actions__divider {
   width: 1px;
@@ -91,7 +88,9 @@
   background: #e5e7ea;
 }
 
-/* BADGE */
+/* ========================================
+   PURPLE COUNTER
+   ======================================== */
 
 .sth-header-action__badge {
   position: absolute;
@@ -108,22 +107,24 @@
   align-items: center;
   justify-content: center;
 
-  border: 2px solid #ffffff;
+  border: 2px solid var(--sth-white);
   border-radius: 999px;
 
-  background: #ff4b1f;
-  color: #ffffff;
+  background: var(--sth-purple);
+  color: var(--sth-white);
 
   font-size: 7px;
   font-weight: 800;
+  line-height: 1;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 1360px) {
   .sth-header-action {
     min-width: 52px;
-
     padding-left: 4px;
     padding-right: 4px;
   }

@@ -1,3 +1,7 @@
+/* ========================================
+   HEADER WRAPPER
+   ======================================== */
+
 .sth-header {
   position: sticky;
   top: 0;
@@ -5,35 +9,50 @@
 
   width: 100%;
 
-  background: #ffffff;
+  background: var(--sth-white);
 
   box-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.04);
+    0 3px 12px rgba(17, 17, 17, 0.035);
 }
+
+/* ========================================
+   BOX SIZING
+   ======================================== */
 
 .sth-header,
 .sth-header *,
 .sth-header button,
 .sth-header input {
   box-sizing: border-box;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
 }
+
+/* ========================================
+   LINKS
+   ======================================== */
 
 .sth-header a {
   text-decoration: none;
 }
 
+/* ========================================
+   DESKTOP
+   ======================================== */
+
 .sth-header__desktop {
   display: block;
 }
 
+/* ========================================
+   MOBILE
+   ======================================== */
+
 .sth-header__mobile {
   display: none;
 }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 1023px) {
   .sth-header__desktop {

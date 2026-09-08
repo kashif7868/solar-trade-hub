@@ -52,18 +52,15 @@ export function TopBar() {
         <div className="sth-topbar__socials">
           {socialLinks.map((item) => {
             const Icon = item.icon;
+            const isExternal = item.href.startsWith("http");
 
             return (
               <Link
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  item.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
                 className="sth-topbar__social-link"
               >
                 <Icon />
@@ -74,7 +71,7 @@ export function TopBar() {
 
         <div className="sth-topbar__trust">
           <div className="sth-topbar__trust-item">
-            <ShieldCheck size={15} />
+            <ShieldCheck size={14} strokeWidth={1.9} />
 
             <span>
               Pakistan&apos;s Trusted Solar Energy Partner
@@ -84,9 +81,11 @@ export function TopBar() {
           <span className="sth-topbar__divider" />
 
           <div className="sth-topbar__trust-item">
-            <Star size={15} />
+            <Star size={14} strokeWidth={1.9} />
 
-            <span>10+ Years of Excellence</span>
+            <span>
+              10+ Years of Excellence
+            </span>
           </div>
         </div>
 
@@ -95,9 +94,11 @@ export function TopBar() {
             href="tel:+923001234567"
             className="sth-topbar__contact-link"
           >
-            <Phone size={15} />
+            <Phone size={14} strokeWidth={1.9} />
 
-            <span>+92 300 1234567</span>
+            <span>
+              +92 300 1234567
+            </span>
           </a>
 
           <span className="sth-topbar__divider" />
@@ -106,9 +107,11 @@ export function TopBar() {
             href="mailto:info@solartradehub.pk"
             className="sth-topbar__contact-link"
           >
-            <Mail size={15} />
+            <Mail size={14} strokeWidth={1.9} />
 
-            <span>info@solartradehub.pk</span>
+            <span>
+              info@solartradehub.pk
+            </span>
           </a>
         </div>
       </div>

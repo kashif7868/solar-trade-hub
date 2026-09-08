@@ -1,26 +1,31 @@
+/* ========================================
+   HEADER MAIN
+   ======================================== */
+
 .sth-header-main {
   width: 100%;
-  background: #ffffff;
+  background: var(--sth-white);
+  border-bottom: 1px solid #ededed;
 }
 
 .sth-header-main__container {
   width: 100%;
-  max-width: 1480px;
-
+  max-width: 1475px;
   margin: 0 auto;
-  padding: 14px 28px;
+  padding: 10px 0;
 
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) auto;
+  grid-template-columns: 180px minmax(0, 1fr) auto;
   align-items: center;
-
-  gap: 18px;
+  gap: 4px;
 }
 
-/* LOGO */
+/* ========================================
+   LOGO
+   ======================================== */
 
 .sth-header-main__logo {
-  width: 190px;
+  width: 140px;
 
   display: flex;
   align-items: center;
@@ -30,14 +35,21 @@
 
 .sth-header-main__logo img {
   display: block;
-
-  width: 182px;
+  width: 140px;
   height: auto;
 
   object-fit: contain;
+
+  transition: transform 0.18s ease;
 }
 
-/* SEARCH AREA */
+.sth-header-main__logo:hover img {
+  transform: scale(1.01);
+}
+
+/* ========================================
+   SEARCH AREA
+   ======================================== */
 
 .sth-header-main__search-area {
   min-width: 0;
@@ -47,9 +59,23 @@
   align-items: center;
 
   gap: 10px;
+  padding: 3px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(109, 54, 255, 0.025),
+      rgba(255, 75, 31, 0.018)
+    );
+
+  transition: background-color 0.18s ease;
 }
 
-/* ACTIONS */
+/* ========================================
+   ACTIONS
+   ======================================== */
 
 .sth-header-main__actions {
   min-width: max-content;
@@ -59,42 +85,47 @@
   justify-content: flex-end;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   LARGE DESKTOP
+   ======================================== */
+
+@media (max-width: 1500px) {
+  .sth-header-main__container {
+    max-width: calc(100% - 40px);
+  }
+}
 
 @media (max-width: 1360px) {
   .sth-header-main__container {
-    grid-template-columns: 175px minmax(0, 1fr) auto;
-
-    gap: 14px;
-
-    padding-left: 22px;
-    padding-right: 22px;
+    grid-template-columns: 165px minmax(0, 1fr) auto;
+    gap: 4px;
   }
 
-  .sth-header-main__logo {
-    width: 175px;
-  }
-
+  .sth-header-main__logo,
   .sth-header-main__logo img {
-    width: 166px;
+    width: 135px;
   }
 }
+
+/* ========================================
+   MEDIUM DESKTOP
+   ======================================== */
 
 @media (max-width: 1180px) {
   .sth-header-main__container {
-    grid-template-columns: 155px minmax(0, 1fr) auto;
-
-    gap: 12px;
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+    gap: 4px;
   }
 
-  .sth-header-main__logo {
-    width: 155px;
-  }
-
+  .sth-header-main__logo,
   .sth-header-main__logo img {
-    width: 148px;
+    width: 125px;
   }
 }
+
+/* ========================================
+   MOBILE
+   ======================================== */
 
 @media (max-width: 1023px) {
   .sth-header-main {
