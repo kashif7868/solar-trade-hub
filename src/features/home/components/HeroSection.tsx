@@ -5,7 +5,10 @@ import {
   ArrowRight,
   BadgeCheck,
   Headphones,
+  Leaf,
   ShieldCheck,
+  UsersRound,
+  Zap,
 } from "lucide-react";
 
 import "@/components/animations/css/home/hero-section.css";
@@ -35,17 +38,26 @@ export function HeroSection() {
 
           <div className="sth-hero__features">
             <div className="sth-hero__feature">
-              <ShieldCheck size={16} strokeWidth={1.8} />
+              <span className="sth-hero__feature-icon">
+                <ShieldCheck size={16} strokeWidth={1.8} />
+              </span>
+
               <span>Verified Products</span>
             </div>
 
             <div className="sth-hero__feature">
-              <BadgeCheck size={16} strokeWidth={1.8} />
+              <span className="sth-hero__feature-icon">
+                <UsersRound size={16} strokeWidth={1.8} />
+              </span>
+
               <span>Trusted Suppliers</span>
             </div>
 
             <div className="sth-hero__feature">
-              <Headphones size={16} strokeWidth={1.8} />
+              <span className="sth-hero__feature-icon">
+                <Headphones size={16} strokeWidth={1.8} />
+              </span>
+
               <span>Engineering Support</span>
             </div>
           </div>
@@ -66,11 +78,37 @@ export function HeroSection() {
               Get Solar Quote
             </Link>
           </div>
+
+          <div className="sth-hero__proof">
+            <div className="sth-hero__proof-avatars">
+              <span>ST</span>
+              <span>ES</span>
+              <span>GP</span>
+            </div>
+
+            <div className="sth-hero__proof-copy">
+              <strong>500+</strong>
+              <span>Solar products & marketplace listings</span>
+            </div>
+          </div>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT VISUAL */}
         <div className="sth-hero__visual">
-          <div className="sth-hero__visual-shape" />
+          <div className="sth-hero__visual-glow sth-hero__visual-glow--purple" />
+          <div className="sth-hero__visual-glow sth-hero__visual-glow--orange" />
+
+          <div className="sth-hero__dots sth-hero__dots--top" />
+          <div className="sth-hero__dots sth-hero__dots--bottom" />
+
+          <div className="sth-hero__energy-bubble">
+            <Leaf size={16} strokeWidth={1.8} />
+
+            <span>
+              Powering a Greener
+              <strong>Pakistan</strong>
+            </span>
+          </div>
 
           <div className="sth-hero__product-area">
             <Image
@@ -81,6 +119,41 @@ export function HeroSection() {
               priority
               className="sth-hero__image"
             />
+          </div>
+
+          <div className="sth-hero__performance-card">
+            <div className="sth-hero__performance-item">
+              <span className="sth-hero__performance-icon sth-hero__performance-icon--orange">
+                <Zap size={15} strokeWidth={1.8} />
+              </span>
+
+              <span>
+                Reliable
+                <strong>Performance</strong>
+              </span>
+            </div>
+
+            <div className="sth-hero__performance-item">
+              <span className="sth-hero__performance-icon sth-hero__performance-icon--purple">
+                <ShieldCheck size={15} strokeWidth={1.8} />
+              </span>
+
+              <span>
+                Verified
+                <strong>Technology</strong>
+              </span>
+            </div>
+
+            <div className="sth-hero__performance-item">
+              <span className="sth-hero__performance-icon sth-hero__performance-icon--green">
+                <Leaf size={15} strokeWidth={1.8} />
+              </span>
+
+              <span>
+                Lower
+                <strong>Energy Costs</strong>
+              </span>
+            </div>
           </div>
 
           <div className="sth-hero__info-card sth-hero__info-card--products">
