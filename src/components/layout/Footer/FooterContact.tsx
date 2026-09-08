@@ -7,9 +7,26 @@ import {
   Phone,
 } from "lucide-react";
 
-import { footerContact } from "@/data/footerData";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+
+import {
+  footerContact,
+  footerSocialLinks,
+} from "@/data/footerData";
 
 import "@/components/animations/css/footer/footer-contact.css";
+
+const socialIcons = {
+  Facebook: FaFacebookF,
+  LinkedIn: FaLinkedinIn,
+  Instagram: FaInstagram,
+  YouTube: FaYoutube,
+};
 
 export function FooterContact() {
   return (
@@ -69,6 +86,39 @@ export function FooterContact() {
             {footerContact.address}
           </span>
         </div>
+      </div>
+
+      <div className="sth-footer-contact__socials">
+        {footerSocialLinks.map((item) => {
+          const Icon =
+            socialIcons[
+              item.label as keyof typeof socialIcons
+            ];
+
+          if (!Icon) {
+            return null;
+          }
+
+          const external =
+            item.href.startsWith("http");
+
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              aria-label={item.label}
+              target={external ? "_blank" : undefined}
+              rel={
+                external
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              className="sth-footer-contact__social"
+            >
+              <Icon />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
