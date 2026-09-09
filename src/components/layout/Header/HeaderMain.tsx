@@ -17,7 +17,7 @@ export function HeaderMain() {
           className="sth-header-main__logo"
         >
           <Image
-            src="/logos/solar-trade-hub-logo-dark.svg"
+            src="/logos/solar-trade-hub-logo-dark.png"
             alt="Solar Trade Hub"
             width={190}
             height={68}
@@ -27,10 +27,8 @@ export function HeaderMain() {
 
         <div className="sth-header-main__search-area">
           <CategoryDropdown />
-
           <SearchBar />
         </div>
-
         <div className="sth-header-main__actions">
           <HeaderActions />
         </div>

@@ -64,7 +64,10 @@ export function PopularProducts() {
             </span>
 
             <h2 className="sth-popular-products__title">
-              Popular <span>Products</span>
+              <span className="sth-popular-products__title-accent">
+                Popular
+              </span>{" "}
+              Products
             </h2>
 
             <p className="sth-popular-products__description">
@@ -87,7 +90,9 @@ export function PopularProducts() {
 
                 <span>
                   Trusted
-                  <strong>Quality</strong>
+                  <strong>
+                    Quality
+                  </strong>
                 </span>
               </div>
 
@@ -101,7 +106,9 @@ export function PopularProducts() {
 
                 <span>
                   Fast
-                  <strong>Delivery</strong>
+                  <strong>
+                    Delivery
+                  </strong>
                 </span>
               </div>
 
@@ -115,7 +122,9 @@ export function PopularProducts() {
 
                 <span>
                   Expert
-                  <strong>Support</strong>
+                  <strong>
+                    Support
+                  </strong>
                 </span>
               </div>
             </div>
@@ -124,7 +133,9 @@ export function PopularProducts() {
               href="/shop"
               className="sth-popular-products__view-all"
             >
-              <span>View All Products</span>
+              <span>
+                View All Products
+              </span>
 
               <ArrowRight
                 size={16}
@@ -201,28 +212,43 @@ export function PopularProducts() {
                 ref={sliderRef}
                 className="sth-popular-products__grid"
               >
-                {products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    name={product.name}
-                    href={`/products/${product.slug}`}
-                    image={product.image}
-                    category={product.category}
-                    brand={product.brand}
-                    description={
-                      product.description
-                    }
-                    price={product.price}
-                    oldPrice={
-                      product.oldPrice
-                    }
-                    rating={product.rating}
-                    reviewCount={
-                      product.reviewCount
-                    }
-                    badge={product.badge}
-                  />
-                ))}
+                {products.map(
+                  (product) => (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      slug={product.slug}
+                      name={product.name}
+                      href={`/products/${product.slug}`}
+                      image={product.image}
+                      category={
+                        product.category
+                      }
+                      brand={product.brand}
+                      description={
+                        product.description
+                      }
+                      price={
+                        product.price
+                      }
+                      oldPrice={
+                        product.oldPrice
+                      }
+                      rating={
+                        product.rating
+                      }
+                      reviewCount={
+                        product.reviewCount
+                      }
+                      badge={
+                        product.badge
+                      }
+                      sku={
+                        product.sku
+                      }
+                    />
+                  )
+                )}
               </div>
 
               <button

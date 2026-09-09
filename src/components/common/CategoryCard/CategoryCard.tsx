@@ -20,36 +20,40 @@ export interface CategoryCardProps {
   index?: number;
 }
 
+type CategoryTheme =
+  | "orange"
+  | "purple";
+
 const categoryMeta = [
   {
     icon: Sun,
     count: "120+ Products",
-    theme: "orange",
+    theme: "orange" as CategoryTheme,
   },
   {
     icon: Bolt,
     count: "80+ Products",
-    theme: "purple",
+    theme: "purple" as CategoryTheme,
   },
   {
     icon: BatteryCharging,
     count: "70+ Products",
-    theme: "orange",
+    theme: "orange" as CategoryTheme,
   },
   {
     icon: Settings,
     count: "150+ Products",
-    theme: "purple",
+    theme: "purple" as CategoryTheme,
   },
   {
     icon: Wrench,
     count: "90+ Products",
-    theme: "orange",
+    theme: "orange" as CategoryTheme,
   },
   {
     icon: PlugZap,
     count: "40+ Products",
-    theme: "green",
+    theme: "purple" as CategoryTheme,
   },
 ];
 
@@ -60,7 +64,9 @@ export function CategoryCard({
   index = 0,
 }: CategoryCardProps) {
   const meta =
-    categoryMeta[index % categoryMeta.length];
+    categoryMeta[
+      index % categoryMeta.length
+    ];
 
   const Icon = meta.icon;
 

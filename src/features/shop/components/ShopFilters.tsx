@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import {
   RotateCcw,
   Search,
@@ -33,37 +35,57 @@ export function ShopFilters() {
     resetFilters,
   } = useShopStore();
 
-  const categories = [
-    "Solar Panels",
-    "Inverters",
-    "Batteries",
-    "Accessories",
-  ];
+  const categories = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          products
+            .map(
+              (product) =>
+                product.category
+            )
+            .filter(Boolean)
+        )
+      ),
+    [products]
+  );
 
-  const brands = [
-    "Jinko Solar",
-    "JA Solar",
-    "Solis",
-    "GoodWe",
-    "KNOX",
-    "Huawei",
-  ];
+  const brands = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          products
+            .map(
+              (product) =>
+                product.brand
+            )
+            .filter(Boolean)
+        )
+      ),
+    [products]
+  );
 
-  const getCategoryCount = (
-    value: string
-  ) =>
-    products.filter(
-      (product) =>
-        product.category === value
-    ).length;
+  const categoryCounts = useMemo(() => {
+    return products.reduce<
+      Record<string, number>
+    >((counts, product) => {
+      counts[product.category] =
+        (counts[product.category] ?? 0) + 1;
 
-  const getBrandCount = (
-    value: string
-  ) =>
-    products.filter(
-      (product) =>
-        product.brand === value
-    ).length;
+      return counts;
+    }, {});
+  }, [products]);
+
+  const brandCounts = useMemo(() => {
+    return products.reduce<
+      Record<string, number>
+    >((counts, product) => {
+      counts[product.brand] =
+        (counts[product.brand] ?? 0) + 1;
+
+      return counts;
+    }, {});
+  }, [products]);
 
   const formatPrice = (
     value: number
@@ -71,6 +93,36 @@ export function ShopFilters() {
     new Intl.NumberFormat(
       "en-PK"
     ).format(value);
+
+  const handleMinPriceChange = (
+    value: number
+  ) => {
+    const safeValue =
+      Math.max(
+        0,
+        Math.min(
+          value,
+          maxPrice
+        )
+      );
+
+    setMinPrice(safeValue);
+  };
+
+  const handleMaxPriceChange = (
+    value: number
+  ) => {
+    const safeValue =
+      Math.max(
+        minPrice,
+        Math.min(
+          value,
+          1000000
+        )
+      );
+
+    setMaxPrice(safeValue);
+  };
 
   return (
     <div className="sth-shop-filters">
@@ -95,7 +147,9 @@ export function ShopFilters() {
             strokeWidth={1.8}
           />
 
-          <span>Reset</span>
+          <span>
+            Reset
+          </span>
         </button>
       </div>
 
@@ -153,30 +207,32 @@ export function ShopFilters() {
             </span>
           </button>
 
-          {categories.map((item) => (
-            <button
-              key={item}
-              type="button"
-              className={`sth-shop-filters__row ${
-                category === item
-                  ? "sth-shop-filters__row--active"
-                  : ""
-              }`}
-              onClick={() =>
-                setCategory(item)
-              }
-            >
-              <span className="sth-shop-filters__radio" />
+          {categories.map(
+            (item) => (
+              <button
+                key={item}
+                type="button"
+                className={`sth-shop-filters__row ${
+                  category === item
+                    ? "sth-shop-filters__row--active"
+                    : ""
+                }`}
+                onClick={() =>
+                  setCategory(item)
+                }
+              >
+                <span className="sth-shop-filters__radio" />
 
-              <span className="sth-shop-filters__row-name">
-                {item}
-              </span>
+                <span className="sth-shop-filters__row-name">
+                  {item}
+                </span>
 
-              <span className="sth-shop-filters__count">
-                {getCategoryCount(item)}
-              </span>
-            </button>
-          ))}
+                <span className="sth-shop-filters__count">
+                  {categoryCounts[item] ?? 0}
+                </span>
+              </button>
+            )
+          )}
         </div>
       </div>
 
@@ -210,30 +266,32 @@ export function ShopFilters() {
             </span>
           </button>
 
-          {brands.map((item) => (
-            <button
-              key={item}
-              type="button"
-              className={`sth-shop-filters__row ${
-                brand === item
-                  ? "sth-shop-filters__row--active"
-                  : ""
-              }`}
-              onClick={() =>
-                setBrand(item)
-              }
-            >
-              <span className="sth-shop-filters__checkbox" />
+          {brands.map(
+            (item) => (
+              <button
+                key={item}
+                type="button"
+                className={`sth-shop-filters__row ${
+                  brand === item
+                    ? "sth-shop-filters__row--active"
+                    : ""
+                }`}
+                onClick={() =>
+                  setBrand(item)
+                }
+              >
+                <span className="sth-shop-filters__checkbox" />
 
-              <span className="sth-shop-filters__row-name">
-                {item}
-              </span>
+                <span className="sth-shop-filters__row-name">
+                  {item}
+                </span>
 
-              <span className="sth-shop-filters__count">
-                {getBrandCount(item)}
-              </span>
-            </button>
-          ))}
+                <span className="sth-shop-filters__count">
+                  {brandCounts[item] ?? 0}
+                </span>
+              </button>
+            )
+          )}
         </div>
       </div>
 
@@ -246,14 +304,17 @@ export function ShopFilters() {
 
         <div className="sth-shop-filters__price-grid">
           <label>
-            <span>Min</span>
+            <span>
+              Min
+            </span>
 
             <input
               type="number"
               min={0}
+              max={maxPrice}
               value={minPrice}
               onChange={(event) =>
-                setMinPrice(
+                handleMinPriceChange(
                   Number(
                     event.target.value
                   )
@@ -263,14 +324,17 @@ export function ShopFilters() {
           </label>
 
           <label>
-            <span>Max</span>
+            <span>
+              Max
+            </span>
 
             <input
               type="number"
-              min={0}
+              min={minPrice}
+              max={1000000}
               value={maxPrice}
               onChange={(event) =>
-                setMaxPrice(
+                handleMaxPriceChange(
                   Number(
                     event.target.value
                   )
@@ -283,12 +347,12 @@ export function ShopFilters() {
         <input
           className="sth-shop-filters__range"
           type="range"
-          min="0"
-          max="1000000"
-          step="10000"
+          min={0}
+          max={1000000}
+          step={10000}
           value={maxPrice}
           onChange={(event) =>
-            setMaxPrice(
+            handleMaxPriceChange(
               Number(
                 event.target.value
               )
@@ -345,8 +409,7 @@ export function ShopFilters() {
                         size={12}
                         strokeWidth={1.4}
                         fill={
-                          index <
-                          rating
+                          index < rating
                             ? "currentColor"
                             : "none"
                         }

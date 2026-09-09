@@ -37,7 +37,7 @@ export function FooterContact() {
         className="sth-footer-contact__logo"
       >
         <Image
-          src="/logos/solar-trade-hub-logo-dark.svg"
+          src="/logos/solar-trade-hub-logo-dark.png"
           alt="Solar Trade Hub"
           width={170}
           height={56}

@@ -19,15 +19,24 @@ import "@/components/animations/css/home/shop-by-category.css";
 export function ShopByCategory() {
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollCategories = (direction: "left" | "right") => {
-    const slider = sliderRef.current;
+  const scrollCategories = (
+    direction: "left" | "right"
+  ) => {
+    const slider =
+      sliderRef.current;
 
-    if (!slider) return;
+    if (!slider) {
+      return;
+    }
 
     const card =
-      slider.querySelector<HTMLElement>(".sth-category-card");
+      slider.querySelector<HTMLElement>(
+        ".sth-category-card"
+      );
 
-    const cardWidth = card?.offsetWidth ?? 240;
+    const cardWidth =
+      card?.offsetWidth ?? 240;
+
     const gap = 14;
 
     slider.scrollBy({
@@ -50,13 +59,19 @@ export function ShopByCategory() {
             </span>
 
             <h2 className="sth-shop-category__title">
-              Shop by <span>Category</span>
+              <span className="sth-shop-category__title-orange">
+                Shop by
+              </span>{" "}
+              <span className="sth-shop-category__title-purple">
+                Categories
+              </span>
             </h2>
 
             <p className="sth-shop-category__description">
-              Explore a wide range of solar products from trusted
-              suppliers across Pakistan. Find exactly what you need
-              for your home, business or next project.
+              Explore a wide range of solar products from
+              trusted suppliers across Pakistan. Find exactly
+              what you need for your home, business or next
+              project.
             </p>
           </div>
 
@@ -72,7 +87,9 @@ export function ShopByCategory() {
 
                 <span>
                   Verified
-                  <strong>Products</strong>
+                  <strong>
+                    Products
+                  </strong>
                 </span>
               </div>
 
@@ -86,12 +103,14 @@ export function ShopByCategory() {
 
                 <span>
                   Fast
-                  <strong>Delivery</strong>
+                  <strong>
+                    Delivery
+                  </strong>
                 </span>
               </div>
 
               <div className="sth-shop-category__benefit">
-                <span className="sth-shop-category__benefit-icon sth-shop-category__benefit-icon--green">
+                <span className="sth-shop-category__benefit-icon sth-shop-category__benefit-icon--orange">
                   <Headphones
                     size={16}
                     strokeWidth={1.8}
@@ -100,7 +119,9 @@ export function ShopByCategory() {
 
                 <span>
                   Expert
-                  <strong>Support</strong>
+                  <strong>
+                    Support
+                  </strong>
                 </span>
               </div>
             </div>
@@ -109,7 +130,9 @@ export function ShopByCategory() {
               href="/shop"
               className="sth-shop-category__view-all"
             >
-              <span>View All Categories</span>
+              <span>
+                View All Categories
+              </span>
 
               <ArrowRight
                 size={15}
@@ -124,7 +147,9 @@ export function ShopByCategory() {
             type="button"
             aria-label="Previous categories"
             className="sth-shop-category__slider-btn sth-shop-category__slider-btn--left"
-            onClick={() => scrollCategories("left")}
+            onClick={() =>
+              scrollCategories("left")
+            }
           >
             <ArrowLeft
               size={18}
@@ -136,22 +161,26 @@ export function ShopByCategory() {
             ref={sliderRef}
             className="sth-shop-category__grid"
           >
-            {homeCategories.map((category, index) => (
-              <CategoryCard
-                key={category.id}
-                title={category.title}
-                href={category.href}
-                image={category.image}
-                index={index}
-              />
-            ))}
+            {homeCategories.map(
+              (category, index) => (
+                <CategoryCard
+                  key={category.id}
+                  title={category.title}
+                  href={category.href}
+                  image={category.image}
+                  index={index}
+                />
+              )
+            )}
           </div>
 
           <button
             type="button"
             aria-label="Next categories"
             className="sth-shop-category__slider-btn sth-shop-category__slider-btn--right"
-            onClick={() => scrollCategories("right")}
+            onClick={() =>
+              scrollCategories("right")
+            }
           >
             <ArrowRight
               size={18}

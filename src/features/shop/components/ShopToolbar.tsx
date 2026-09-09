@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { useShopStore } from "@/store/shopStore";
+
 import { ShopFilters } from "./ShopFilters";
 
 import {
@@ -46,7 +47,10 @@ export function ShopToolbar({
 
         <div className="sth-shop-toolbar__summary-copy">
           <strong>
-            {totalProducts} Products
+            {totalProducts}{" "}
+            {totalProducts === 1
+              ? "Product"
+              : "Products"}
           </strong>
 
           <span>
@@ -59,13 +63,16 @@ export function ShopToolbar({
             <button
               type="button"
               className="sth-shop-toolbar__mobile-filter"
+              aria-label="Open shop filters"
             >
               <SlidersHorizontal
                 size={14}
                 strokeWidth={1.8}
               />
 
-              Filters
+              <span>
+                Filters
+              </span>
             </button>
           </SheetTrigger>
 
@@ -106,7 +113,9 @@ export function ShopToolbar({
               strokeWidth={1.8}
             />
 
-            <span>Grid</span>
+            <span>
+              Grid
+            </span>
           </button>
 
           <button
@@ -127,7 +136,9 @@ export function ShopToolbar({
               strokeWidth={1.8}
             />
 
-            <span>List</span>
+            <span>
+              List
+            </span>
           </button>
         </div>
 
@@ -138,7 +149,9 @@ export function ShopToolbar({
               strokeWidth={1.8}
             />
 
-            Sort by
+            <span>
+              Sort by
+            </span>
           </span>
 
           <select
@@ -155,11 +168,11 @@ export function ShopToolbar({
               Featured
             </option>
 
-            <option value="price-low-high">
+            <option value="price-low">
               Price: Low to High
             </option>
 
-            <option value="price-high-low">
+            <option value="price-high">
               Price: High to Low
             </option>
 

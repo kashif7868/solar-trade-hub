@@ -1,0 +1,316 @@
+.sth-sign-up {
+  width: 100%;
+}
+
+.sth-sign-up__heading {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  margin-bottom: 20px;
+}
+
+.sth-sign-up__heading-icon {
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--sth-border-orange);
+
+  border-radius: 11px;
+
+  background:
+    var(--sth-orange-soft);
+
+  color:
+    var(--sth-orange);
+}
+
+.sth-sign-up__heading h2 {
+  margin: 0;
+
+  color:
+    var(--sth-black);
+
+  font-size: 24px;
+  font-weight: 900;
+
+  letter-spacing:
+    -0.04em;
+}
+
+.sth-sign-up__heading p {
+  margin:
+    5px 0 0;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+.sth-sign-up__form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.sth-sign-up__field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.sth-sign-up__field > span {
+  color:
+    var(--sth-black);
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.sth-sign-up__input {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding:
+    0 12px;
+
+  border:
+    1px solid
+    var(--sth-border);
+
+  border-radius: 10px;
+
+  background:
+    var(--sth-white);
+
+  color:
+    var(--sth-gray-500);
+
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.sth-sign-up__input:focus-within {
+  border-color:
+    var(--sth-orange);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(255, 75, 31, 0.07);
+}
+
+.sth-sign-up__input svg {
+  flex-shrink: 0;
+
+  color:
+    var(--sth-orange);
+}
+
+.sth-sign-up__input input {
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--sth-black);
+
+  font: inherit;
+
+  font-size: 10px;
+}
+
+.sth-sign-up__input input::placeholder {
+  color:
+    var(--sth-gray-500);
+}
+
+.sth-sign-up__password-toggle {
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--sth-gray-500);
+
+  cursor: pointer;
+
+  transition:
+    color 0.16s ease;
+}
+
+.sth-sign-up__password-toggle:hover {
+  color:
+    var(--sth-orange);
+}
+
+.sth-sign-up__terms {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 8.5px;
+
+  line-height: 1.55;
+
+  cursor: pointer;
+}
+
+.sth-sign-up__terms input {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  accent-color:
+    var(--sth-orange);
+}
+
+.sth-sign-up__terms a {
+  color:
+    var(--sth-purple);
+
+  font-weight: 750;
+
+  text-decoration: none;
+}
+
+.sth-sign-up__terms a:hover {
+  color:
+    var(--sth-orange);
+}
+
+.sth-sign-up__submit {
+  width: 100%;
+  min-height: 46px;
+
+  margin-top: 2px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--sth-orange) 0%,
+      #ff6b43 100%
+    );
+
+  color:
+    var(--sth-white);
+
+  font: inherit;
+
+  font-size: 10px;
+  font-weight: 850;
+
+  cursor: pointer;
+
+  box-shadow:
+    var(--sth-shadow-orange);
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.sth-sign-up__submit:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(255, 75, 31, 0.22);
+}
+
+.sth-sign-up__bottom {
+  margin-top: 18px;
+
+  padding-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border-top:
+    1px solid
+    var(--sth-border);
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 9px;
+}
+
+.sth-sign-up__bottom button {
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--sth-purple);
+
+  font: inherit;
+
+  font-size: 9px;
+  font-weight: 850;
+
+  cursor: pointer;
+}
+
+.sth-sign-up__bottom button:hover {
+  color:
+    var(--sth-orange);
+}
+
+@media (max-width: 560px) {
+  .sth-sign-up__heading h2 {
+    font-size: 22px;
+  }
+}

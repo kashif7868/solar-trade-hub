@@ -1,30 +1,34 @@
 /* ========================================
    CATEGORY CARD
-   COMPACT PREMIUM VERSION
-   ========================================= */
+   ======================================== */
 
 .sth-category-card {
   position: relative;
 
   width: 100%;
+  min-width: 0;
 
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
 
-  border: 1px solid #e5e7eb;
+  border:
+    1px solid
+    var(--sth-border);
+
   border-radius: 14px;
 
-  background: #ffffff;
+  background:
+    var(--sth-white);
 
-  color: var(--sth-black);
+  color:
+    var(--sth-black);
 
   text-decoration: none;
 
   box-shadow:
-    0 6px 18px
-    rgba(17, 17, 17, 0.035);
+    var(--sth-shadow-sm);
 
   transition:
     transform 0.18s ease,
@@ -33,19 +37,20 @@
 }
 
 .sth-category-card:hover {
-  transform: translateY(-3px);
+  transform:
+    translateY(-3px);
 
   border-color:
     var(--sth-border-purple);
 
   box-shadow:
-    0 14px 28px
-    rgba(17, 17, 17, 0.07);
+    var(--sth-shadow-md);
 }
+
 
 /* ========================================
    MEDIA
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__media {
   position: relative;
@@ -62,14 +67,15 @@
   background:
     linear-gradient(
       180deg,
-      #fbfbfc 0%,
-      #f7f7f8 100%
+      var(--sth-white) 0%,
+      var(--sth-gray-50) 100%
     );
 }
 
+
 /* ========================================
-   SOFT BACK SHAPE
-   ========================================= */
+   BACK SHAPE
+   ======================================== */
 
 .sth-category-card__shape {
   position: absolute;
@@ -87,36 +93,51 @@
 
   background:
     rgba(255, 75, 31, 0.07);
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .sth-category-card--purple
-  .sth-category-card__shape {
+.sth-category-card__shape {
   background:
     rgba(91, 46, 255, 0.07);
 }
 
-.sth-category-card--green
-  .sth-category-card__shape {
-  background:
-    rgba(34, 164, 71, 0.07);
+.sth-category-card:hover
+.sth-category-card__shape {
+  transform:
+    translateX(-50%)
+    scale(1.05);
 }
+
 
 /* ========================================
    IMAGE
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__image {
-  position: absolute !important;
+  position:
+    absolute !important;
 
-  inset: 50% auto auto 50% !important;
+  inset:
+    50%
+    auto
+    auto
+    50% !important;
 
-  width: 72% !important;
-  height: 72% !important;
+  width:
+    72% !important;
+
+  height:
+    72% !important;
 
   transform:
     translate(-50%, -50%);
 
-  object-fit: contain;
+  object-fit:
+    contain;
 
   z-index: 2;
 
@@ -125,15 +146,16 @@
 }
 
 .sth-category-card:hover
-  .sth-category-card__image {
+.sth-category-card__image {
   transform:
     translate(-50%, -50%)
     scale(1.035);
 }
 
+
 /* ========================================
    TOP ICON
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__icon {
   position: absolute;
@@ -146,7 +168,7 @@
   width: 34px;
   height: 34px;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
@@ -157,10 +179,15 @@
 
   color:
     var(--sth-orange);
+
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .sth-category-card--purple
-  .sth-category-card__icon {
+.sth-category-card__icon {
   background:
     var(--sth-purple-soft);
 
@@ -168,18 +195,16 @@
     var(--sth-purple);
 }
 
-.sth-category-card--green
-  .sth-category-card__icon {
-  background:
-    #eaf9ef;
-
-  color:
-    #16aa48;
+.sth-category-card:hover
+.sth-category-card__icon {
+  transform:
+    translateY(-1px);
 }
+
 
 /* ========================================
    CONTENT
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__content {
   min-height: 72px;
@@ -195,64 +220,92 @@
   gap: 10px;
 
   background:
-    #ffffff;
+    var(--sth-white);
 }
 
 .sth-category-card__text {
   min-width: 0;
 }
 
+
 /* ========================================
    TITLE
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__title {
   margin: 0;
 
-  color: #1f2937;
+  color:
+    var(--sth-black);
 
   font-size: 12.5px;
+
   font-weight: 800;
+
   line-height: 1.2;
 
-  letter-spacing: -0.015em;
+  letter-spacing:
+    -0.015em;
+
+  transition:
+    color 0.16s ease;
 }
+
+.sth-category-card:hover
+.sth-category-card__title {
+  color:
+    var(--sth-orange);
+}
+
+.sth-category-card--purple:hover
+.sth-category-card__title {
+  color:
+    var(--sth-purple);
+}
+
 
 /* ========================================
    COUNT
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__count {
   display: block;
 
   margin-top: 4px;
 
-  color: #7b8491;
+  color:
+    var(--sth-gray-500);
 
   font-size: 8.7px;
+
   font-weight: 550;
+
   line-height: 1.2;
 }
 
+
 /* ========================================
    ACTION
-   ========================================= */
+   ======================================== */
 
 .sth-category-card__action {
   width: 34px;
   height: 34px;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   flex-shrink: 0;
 
-  border: 1px solid #eceef2;
+  border:
+    1px solid
+    var(--sth-border);
+
   border-radius: 9px;
 
   background:
-    #ffffff;
+    var(--sth-white);
 
   color:
     var(--sth-orange);
@@ -265,7 +318,7 @@
 }
 
 .sth-category-card:hover
-  .sth-category-card__action {
+.sth-category-card__action {
   transform:
     translateX(2px);
 
@@ -274,32 +327,59 @@
 
   background:
     var(--sth-orange-soft);
+
+  color:
+    var(--sth-orange);
 }
 
 .sth-category-card--purple
-  .sth-category-card__action {
+.sth-category-card__action {
   color:
     var(--sth-purple);
 }
 
 .sth-category-card--purple:hover
-  .sth-category-card__action {
+.sth-category-card__action {
   border-color:
     var(--sth-border-purple);
 
   background:
     var(--sth-purple-soft);
+
+  color:
+    var(--sth-purple);
 }
 
-.sth-category-card--green
-  .sth-category-card__action {
-  color:
-    #16aa48;
+
+/* ========================================
+   ORANGE THEME
+   ======================================== */
+
+.sth-category-card--orange:hover {
+  border-color:
+    var(--sth-border-orange);
+
+  box-shadow:
+    var(--sth-shadow-orange);
 }
+
+
+/* ========================================
+   PURPLE THEME
+   ======================================== */
+
+.sth-category-card--purple:hover {
+  border-color:
+    var(--sth-border-purple);
+
+  box-shadow:
+    var(--sth-shadow-purple);
+}
+
 
 /* ========================================
    TABLET
-   ========================================= */
+   ======================================== */
 
 @media (max-width: 1023px) {
   .sth-category-card__media {
@@ -312,8 +392,11 @@
   }
 
   .sth-category-card__image {
-    width: 70% !important;
-    height: 70% !important;
+    width:
+      70% !important;
+
+    height:
+      70% !important;
   }
 
   .sth-category-card__title {
@@ -321,9 +404,10 @@
   }
 }
 
+
 /* ========================================
    MOBILE
-   ========================================= */
+   ======================================== */
 
 @media (max-width: 767px) {
   .sth-category-card {
@@ -335,8 +419,11 @@
   }
 
   .sth-category-card__image {
-    width: 68% !important;
-    height: 68% !important;
+    width:
+      68% !important;
+
+    height:
+      68% !important;
   }
 
   .sth-category-card__shape {
@@ -366,9 +453,10 @@
   }
 }
 
+
 /* ========================================
    SMALL MOBILE
-   ========================================= */
+   ======================================== */
 
 @media (max-width: 440px) {
   .sth-category-card__media {
@@ -376,8 +464,11 @@
   }
 
   .sth-category-card__image {
-    width: 66% !important;
-    height: 66% !important;
+    width:
+      66% !important;
+
+    height:
+      66% !important;
   }
 
   .sth-category-card__shape {

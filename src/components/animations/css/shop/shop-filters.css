@@ -4,11 +4,13 @@
 
   width: 100%;
 
-  padding: 21px 18px 18px;
+  padding:
+    21px 18px
+    18px;
 
   border:
     1px solid
-    rgba(231, 231, 231, 0.9);
+    var(--sth-border);
 
   border-radius: 18px;
 
@@ -16,9 +18,13 @@
     rgba(255, 255, 255, 0.96);
 
   box-shadow:
-    0 12px 34px
-    rgba(31, 23, 63, 0.045);
+    var(--sth-shadow-sm);
 }
+
+
+/* ========================================
+   HEADER
+   ======================================== */
 
 .sth-shop-filters__header {
   display: flex;
@@ -60,7 +66,8 @@
 .sth-shop-filters__reset {
   min-height: 30px;
 
-  padding: 0 9px;
+  padding:
+    0 9px;
 
   display: inline-flex;
   align-items: center;
@@ -81,6 +88,7 @@
     var(--sth-purple);
 
   font: inherit;
+
   font-size: 7.5px;
   font-weight: 800;
 
@@ -88,7 +96,8 @@
 
   transition:
     background-color 0.16s ease,
-    border-color 0.16s ease;
+    border-color 0.16s ease,
+    color 0.16s ease;
 }
 
 .sth-shop-filters__reset:hover {
@@ -97,9 +106,15 @@
 
   background:
     var(--sth-purple-light);
+
+  color:
+    var(--sth-purple-hover);
 }
 
-/* SECTION */
+
+/* ========================================
+   SECTION
+   ======================================== */
 
 .sth-shop-filters__section {
   margin-top: 19px;
@@ -132,12 +147,16 @@
     );
 }
 
-/* SEARCH */
+
+/* ========================================
+   SEARCH
+   ======================================== */
 
 .sth-shop-filters__search {
   min-height: 41px;
 
-  padding: 0 11px;
+  padding:
+    0 11px;
 
   display: flex;
   align-items: center;
@@ -187,14 +206,19 @@
     var(--sth-black);
 
   font: inherit;
+
   font-size: 8px;
 }
 
 .sth-shop-filters__search input::placeholder {
-  color: #9aa0aa;
+  color:
+    var(--sth-gray-500);
 }
 
-/* OPTIONS */
+
+/* ========================================
+   OPTIONS
+   ======================================== */
 
 .sth-shop-filters__option-list {
   display: flex;
@@ -207,7 +231,8 @@
   width: 100%;
   min-height: 33px;
 
-  padding: 0 8px;
+  padding:
+    0 8px;
 
   display: grid;
 
@@ -254,7 +279,7 @@
 
 .sth-shop-filters__row--active {
   border-color:
-    rgba(91, 46, 255, 0.28);
+    var(--sth-border-purple);
 
   background:
     linear-gradient(
@@ -267,6 +292,11 @@
     var(--sth-purple);
 }
 
+
+/* ========================================
+   RADIO
+   ======================================== */
+
 .sth-shop-filters__radio {
   width: 13px;
   height: 13px;
@@ -276,10 +306,17 @@
     var(--sth-gray-300);
 
   border-radius: 50%;
+
+  background:
+    var(--sth-white);
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease;
 }
 
 .sth-shop-filters__row--active
-  .sth-shop-filters__radio {
+.sth-shop-filters__radio {
   border:
     4px solid
     var(--sth-purple);
@@ -287,6 +324,11 @@
   background:
     var(--sth-white);
 }
+
+
+/* ========================================
+   CHECKBOX
+   ======================================== */
 
 .sth-shop-filters__checkbox {
   width: 13px;
@@ -300,10 +342,14 @@
 
   background:
     var(--sth-white);
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease;
 }
 
 .sth-shop-filters__row--active
-  .sth-shop-filters__checkbox {
+.sth-shop-filters__checkbox {
   border-color:
     var(--sth-purple);
 
@@ -315,6 +361,11 @@
     var(--sth-white);
 }
 
+
+/* ========================================
+   OPTION TEXT
+   ======================================== */
+
 .sth-shop-filters__row-name {
   min-width: 0;
 
@@ -324,13 +375,15 @@
   font-weight: 650;
 
   text-overflow: ellipsis;
+
   white-space: nowrap;
 }
 
 .sth-shop-filters__count {
   min-width: 23px;
 
-  padding: 3px 6px;
+  padding:
+    3px 6px;
 
   border-radius: 999px;
 
@@ -347,7 +400,7 @@
 }
 
 .sth-shop-filters__row--active
-  .sth-shop-filters__count {
+.sth-shop-filters__count {
   background:
     var(--sth-white);
 
@@ -359,7 +412,10 @@
     rgba(91, 46, 255, 0.08);
 }
 
-/* PRICE */
+
+/* ========================================
+   PRICE
+   ======================================== */
 
 .sth-shop-filters__price-grid {
   display: grid;
@@ -393,7 +449,8 @@
   width: 100%;
   height: 36px;
 
-  padding: 0 8px;
+  padding:
+    0 8px;
 
   border:
     1px solid
@@ -410,7 +467,13 @@
     var(--sth-black);
 
   font: inherit;
+
   font-size: 7.5px;
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
 .sth-shop-filters__price-grid input:focus {
@@ -419,12 +482,22 @@
 
   background:
     var(--sth-white);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(91, 46, 255, 0.055);
 }
+
+
+/* ========================================
+   RANGE
+   ======================================== */
 
 .sth-shop-filters__range {
   width: 100%;
 
-  margin: 14px 0 0;
+  margin:
+    14px 0 0;
 
   accent-color:
     var(--sth-purple);
@@ -448,7 +521,10 @@
   font-weight: 700;
 }
 
-/* RATING */
+
+/* ========================================
+   RATING
+   ======================================== */
 
 .sth-shop-filters__ratings {
   display: flex;
@@ -460,7 +536,8 @@
 .sth-shop-filters__rating {
   min-height: 32px;
 
-  padding: 0 7px;
+  padding:
+    0 7px;
 
   display: grid;
 
@@ -504,6 +581,11 @@
     var(--sth-orange-soft);
 }
 
+
+/* ========================================
+   RATING CHECK
+   ======================================== */
+
 .sth-shop-filters__rating-check {
   width: 12px;
   height: 12px;
@@ -513,10 +595,13 @@
     var(--sth-gray-300);
 
   border-radius: 3px;
+
+  background:
+    var(--sth-white);
 }
 
 .sth-shop-filters__rating--active
-  .sth-shop-filters__rating-check {
+.sth-shop-filters__rating-check {
   border-color:
     var(--sth-orange);
 
@@ -528,13 +613,19 @@
     var(--sth-white);
 }
 
+
+/* ========================================
+   STARS
+   ======================================== */
+
 .sth-shop-filters__rating-stars {
   display: inline-flex;
   align-items: center;
 
   gap: 1px;
 
-  color: #f59e0b;
+  color:
+    var(--sth-orange);
 }
 
 .sth-shop-filters__rating-text {
@@ -546,16 +637,36 @@
 }
 
 .sth-shop-filters__rating--active
-  .sth-shop-filters__rating-text {
+.sth-shop-filters__rating-text {
   color:
     var(--sth-orange);
 
   font-weight: 800;
 }
 
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
 @media (max-width: 1023px) {
   .sth-shop-filters {
     position: static;
+
     top: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .sth-shop-filters {
+    padding:
+      18px 15px;
+
+    border-radius: 15px;
+  }
+
+  .sth-shop-filters__price-grid {
+    grid-template-columns:
+      1fr;
   }
 }

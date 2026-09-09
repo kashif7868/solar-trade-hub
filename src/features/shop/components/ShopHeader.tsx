@@ -14,11 +14,16 @@ export function ShopHeader() {
       <div className="sth-shop-header__top">
         <div className="sth-shop-header__content">
           <span className="sth-shop-header__eyebrow">
-            Solar Marketplace
+            Solar Trade Hub 
           </span>
 
           <h1 className="sth-shop-header__title">
-            Shop Solar <span>Products</span>
+            <span className="sth-shop-header__title-orange">
+              Shop 
+            </span>{" "}
+            <span className="sth-shop-header__title-purple">
+              Products
+            </span>
           </h1>
 
           <p className="sth-shop-header__description">
@@ -101,11 +106,15 @@ export function ShopHeader() {
 
           <span>/</span>
 
-          <span>Shop</span>
+          <span>
+            Shop
+          </span>
         </nav>
 
         <div className="sth-shop-header__tagline">
-          <span>Clean Energy</span>
+          <span>
+            Clean Energy
+          </span>
 
           <span className="sth-shop-header__tagline-dot" />
 

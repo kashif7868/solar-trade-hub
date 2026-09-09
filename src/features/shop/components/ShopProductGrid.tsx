@@ -6,17 +6,11 @@ import {
   useState,
 } from "react";
 
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
-
 import { ProductCard } from "@/components/common/ProductCard/ProductCard";
 import { useShopStore } from "@/store/shopStore";
+
 import type { Product } from "@/types/product";
-
 import "@/components/animations/css/shop/shop-product-grid.css";
-
 interface ShopProductGridProps {
   products: Product[];
   isLoading: boolean;
@@ -38,142 +32,153 @@ export function ShopProductGrid({
     minPrice,
     maxPrice,
     minRating,
+    viewMode,
   } = useShopStore();
 
-  const [currentPage, setCurrentPage] =
-    useState(1);
+  const [
+    currentPage,
+    setCurrentPage,
+  ] = useState(1);
 
-  /*
-   * Filter + sort products
-   */
-  const filteredProducts = useMemo(() => {
-    const query = search
-      .trim()
-      .toLowerCase();
+  const filteredProducts =
+    useMemo(() => {
+      const query =
+        search
+          .trim()
+          .toLowerCase();
 
-    const filtered = products.filter(
-      (product) => {
-        const matchesSearch =
-          !query ||
-          product.name
-            .toLowerCase()
-            .includes(query) ||
-          product.brand
-            .toLowerCase()
-            .includes(query) ||
-          product.category
-            .toLowerCase()
-            .includes(query) ||
-          product.sku
-            .toLowerCase()
-            .includes(query) ||
-          product.capacity
-            .toLowerCase()
-            .includes(query);
+      const filtered =
+        products.filter(
+          (product) => {
+            const matchesSearch =
+              !query ||
+              product.name
+                .toLowerCase()
+                .includes(query) ||
+              product.brand
+                .toLowerCase()
+                .includes(query) ||
+              product.category
+                .toLowerCase()
+                .includes(query) ||
+              product.sku
+                .toLowerCase()
+                .includes(query) ||
+              product.capacity
+                .toLowerCase()
+                .includes(query);
 
-        const matchesCategory =
-          category === "all" ||
-          product.category === category;
+            const matchesCategory =
+              category === "all" ||
+              product.category ===
+                category;
 
-        const matchesBrand =
-          brand === "all" ||
-          product.brand === brand;
+            const matchesBrand =
+              brand === "all" ||
+              product.brand ===
+                brand;
 
-        const matchesPrice =
-          product.price >= minPrice &&
-          product.price <= maxPrice;
+            const matchesPrice =
+              product.price >=
+                minPrice &&
+              product.price <=
+                maxPrice;
 
-        const matchesRating =
-          minRating === 0 ||
-          product.rating >= minRating;
+            const matchesRating =
+              minRating === 0 ||
+              product.rating >=
+                minRating;
 
-        return (
-          matchesSearch &&
-          matchesCategory &&
-          matchesBrand &&
-          matchesPrice &&
-          matchesRating
+            return (
+              matchesSearch &&
+              matchesCategory &&
+              matchesBrand &&
+              matchesPrice &&
+              matchesRating
+            );
+          }
         );
-      }
-    );
 
-    return [...filtered].sort(
-      (a, b) => {
+      return [
+        ...filtered,
+      ].sort((a, b) => {
         switch (sortBy) {
-          case "price-low-high":
-            return a.price - b.price;
+          case "price-low":
+            return (
+              a.price -
+              b.price
+            );
 
-          case "price-high-low":
-            return b.price - a.price;
+          case "price-high":
+            return (
+              b.price -
+              a.price
+            );
 
           case "rating":
-            return b.rating - a.rating;
+            return (
+              b.rating -
+              a.rating
+            );
 
           case "newest":
-            return b.id - a.id;
+            return (
+              b.id -
+              a.id
+            );
 
           case "featured":
           default:
             return 0;
         }
-      }
-    );
-  }, [
-    products,
-    search,
-    category,
-    brand,
-    minPrice,
-    maxPrice,
-    minRating,
-    sortBy,
-  ]);
+      });
+    }, [
+      products,
+      search,
+      category,
+      brand,
+      sortBy,
+      minPrice,
+      maxPrice,
+      minRating,
+    ]);
 
-  /*
-   * Reset pagination whenever
-   * filters or sorting change
-   */
   useEffect(() => {
     setCurrentPage(1);
   }, [
     search,
     category,
     brand,
+    sortBy,
     minPrice,
     maxPrice,
     minRating,
-    sortBy,
   ]);
 
-  /*
-   * Pagination calculations
-   */
-  const totalPages = Math.max(
-    1,
+  const totalPages =
     Math.ceil(
       filteredProducts.length /
         PRODUCTS_PER_PAGE
-    )
-  );
+    );
 
-  const safeCurrentPage = Math.min(
-    currentPage,
-    totalPages
-  );
+  const safeCurrentPage =
+    Math.min(
+      currentPage,
+      Math.max(
+        totalPages,
+        1
+      )
+    );
 
   const startIndex =
     (safeCurrentPage - 1) *
     PRODUCTS_PER_PAGE;
 
-  const endIndex = Math.min(
-    startIndex + PRODUCTS_PER_PAGE,
-    filteredProducts.length
-  );
-
   const paginatedProducts =
     filteredProducts.slice(
       startIndex,
-      endIndex
+      startIndex +
+        PRODUCTS_PER_PAGE
     );
 
   const handlePageChange = (
@@ -181,8 +186,7 @@ export function ShopProductGrid({
   ) => {
     if (
       page < 1 ||
-      page > totalPages ||
-      page === safeCurrentPage
+      page > totalPages
     ) {
       return;
     }
@@ -190,41 +194,44 @@ export function ShopProductGrid({
     setCurrentPage(page);
 
     window.scrollTo({
-      top: 300,
+      top: 0,
       behavior: "smooth",
     });
   };
 
-  /*
-   * Loading
-   */
   if (isLoading) {
     return (
-      <div className="sth-shop-grid">
+      <div
+        className={`sth-shop-grid ${
+          viewMode === "list"
+            ? "sth-shop-grid--list"
+            : ""
+        }`}
+      >
         {Array.from({
-          length: PRODUCTS_PER_PAGE,
-        }).map((_, index) => (
-          <div
-            key={index}
-            className="sth-shop-grid__skeleton"
-          >
-            <div className="sth-shop-grid__skeleton-image" />
+          length:
+            PRODUCTS_PER_PAGE,
+        }).map(
+          (_, index) => (
+            <div
+              key={index}
+              className="sth-shop-grid__skeleton"
+            >
+              <div className="sth-shop-grid__skeleton-image" />
 
-            <div className="sth-shop-grid__skeleton-body">
-              <span />
-              <span />
-              <span />
-              <span />
+              <div className="sth-shop-grid__skeleton-body">
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     );
   }
 
-  /*
-   * API error
-   */
   if (isError) {
     return (
       <div className="sth-shop-grid__state">
@@ -233,18 +240,15 @@ export function ShopProductGrid({
         </strong>
 
         <span>
-          Please make sure the product
-          API is running.
+          Please try again in a moment.
         </span>
       </div>
     );
   }
 
-  /*
-   * Empty filters result
-   */
   if (
-    filteredProducts.length === 0
+    filteredProducts.length ===
+    0
   ) {
     return (
       <div className="sth-shop-grid__state">
@@ -253,9 +257,8 @@ export function ShopProductGrid({
         </strong>
 
         <span>
-          Try changing your search,
-          category, brand, price or
-          rating filters.
+          Try changing your search
+          or filters.
         </span>
       </div>
     );
@@ -263,11 +266,19 @@ export function ShopProductGrid({
 
   return (
     <>
-      <div className="sth-shop-grid">
+      <div
+        className={`sth-shop-grid ${
+          viewMode === "list"
+            ? "sth-shop-grid--list"
+            : ""
+        }`}
+      >
         {paginatedProducts.map(
           (product) => (
             <ProductCard
               key={product.id}
+              id={product.id}
+              slug={product.slug}
               name={product.name}
               href={`/products/${product.slug}`}
               image={product.image}
@@ -280,11 +291,15 @@ export function ShopProductGrid({
               oldPrice={
                 product.oldPrice
               }
-              rating={product.rating}
+              rating={
+                product.rating
+              }
               reviewCount={
                 product.reviewCount
               }
-              badge={product.badge}
+              badge={
+                product.badge
+              }
               sku={product.sku}
             />
           )
@@ -295,94 +310,94 @@ export function ShopProductGrid({
         <p className="sth-shop-grid__results">
           Showing{" "}
           <strong>
-            {startIndex + 1}
-          </strong>
-          {" – "}
-          <strong>
-            {endIndex}
+            {startIndex + 1}–
+            {Math.min(
+              startIndex +
+                PRODUCTS_PER_PAGE,
+              filteredProducts.length
+            )}
           </strong>{" "}
           of{" "}
           <strong>
-            {filteredProducts.length}
+            {
+              filteredProducts.length
+            }
           </strong>{" "}
           products
         </p>
 
         {totalPages > 1 && (
-          <nav
-            className="sth-shop-grid__pagination"
-            aria-label="Shop pagination"
-          >
+          <div className="sth-shop-grid__pagination">
             <button
               type="button"
-              aria-label="Previous page"
               disabled={
                 safeCurrentPage === 1
               }
               onClick={() =>
                 handlePageChange(
-                  safeCurrentPage - 1
+                  safeCurrentPage -
+                    1
                 )
               }
+              aria-label="Previous page"
             >
-              <ChevronLeft
-                size={16}
-                strokeWidth={1.8}
-              />
+              ‹
             </button>
 
             {Array.from({
-              length: totalPages,
-            }).map((_, index) => {
-              const page = index + 1;
+              length:
+                totalPages,
+            }).map(
+              (_, index) => {
+                const page =
+                  index + 1;
 
-              return (
-                <button
-                  key={page}
-                  type="button"
-                  aria-label={`Go to page ${page}`}
-                  aria-current={
-                    page ===
-                    safeCurrentPage
-                      ? "page"
-                      : undefined
-                  }
-                  className={
-                    page ===
-                    safeCurrentPage
-                      ? "sth-shop-grid__page sth-shop-grid__page--active"
-                      : "sth-shop-grid__page"
-                  }
-                  onClick={() =>
-                    handlePageChange(
-                      page
-                    )
-                  }
-                >
-                  {page}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={page}
+                    type="button"
+                    className={
+                      page ===
+                      safeCurrentPage
+                        ? "sth-shop-grid__page--active"
+                        : ""
+                    }
+                    onClick={() =>
+                      handlePageChange(
+                        page
+                      )
+                    }
+                    aria-label={`Go to page ${page}`}
+                    aria-current={
+                      page ===
+                      safeCurrentPage
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {page}
+                  </button>
+                );
+              }
+            )}
 
             <button
               type="button"
-              aria-label="Next page"
               disabled={
                 safeCurrentPage ===
                 totalPages
               }
               onClick={() =>
                 handlePageChange(
-                  safeCurrentPage + 1
+                  safeCurrentPage +
+                    1
                 )
               }
+              aria-label="Next page"
             >
-              <ChevronRight
-                size={16}
-                strokeWidth={1.8}
-              />
+              ›
             </button>
-          </nav>
+          </div>
         )}
       </div>
     </>
