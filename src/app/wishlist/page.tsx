@@ -1,4 +1,4 @@
-import { WishlistPage } from "@/features/wishlist/WishlistPage";
+import { WishlistPage } from "@/features/Wishlist/WishlistPage";
 
 export default function Page() {
   return <WishlistPage />;
