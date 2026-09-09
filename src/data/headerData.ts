@@ -39,19 +39,19 @@ export const mainNavigation: HeaderNavItem[] = [
   },
   {
     label: "Solar Panels",
-    href: "/shop/solar-panels",
+    href: "/category/solar-panels",
   },
   {
     label: "Inverters",
-    href: "/shop/inverters",
+    href: "/category/hybrid-inverters",
   },
   {
     label: "Batteries & ESS",
-    href: "/shop/batteries-ess",
+    href: "/category/batteries-ess",
   },
   {
     label: "Accessories",
-    href: "/shop/accessories",
+    href: "/category/accessories",
   },
   {
     label: "Installers",
@@ -83,35 +83,52 @@ export const mainNavigation: HeaderNavItem[] = [
 export const categoryNavigation: CategoryNavItem[] = [
   {
     label: "Solar Panels",
-    href: "/shop/solar-panels",
+    href: "/category/solar-panels",
   },
+
+  /*
+   * Current product data stores inverter products
+   * under the parent "Inverters" category.
+   */
   {
     label: "On-Grid Inverters",
-    href: "/shop/on-grid-inverters",
+    href: "/category/hybrid-inverters",
   },
   {
     label: "Hybrid Inverters",
-    href: "/shop/hybrid-inverters",
+    href: "/category/hybrid-inverters",
   },
+
+  /*
+   * Current product data stores batteries and ESS
+   * under the parent "Batteries" category.
+   */
   {
     label: "Lithium Batteries",
-    href: "/shop/lithium-batteries",
+    href: "/category/batteries-ess",
   },
   {
     label: "Energy Storage Systems",
-    href: "/shop/energy-storage-systems",
+    href: "/category/batteries-ess",
   },
+
   {
     label: "Mounting Structures",
-    href: "/shop/mounting-structures",
+    href: "/category/mounting-structures",
   },
+
+  /*
+   * Until Solar Cables becomes its own category,
+   * send it to Accessories.
+   */
   {
     label: "Solar Cables",
-    href: "/shop/solar-cables",
+    href: "/category/accessories",
   },
+
   {
     label: "Protection & Accessories",
-    href: "/shop/accessories",
+    href: "/category/accessories",
   },
 ];
 

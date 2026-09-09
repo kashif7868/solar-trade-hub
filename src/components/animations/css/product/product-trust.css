@@ -1,0 +1,178 @@
+.sth-product-trust {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding:
+    16px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+
+  border:
+    1px solid
+    rgba(91, 46, 255, 0.1);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sth-white) 0%,
+      var(--sth-purple-light) 100%
+    );
+
+  box-shadow:
+    0 8px 26px
+    rgba(34, 24, 70, 0.04);
+}
+
+
+/* ========================================
+   ITEM
+   ======================================== */
+
+.sth-product-trust__item {
+  min-width: 0;
+
+  padding:
+    13px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  border:
+    1px solid
+    var(--sth-border);
+
+  border-radius: 12px;
+
+  background:
+    var(--sth-white);
+
+  transition:
+    border-color 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.sth-product-trust__item:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    var(--sth-border-purple);
+
+  box-shadow:
+    0 8px 20px
+    rgba(91, 46, 255, 0.07);
+}
+
+
+/* ========================================
+   ICON
+   ======================================== */
+
+.sth-product-trust__icon {
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--sth-border-purple);
+
+  border-radius: 11px;
+
+  background:
+    var(--sth-purple-soft);
+
+  color:
+    var(--sth-purple);
+}
+
+.sth-product-trust__item:nth-child(2)
+.sth-product-trust__icon,
+.sth-product-trust__item:nth-child(4)
+.sth-product-trust__icon {
+  border-color:
+    var(--sth-border-orange);
+
+  background:
+    var(--sth-orange-soft);
+
+  color:
+    var(--sth-orange);
+}
+
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.sth-product-trust__content {
+  min-width: 0;
+}
+
+.sth-product-trust__content strong {
+  display: block;
+
+  color:
+    var(--sth-black);
+
+  font-size: 10px;
+  font-weight: 850;
+
+  line-height: 1.3;
+}
+
+.sth-product-trust__content p {
+  margin:
+    5px 0 0;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1050px) {
+  .sth-product-trust {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 580px) {
+  .sth-product-trust {
+    grid-template-columns:
+      1fr;
+
+    padding:
+      12px;
+  }
+}

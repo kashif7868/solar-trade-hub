@@ -1,0 +1,159 @@
+.sth-category-page {
+  width: 100%;
+
+  padding:
+    22px 0
+    48px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--sth-white) 0%,
+      var(--sth-purple-light) 100%
+    );
+}
+
+.sth-category-page__container {
+  width: min(
+    1380px,
+    calc(100% - 32px)
+  );
+
+  margin: 0 auto;
+}
+
+
+/* BREADCRUMB */
+
+.sth-category-page__breadcrumb {
+  min-height: 28px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  color: var(--sth-gray-500);
+
+  font-size: 8px;
+}
+
+.sth-category-page__breadcrumb a {
+  color: var(--sth-gray-500);
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+.sth-category-page__breadcrumb a:hover {
+  color: var(--sth-purple);
+}
+
+.sth-category-page__breadcrumb span {
+  color: var(--sth-gray-300);
+}
+
+.sth-category-page__breadcrumb strong {
+  color: var(--sth-black);
+
+  font-weight: 800;
+}
+
+
+/* MAIN LAYOUT */
+
+.sth-category-page__layout {
+  margin-top: 16px;
+
+  display: grid;
+
+  grid-template-columns:
+    235px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 16px;
+}
+
+
+/* SIDEBAR */
+
+.sth-category-page__sidebar {
+  width: 100%;
+
+  min-width: 0;
+}
+
+
+/* CONTENT */
+
+.sth-category-page__content {
+  min-width: 0;
+
+  width: 100%;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1180px) {
+  .sth-category-page__layout {
+    grid-template-columns:
+      220px
+      minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .sth-category-page {
+    padding-top: 16px;
+  }
+
+  .sth-category-page__layout {
+    grid-template-columns:
+      1fr;
+
+    gap: 14px;
+  }
+
+  .sth-category-page__sidebar {
+    order: 1;
+  }
+
+  .sth-category-page__content {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .sth-category-page {
+    padding:
+      12px 0
+      34px;
+  }
+
+  .sth-category-page__container {
+    width: min(
+      100% - 20px,
+      1380px
+    );
+  }
+
+  .sth-category-page__breadcrumb {
+    margin-bottom: 9px;
+
+    font-size: 7px;
+  }
+
+  .sth-category-page__layout {
+    margin-top: 12px;
+
+    gap: 12px;
+  }
+}

@@ -1,0 +1,346 @@
+.sth-related-products {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding-top: 24px;
+
+  border-top:
+    1px solid
+    rgba(91, 46, 255, 0.08);
+}
+
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.sth-related-products__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 16px;
+}
+
+.sth-related-products__eyebrow {
+  display: inline-block;
+
+  margin-bottom: 7px;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.sth-related-products__title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      27px,
+      3vw,
+      38px
+    );
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.045em;
+}
+
+.sth-related-products__title-orange {
+  color:
+    var(--sth-orange);
+}
+
+.sth-related-products__title-purple {
+  color:
+    var(--sth-purple);
+}
+
+.sth-related-products__description {
+  margin:
+    8px 0 0;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   VIEW ALL
+   ======================================== */
+
+.sth-related-products__view-all {
+  flex-shrink: 0;
+
+  min-height: 40px;
+
+  padding:
+    0 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border:
+    1px solid
+    var(--sth-border-purple);
+
+  border-radius: 10px;
+
+  background:
+    var(--sth-white);
+
+  color:
+    var(--sth-purple);
+
+  font-size: 9px;
+  font-weight: 850;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-related-products__view-all:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    var(--sth-purple);
+
+  background:
+    var(--sth-purple);
+
+  color:
+    var(--sth-white);
+}
+
+
+/* ========================================
+   GRID
+   ======================================== */
+
+.sth-related-products__grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+
+/*
+  ProductCard styling yahan
+  intentionally redefine nahi ki gayi.
+
+  Shop / Home / Wishlist /
+  Related Products same card
+  component use karte hain.
+*/
+
+
+/* ========================================
+   SKELETON
+   ======================================== */
+
+.sth-related-products__skeleton {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--sth-border-purple);
+
+  border-radius: 18px;
+
+  background:
+    var(--sth-white);
+}
+
+.sth-related-products__skeleton-image {
+  height: 228px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sth-gray-100) 0%,
+      var(--sth-purple-light) 50%,
+      var(--sth-gray-100) 100%
+    );
+
+  background-size:
+    200% 100%;
+
+  animation:
+    sth-related-loading
+    1.4s
+    linear
+    infinite;
+}
+
+.sth-related-products__skeleton-body {
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.sth-related-products__skeleton-body span {
+  display: block;
+
+  height: 9px;
+
+  border-radius: 999px;
+
+  background:
+    var(--sth-gray-100);
+}
+
+.sth-related-products__skeleton-body span:nth-child(1) {
+  width: 44%;
+}
+
+.sth-related-products__skeleton-body span:nth-child(2) {
+  width: 90%;
+}
+
+.sth-related-products__skeleton-body span:nth-child(3) {
+  width: 72%;
+}
+
+.sth-related-products__skeleton-body span:nth-child(4) {
+  width: 52%;
+}
+
+@keyframes sth-related-loading {
+  0% {
+    background-position:
+      200% 0;
+  }
+
+  100% {
+    background-position:
+      -200% 0;
+  }
+}
+
+
+/* ========================================
+   STATE
+   ======================================== */
+
+.sth-related-products__state {
+  min-height: 190px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border:
+    1px solid
+    var(--sth-border-purple);
+
+  border-radius: 14px;
+
+  background:
+    var(--sth-white);
+
+  text-align: center;
+}
+
+.sth-related-products__state strong {
+  color:
+    var(--sth-black);
+
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.sth-related-products__state span,
+.sth-related-products__state a {
+  color:
+    var(--sth-gray-500);
+
+  font-size: 9px;
+}
+
+.sth-related-products__state a {
+  color:
+    var(--sth-purple);
+
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .sth-related-products__grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 900px) {
+  .sth-related-products__grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 600px) {
+  .sth-related-products__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sth-related-products__view-all {
+    width: 100%;
+  }
+
+  .sth-related-products__grid {
+    grid-template-columns:
+      1fr;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   BatteryCharging,
@@ -38,6 +39,21 @@ const categoryIcons = [
 ];
 
 export function CategoryDropdown() {
+  const pathname = usePathname();
+
+  const activeCategory =
+    categoryNavigation.find(
+      (category) =>
+        pathname === category.href ||
+        pathname.startsWith(
+          `${category.href}/`
+        )
+    );
+
+  const triggerLabel =
+    activeCategory?.label ??
+    "All Categories";
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -52,7 +68,7 @@ export function CategoryDropdown() {
             </span>
 
             <span className="sth-category-trigger__label">
-              All Categories
+              {triggerLabel}
             </span>
           </span>
 
@@ -69,43 +85,63 @@ export function CategoryDropdown() {
         className="sth-category-menu"
       >
         <div className="sth-category-menu__list">
-          {categoryNavigation.map((category, index) => {
-            const Icon =
-              categoryIcons[index] ?? LayoutGrid;
+          {categoryNavigation.map(
+            (category, index) => {
+              const Icon =
+                categoryIcons[index] ??
+                LayoutGrid;
 
-            return (
-              <DropdownMenuItem
-                key={category.href}
-                asChild
-                className="sth-category-menu__item"
-              >
-                <Link
-                  href={category.href}
-                  className="sth-category-menu__link"
+              const isActive =
+                pathname ===
+                  category.href ||
+                pathname.startsWith(
+                  `${category.href}/`
+                );
+
+              return (
+                <DropdownMenuItem
+                  key={`${category.label}-${category.href}`}
+                  asChild
+                  className={[
+                    "sth-category-menu__item",
+                    isActive
+                      ? "sth-category-menu__item--active"
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                 >
-                  <span className="sth-category-menu__icon">
-                    <Icon size={14} />
-                  </span>
+                  <Link
+                    href={category.href}
+                    className="sth-category-menu__link"
+                  >
+                    <span className="sth-category-menu__icon">
+                      <Icon size={14} />
+                    </span>
 
-                  <span className="sth-category-menu__label">
-                    {category.label}
-                  </span>
+                    <span className="sth-category-menu__label">
+                      {category.label}
+                    </span>
 
-                  <ChevronRight
-                    size={12}
-                    className="sth-category-menu__arrow"
-                  />
-                </Link>
-              </DropdownMenuItem>
-            );
-          })}
+                    <ChevronRight
+                      size={12}
+                      className="sth-category-menu__arrow"
+                    />
+                  </Link>
+                </DropdownMenuItem>
+              );
+            }
+          )}
         </div>
 
         <Link
           href="/shop"
           className="sth-category-menu__view-all"
         >
-          <span>View All Products</span>
+          <span>
+            View All Products
+          </span>
+
           <ChevronRight size={12} />
         </Link>
       </DropdownMenuContent>

@@ -1,0 +1,137 @@
+.sth-category-product-grid {
+  width: 100%;
+
+  margin-top: 14px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+
+/* LOADING SKELETON */
+
+.sth-category-product-grid__skeleton {
+  overflow: hidden;
+
+  border: 1px solid var(--sth-border);
+  border-radius: 16px;
+
+  background: var(--sth-white);
+
+  box-shadow: var(--sth-shadow-sm);
+}
+
+.sth-category-product-grid__skeleton-image {
+  width: 100%;
+  aspect-ratio: 1 / 0.78;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sth-gray-100) 25%,
+      var(--sth-gray-50) 50%,
+      var(--sth-gray-100) 75%
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    sth-category-product-grid-loading
+    1.4s
+    infinite;
+}
+
+.sth-category-product-grid__skeleton-body {
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.sth-category-product-grid__skeleton-line {
+  display: block;
+
+  height: 8px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sth-gray-100) 25%,
+      var(--sth-gray-50) 50%,
+      var(--sth-gray-100) 75%
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    sth-category-product-grid-loading
+    1.4s
+    infinite;
+}
+
+.sth-category-product-grid__skeleton-line--short {
+  width: 34%;
+}
+
+.sth-category-product-grid__skeleton-line--title {
+  width: 86%;
+
+  height: 12px;
+}
+
+.sth-category-product-grid__skeleton-line--medium {
+  width: 65%;
+}
+
+.sth-category-product-grid__skeleton-line--price {
+  width: 46%;
+
+  height: 11px;
+
+  margin-top: 4px;
+}
+
+@keyframes sth-category-product-grid-loading {
+  0% {
+    background-position:
+      200% 0;
+  }
+
+  100% {
+    background-position:
+      -200% 0;
+  }
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1180px) {
+  .sth-category-product-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 640px) {
+  .sth-category-product-grid {
+    grid-template-columns:
+      1fr;
+
+    gap: 12px;
+  }
+}
