@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
+import { Suspense } from "react";
+
 import {
   Geist,
   Geist_Mono,
 } from "next/font/google";
 
 import { Header } from "@/components/layout/Header/Header";
-
 import { Footer } from "@/components/layout/Footer/Footer";
-
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav/MobileBottomNav";
 
 import { NavigationLoader } from "@/components/common/NavigationLoader/NavigationLoader";
@@ -53,7 +53,9 @@ export default function RootLayout({
       >
         <Providers>
 
-          <NavigationLoader />
+          <Suspense fallback={null}>
+            <NavigationLoader />
+          </Suspense>
 
           <Header />
 
