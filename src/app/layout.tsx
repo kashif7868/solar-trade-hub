@@ -6,8 +6,12 @@ import {
 } from "next/font/google";
 
 import { Header } from "@/components/layout/Header/Header";
+
 import { Footer } from "@/components/layout/Footer/Footer";
+
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav/MobileBottomNav";
+
+import { NavigationLoader } from "@/components/common/NavigationLoader/NavigationLoader";
 
 import { Providers } from "@/providers/Providers";
 
@@ -48,6 +52,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+
+          <NavigationLoader />
+
           <Header />
 
           <main>
@@ -57,6 +64,7 @@ export default function RootLayout({
           <Footer />
 
           <MobileBottomNav />
+
         </Providers>
       </body>
     </html>

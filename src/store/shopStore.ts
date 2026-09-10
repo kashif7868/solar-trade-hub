@@ -1,77 +1,118 @@
 import { create } from "zustand";
 
-export type ShopViewMode = "grid" | "list";
+export type ShopViewMode =
+  | "grid"
+  | "list";
 
 interface ShopState {
-  search: string;
   category: string;
+
   brand: string;
+
   sortBy: string;
 
   minPrice: number;
+
   maxPrice: number;
+
   minRating: number;
 
   viewMode: ShopViewMode;
 
-  setSearch: (value: string) => void;
-  setCategory: (value: string) => void;
-  setBrand: (value: string) => void;
-  setSortBy: (value: string) => void;
+  setCategory: (
+    value: string
+  ) => void;
 
-  setMinPrice: (value: number) => void;
-  setMaxPrice: (value: number) => void;
-  setMinRating: (value: number) => void;
+  setBrand: (
+    value: string
+  ) => void;
 
-  setViewMode: (value: ShopViewMode) => void;
+  setSortBy: (
+    value: string
+  ) => void;
+
+  setMinPrice: (
+    value: number
+  ) => void;
+
+  setMaxPrice: (
+    value: number
+  ) => void;
+
+  setMinRating: (
+    value: number
+  ) => void;
+
+  setViewMode: (
+    value: ShopViewMode
+  ) => void;
 
   resetFilters: () => void;
 }
 
-export const useShopStore = create<ShopState>((set) => ({
-  search: "",
-  category: "all",
-  brand: "all",
-  sortBy: "featured",
+export const useShopStore =
+  create<ShopState>((set) => ({
+    category: "all",
 
-  minPrice: 0,
-  maxPrice: 1000000,
-  minRating: 0,
+    brand: "all",
 
-  viewMode: "grid",
+    sortBy: "featured",
 
-  setSearch: (value) => set({ search: value }),
+    minPrice: 0,
 
-  setCategory: (value) =>
-    set({ category: value }),
+    maxPrice: 1000000,
 
-  setBrand: (value) =>
-    set({ brand: value }),
+    minRating: 0,
 
-  setSortBy: (value) =>
-    set({ sortBy: value }),
+    viewMode: "grid",
 
-  setMinPrice: (value) =>
-    set({ minPrice: value }),
+    setCategory: (value) =>
+      set({
+        category: value,
+      }),
 
-  setMaxPrice: (value) =>
-    set({ maxPrice: value }),
+    setBrand: (value) =>
+      set({
+        brand: value,
+      }),
 
-  setMinRating: (value) =>
-    set({ minRating: value }),
+    setSortBy: (value) =>
+      set({
+        sortBy: value,
+      }),
 
-  setViewMode: (value) =>
-    set({ viewMode: value }),
+    setMinPrice: (value) =>
+      set({
+        minPrice: value,
+      }),
 
-  resetFilters: () =>
-    set({
-      search: "",
-      category: "all",
-      brand: "all",
-      sortBy: "featured",
+    setMaxPrice: (value) =>
+      set({
+        maxPrice: value,
+      }),
 
-      minPrice: 0,
-      maxPrice: 1000000,
-      minRating: 0,
-    }),
-}));
+    setMinRating: (value) =>
+      set({
+        minRating: value,
+      }),
+
+    setViewMode: (value) =>
+      set({
+        viewMode: value,
+      }),
+
+    resetFilters: () =>
+      set({
+        category: "all",
+
+        brand: "all",
+
+        sortBy: "featured",
+
+        minPrice: 0,
+
+        maxPrice: 1000000,
+
+        minRating: 0,
+      }),
+  }));

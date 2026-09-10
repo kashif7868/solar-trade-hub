@@ -10,7 +10,9 @@ import { ProductCard } from "@/components/common/ProductCard/ProductCard";
 import { useShopStore } from "@/store/shopStore";
 
 import type { Product } from "@/types/product";
+
 import "@/components/animations/css/shop/shop-product-grid.css";
+
 interface ShopProductGridProps {
   products: Product[];
   isLoading: boolean;
@@ -25,13 +27,7 @@ export function ShopProductGrid({
   isError,
 }: ShopProductGridProps) {
   const {
-    search,
-    category,
-    brand,
     sortBy,
-    minPrice,
-    maxPrice,
-    minRating,
     viewMode,
   } = useShopStore();
 
@@ -40,67 +36,10 @@ export function ShopProductGrid({
     setCurrentPage,
   ] = useState(1);
 
-  const filteredProducts =
+  const sortedProducts =
     useMemo(() => {
-      const query =
-        search
-          .trim()
-          .toLowerCase();
-
-      const filtered =
-        products.filter(
-          (product) => {
-            const matchesSearch =
-              !query ||
-              product.name
-                .toLowerCase()
-                .includes(query) ||
-              product.brand
-                .toLowerCase()
-                .includes(query) ||
-              product.category
-                .toLowerCase()
-                .includes(query) ||
-              product.sku
-                .toLowerCase()
-                .includes(query) ||
-              product.capacity
-                .toLowerCase()
-                .includes(query);
-
-            const matchesCategory =
-              category === "all" ||
-              product.category ===
-                category;
-
-            const matchesBrand =
-              brand === "all" ||
-              product.brand ===
-                brand;
-
-            const matchesPrice =
-              product.price >=
-                minPrice &&
-              product.price <=
-                maxPrice;
-
-            const matchesRating =
-              minRating === 0 ||
-              product.rating >=
-                minRating;
-
-            return (
-              matchesSearch &&
-              matchesCategory &&
-              matchesBrand &&
-              matchesPrice &&
-              matchesRating
-            );
-          }
-        );
-
       return [
-        ...filtered,
+        ...products,
       ].sort((a, b) => {
         switch (sortBy) {
           case "price-low":
@@ -134,30 +73,20 @@ export function ShopProductGrid({
       });
     }, [
       products,
-      search,
-      category,
-      brand,
       sortBy,
-      minPrice,
-      maxPrice,
-      minRating,
     ]);
 
   useEffect(() => {
     setCurrentPage(1);
   }, [
-    search,
-    category,
-    brand,
+    products,
     sortBy,
-    minPrice,
-    maxPrice,
-    minRating,
+    viewMode,
   ]);
 
   const totalPages =
     Math.ceil(
-      filteredProducts.length /
+      sortedProducts.length /
         PRODUCTS_PER_PAGE
     );
 
@@ -175,7 +104,7 @@ export function ShopProductGrid({
     PRODUCTS_PER_PAGE;
 
   const paginatedProducts =
-    filteredProducts.slice(
+    sortedProducts.slice(
       startIndex,
       startIndex +
         PRODUCTS_PER_PAGE
@@ -247,7 +176,7 @@ export function ShopProductGrid({
   }
 
   if (
-    filteredProducts.length ===
+    sortedProducts.length ===
     0
   ) {
     return (
@@ -282,12 +211,18 @@ export function ShopProductGrid({
               name={product.name}
               href={`/products/${product.slug}`}
               image={product.image}
-              category={product.category}
-              brand={product.brand}
+              category={
+                product.category
+              }
+              brand={
+                product.brand
+              }
               description={
                 product.description
               }
-              price={product.price}
+              price={
+                product.price
+              }
               oldPrice={
                 product.oldPrice
               }
@@ -300,7 +235,9 @@ export function ShopProductGrid({
               badge={
                 product.badge
               }
-              sku={product.sku}
+              sku={
+                product.sku
+              }
             />
           )
         )}
@@ -314,13 +251,13 @@ export function ShopProductGrid({
             {Math.min(
               startIndex +
                 PRODUCTS_PER_PAGE,
-              filteredProducts.length
+              sortedProducts.length
             )}
           </strong>{" "}
           of{" "}
           <strong>
             {
-              filteredProducts.length
+              sortedProducts.length
             }
           </strong>{" "}
           products

@@ -40,19 +40,18 @@ export function ShopToolbar({
   const searchParams = useSearchParams();
 
   const {
-    search,
     sortBy,
     viewMode,
-    setSearch,
     setSortBy,
     setViewMode,
   } = useShopStore();
 
-  const activeSearch = search.trim();
+  const activeSearch =
+    searchParams
+      .get("search")
+      ?.trim() ?? "";
 
   const handleClearSearch = () => {
-    setSearch("");
-
     const params =
       new URLSearchParams(
         searchParams.toString()
@@ -156,7 +155,6 @@ export function ShopToolbar({
 
         {/* GRID / LIST */}
         <div className="sth-shop-toolbar__view-switcher">
-
           <button
             type="button"
             aria-label="Grid view"
@@ -202,12 +200,10 @@ export function ShopToolbar({
               List
             </span>
           </button>
-
         </div>
 
         {/* SORT */}
         <div className="sth-shop-toolbar__sort">
-
           <span className="sth-shop-toolbar__sort-label">
             <ArrowDownAZ
               size={14}
@@ -249,7 +245,6 @@ export function ShopToolbar({
               Newest
             </option>
           </select>
-
         </div>
 
       </div>

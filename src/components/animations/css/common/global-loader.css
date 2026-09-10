@@ -1,0 +1,609 @@
+.sth-global-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(91, 46, 255, 0.07),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 48% 46%,
+      rgba(255, 75, 31, 0.06),
+      transparent 26%
+    ),
+    var(--sth-white);
+
+  overflow: hidden;
+}
+
+.sth-global-loader::before,
+.sth-global-loader::after {
+  content: "";
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  opacity: 0.22;
+
+  pointer-events: none;
+}
+
+.sth-global-loader::before {
+  top: 10%;
+  left: 12%;
+
+  background: var(--sth-purple);
+
+  animation:
+    sth-loader-float-purple
+    5s
+    ease-in-out
+    infinite;
+}
+
+.sth-global-loader::after {
+  right: 10%;
+  bottom: 8%;
+
+  background: var(--sth-orange);
+
+  animation:
+    sth-loader-float-orange
+    5.5s
+    ease-in-out
+    infinite;
+}
+
+.sth-global-loader__content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 340px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  animation:
+    sth-loader-content-in
+    0.5s
+    ease-out
+    both;
+}
+
+/* ========================================
+   MARK
+======================================== */
+
+.sth-global-loader__mark {
+  position: relative;
+
+  width: 118px;
+  height: 118px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 28px;
+}
+
+.sth-global-loader__ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.sth-global-loader__ring--orange {
+  inset: 0;
+
+  border:
+    2px solid
+    rgba(255, 75, 31, 0.16);
+
+  border-top-color:
+    var(--sth-orange);
+
+  border-right-color:
+    var(--sth-orange);
+
+  animation:
+    sth-loader-spin
+    1.45s
+    linear
+    infinite;
+}
+
+.sth-global-loader__ring--purple {
+  inset: 12px;
+
+  border:
+    2px solid
+    rgba(91, 46, 255, 0.14);
+
+  border-bottom-color:
+    var(--sth-purple);
+
+  border-left-color:
+    var(--sth-purple);
+
+  animation:
+    sth-loader-spin-reverse
+    1.1s
+    linear
+    infinite;
+}
+
+.sth-global-loader__core {
+  position: relative;
+
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sth-orange),
+      #ff6a43
+    );
+
+  box-shadow:
+    0 12px 28px
+      rgba(255, 75, 31, 0.22),
+    0 0 0 8px
+      rgba(255, 75, 31, 0.05);
+
+  animation:
+    sth-loader-core-pulse
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+.sth-global-loader__core::before,
+.sth-global-loader__core::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 50% auto auto 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.92);
+}
+
+.sth-global-loader__core::before {
+  transform:
+    translate(-50%, -50%)
+    translateX(-11px);
+}
+
+.sth-global-loader__core::after {
+  transform:
+    translate(-50%, -50%)
+    translateX(11px);
+}
+
+.sth-global-loader__sun {
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background:
+    var(--sth-white);
+
+  box-shadow:
+    0 0 18px
+      rgba(255, 255, 255, 0.65);
+
+  animation:
+    sth-loader-sun-pulse
+    1.2s
+    ease-in-out
+    infinite;
+}
+
+.sth-global-loader__sun::before,
+.sth-global-loader__sun::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 30px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.85);
+}
+
+.sth-global-loader__sun::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(0deg);
+}
+
+.sth-global-loader__sun::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg);
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.sth-global-loader__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-bottom: 20px;
+
+  font-size: 20px;
+  font-weight: 900;
+
+  letter-spacing:
+    -0.03em;
+
+  line-height: 1;
+
+  animation:
+    sth-loader-brand-in
+    0.55s
+    0.1s
+    ease-out
+    both;
+}
+
+.sth-global-loader__brand-orange {
+  color:
+    var(--sth-orange);
+}
+
+.sth-global-loader__brand-purple {
+  color:
+    var(--sth-purple);
+}
+
+/* ========================================
+   PROGRESS BAR
+======================================== */
+
+.sth-global-loader__bar {
+  position: relative;
+
+  width: 100%;
+  max-width: 220px;
+  height: 5px;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    var(--sth-gray-100);
+}
+
+.sth-global-loader__bar span {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 42%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sth-orange),
+      var(--sth-purple)
+    );
+
+  box-shadow:
+    0 0 14px
+      rgba(91, 46, 255, 0.25);
+
+  animation:
+    sth-loader-bar
+    1.3s
+    ease-in-out
+    infinite;
+}
+
+/* ========================================
+   TEXT
+======================================== */
+
+.sth-global-loader__text {
+  margin: 0;
+
+  color:
+    var(--sth-gray-500);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing:
+    0.03em;
+
+  animation:
+    sth-loader-text
+    1.5s
+    ease-in-out
+    infinite;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes sth-loader-spin {
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+@keyframes sth-loader-spin-reverse {
+  from {
+    transform:
+      rotate(360deg);
+  }
+
+  to {
+    transform:
+      rotate(0deg);
+  }
+}
+
+@keyframes sth-loader-core-pulse {
+  0%,
+  100% {
+    transform:
+      scale(1);
+
+    box-shadow:
+      0 12px 28px
+        rgba(255, 75, 31, 0.22),
+      0 0 0 8px
+        rgba(255, 75, 31, 0.05);
+  }
+
+  50% {
+    transform:
+      scale(1.07);
+
+    box-shadow:
+      0 15px 34px
+        rgba(255, 75, 31, 0.28),
+      0 0 0 14px
+        rgba(255, 75, 31, 0.035);
+  }
+}
+
+@keyframes sth-loader-sun-pulse {
+  0%,
+  100% {
+    transform:
+      scale(0.92);
+
+    opacity: 0.85;
+  }
+
+  50% {
+    transform:
+      scale(1.08);
+
+    opacity: 1;
+  }
+}
+
+@keyframes sth-loader-bar {
+  0% {
+    left: -42%;
+  }
+
+  50% {
+    left: 58%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes sth-loader-text {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes sth-loader-content-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes sth-loader-brand-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes sth-loader-float-purple {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        28px,
+        18px,
+        0
+      );
+  }
+}
+
+@keyframes sth-loader-float-orange {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      );
+  }
+
+  50% {
+    transform:
+      translate3d(
+        -24px,
+        -20px,
+        0
+      );
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 580px) {
+  .sth-global-loader__content {
+    max-width: 280px;
+  }
+
+  .sth-global-loader__mark {
+    width: 100px;
+    height: 100px;
+
+    margin-bottom: 24px;
+  }
+
+  .sth-global-loader__ring--purple {
+    inset: 10px;
+  }
+
+  .sth-global-loader__core {
+    width: 54px;
+    height: 54px;
+  }
+
+  .sth-global-loader__brand {
+    font-size: 17px;
+
+    margin-bottom: 18px;
+  }
+
+  .sth-global-loader__bar {
+    max-width: 190px;
+  }
+
+  .sth-global-loader__text {
+    font-size: 10px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .sth-global-loader *,
+  .sth-global-loader::before,
+  .sth-global-loader::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+  }
+}

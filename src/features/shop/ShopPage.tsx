@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useMemo,
-} from "react";
-
+import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { useProducts } from "@/hooks/useProducts";
@@ -22,7 +18,9 @@ export function ShopPage() {
     useSearchParams();
 
   const urlSearch =
-    searchParams.get("search") ?? "";
+    searchParams
+      .get("search")
+      ?.trim() ?? "";
 
   const {
     data: products = [],
@@ -31,80 +29,78 @@ export function ShopPage() {
   } = useProducts();
 
   const {
-    search,
     category,
     brand,
     minPrice,
     maxPrice,
     minRating,
-    setSearch,
   } = useShopStore();
-
-  /*
-   * Sync header/mobile URL search
-   * with Shop Zustand search state.
-   */
-  useEffect(() => {
-    if (search !== urlSearch) {
-      setSearch(urlSearch);
-    }
-  }, [
-    urlSearch,
-    search,
-    setSearch,
-  ]);
 
   const filteredProducts =
     useMemo(() => {
-      const query = search
-        .trim()
-        .toLowerCase();
+      const query =
+        urlSearch.toLowerCase();
 
       return products.filter(
         (product) => {
           const productName =
-            product.name?.toLowerCase() ??
-            "";
+            product.name
+              ?.toLowerCase() ?? "";
 
           const productBrand =
-            product.brand?.toLowerCase() ??
-            "";
+            product.brand
+              ?.toLowerCase() ?? "";
 
           const productCategory =
-            product.category?.toLowerCase() ??
-            "";
+            product.category
+              ?.toLowerCase() ?? "";
 
           const productSku =
-            product.sku?.toLowerCase() ??
-            "";
+            product.sku
+              ?.toLowerCase() ?? "";
 
           const productCapacity =
-            product.capacity?.toLowerCase() ??
-            "";
+            product.capacity
+              ?.toLowerCase() ?? "";
 
           const matchesSearch =
             !query ||
-            productName.includes(query) ||
-            productBrand.includes(query) ||
-            productCategory.includes(query) ||
-            productSku.includes(query) ||
-            productCapacity.includes(query);
+            productName.includes(
+              query
+            ) ||
+            productBrand.includes(
+              query
+            ) ||
+            productCategory.includes(
+              query
+            ) ||
+            productSku.includes(
+              query
+            ) ||
+            productCapacity.includes(
+              query
+            );
 
           const matchesCategory =
             category === "all" ||
-            product.category === category;
+            product.category ===
+              category;
 
           const matchesBrand =
             brand === "all" ||
-            product.brand === brand;
+            product.brand ===
+              brand;
 
           const matchesPrice =
-            product.price >= minPrice &&
-            product.price <= maxPrice;
+            product.price >=
+              minPrice &&
+            product.price <=
+              maxPrice;
 
           const matchesRating =
             minRating === 0 ||
-            product.rating >= minRating;
+            product.rating >=
+              minRating;
 
           return (
             matchesSearch &&
@@ -117,7 +113,7 @@ export function ShopPage() {
       );
     }, [
       products,
-      search,
+      urlSearch,
       category,
       brand,
       minPrice,
@@ -128,14 +124,17 @@ export function ShopPage() {
   return (
     <section className="sth-shop">
       <div className="sth-shop__container">
+
         <ShopHeader />
 
         <div className="sth-shop__layout">
+
           <aside className="sth-shop__sidebar">
             <ShopFilters />
           </aside>
 
           <main className="sth-shop__content">
+
             <ShopToolbar
               totalProducts={
                 filteredProducts.length
@@ -146,11 +145,18 @@ export function ShopPage() {
               products={
                 filteredProducts
               }
-              isLoading={isLoading}
-              isError={isError}
+              isLoading={
+                isLoading
+              }
+              isError={
+                isError
+              }
             />
+
           </main>
+
         </div>
+
       </div>
     </section>
   );

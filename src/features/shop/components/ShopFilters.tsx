@@ -7,22 +7,12 @@ import {
   Star,
 } from "lucide-react";
 
-import {
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
-
 import { useProducts } from "@/hooks/useProducts";
 import { useShopStore } from "@/store/shopStore";
 
 import "@/components/animations/css/shop/shop-filters.css";
 
 export function ShopFilters() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const {
     data: products = [],
   } = useProducts();
@@ -108,35 +98,6 @@ export function ShopFilters() {
       "en-PK"
     ).format(value);
 
-  const handleResetFilters = () => {
-    resetFilters();
-
-    /*
-     * Important:
-     * Product search belongs to the
-     * main header, not sidebar filters.
-     *
-     * So Reset Filters should NOT remove
-     * the active ?search= query.
-     */
-    const params =
-      new URLSearchParams(
-        searchParams.toString()
-      );
-
-    const queryString =
-      params.toString();
-
-    router.replace(
-      queryString
-        ? `${pathname}?${queryString}`
-        : pathname,
-      {
-        scroll: false,
-      }
-    );
-  };
-
   const handleMinPriceChange = (
     value: number
   ) => {
@@ -183,9 +144,7 @@ export function ShopFilters() {
         <button
           type="button"
           className="sth-shop-filters__reset"
-          onClick={
-            handleResetFilters
-          }
+          onClick={resetFilters}
         >
           <RotateCcw
             size={13}
@@ -205,6 +164,7 @@ export function ShopFilters() {
         </span>
 
         <div className="sth-shop-filters__option-list">
+
           <button
             type="button"
             className={`sth-shop-filters__row ${
@@ -267,6 +227,7 @@ export function ShopFilters() {
         </span>
 
         <div className="sth-shop-filters__option-list">
+
           <button
             type="button"
             className={`sth-shop-filters__row ${
@@ -438,20 +399,11 @@ export function ShopFilters() {
                   {Array.from({
                     length: 5,
                   }).map(
-                    (
-                      _,
-                      index
-                    ) => (
+                    (_, index) => (
                       <Star
-                        key={
-                          index
-                        }
-                        size={
-                          12
-                        }
-                        strokeWidth={
-                          1.4
-                        }
+                        key={index}
+                        size={12}
+                        strokeWidth={1.4}
                         fill={
                           index <
                           rating
@@ -464,14 +416,14 @@ export function ShopFilters() {
                 </span>
 
                 <span className="sth-shop-filters__rating-text">
-                  {rating}.0
-                  & up
+                  {rating}.0 & up
                 </span>
               </button>
             )
           )}
         </div>
       </div>
+
     </div>
   );
 }
