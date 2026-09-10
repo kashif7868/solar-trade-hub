@@ -199,7 +199,10 @@ export function SolarPricesSection() {
   }, [search, category, type, brand]);
 
   return (
-    <section className="sth-prices">
+    <section
+      id="solar-prices"
+      className="sth-prices"
+    >
       <div className="sth-prices__container">
         <div className="sth-prices__hero">
           <div className="sth-prices__heading">
@@ -374,11 +377,10 @@ export function SolarPricesSection() {
 
                     <div>
                       <span
-                        className={`sth-prices__status ${
-                          item.status === "In Stock"
+                        className={`sth-prices__status ${item.status === "In Stock"
                             ? "sth-prices__status--active"
                             : ""
-                        }`}
+                          }`}
                       >
                         <span />
                         {item.status}

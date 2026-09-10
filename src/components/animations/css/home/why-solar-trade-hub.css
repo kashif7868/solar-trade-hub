@@ -65,20 +65,20 @@
 
 .sth-why__eyebrow {
   margin-bottom: 12px;
-  color: var(--sth-purple);
+  color: var(--sth-orange);
 }
 
 .sth-why__eyebrow-line {
   width: 24px;
   height: 1.5px;
   border-radius: 999px;
-  background: var(--sth-purple);
+  background: var(--sth-orange);
 }
 
 .sth-why__title {
   max-width: 650px;
   margin: 0;
-  color: var(--sth-black);
+  color: var(--sth-orange);
   font-size: clamp(36px, 3.4vw, 52px);
   font-weight: 860;
   line-height: 0.98;

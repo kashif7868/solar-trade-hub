@@ -2,15 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {
+  FormEvent,
+  useState,
+} from "react";
 
 import {
+  ChevronLeft,
   ChevronRight,
   Menu,
   Search,
-  ShoppingCart,
   X,
 } from "lucide-react";
+
+import {
+  usePathname,
+  useRouter,
+} from "next/navigation";
 
 import {
   Sheet,
@@ -25,179 +33,255 @@ import "@/components/animations/css/header/mobile-header.css";
 
 export function MobileHeader() {
   const pathname = usePathname();
+  const router = useRouter();
 
-  const cartCount = 0;
+  const [isSearchOpen, setIsSearchOpen] =
+    useState(false);
 
-  const isActive = (href: string) => {
+  const [searchQuery, setSearchQuery] =
+    useState("");
+
+  const isActive = (
+    href: string
+  ) => {
     if (href === "/") {
       return pathname === "/";
     }
 
-    return pathname.startsWith(href);
+    const cleanHref =
+      href.split("#")[0];
+
+    if (!cleanHref) {
+      return false;
+    }
+
+    return pathname.startsWith(
+      cleanHref
+    );
+  };
+
+  const openSearch = () => {
+    setIsSearchOpen(true);
+  };
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setSearchQuery("");
+  };
+
+  const handleSearch = (
+    event: FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+
+    const query =
+      searchQuery.trim();
+
+    if (!query) {
+      return;
+    }
+
+    router.push(
+      `/shop?search=${encodeURIComponent(
+        query
+      )}`
+    );
   };
 
   return (
     <header className="sth-mobile-header">
-      {/* Trust strip */}
-      <div className="sth-mobile-header__trust">
-        <span>
-          Pakistan&apos;s Trusted Solar Energy Partner
-        </span>
-      </div>
+      <div
+        className={[
+          "sth-mobile-header__main",
+          isSearchOpen
+            ? "sth-mobile-header__main--search-open"
+            : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {!isSearchOpen ? (
+          <>
+            <Link
+              href="/"
+              className="sth-mobile-header__logo"
+              aria-label="Solar Trade Hub Home"
+            >
+              <Image
+                src="/logos/solar-trade-hub-logo-dark.png"
+                alt="Solar Trade Hub"
+                width={125}
+                height={44}
+                priority
+              />
+            </Link>
 
-      {/* Main mobile header */}
-      <div className="sth-mobile-header__main">
-        <Link
-          href="/"
-          className="sth-mobile-header__logo"
-          aria-label="Solar Trade Hub Home"
-        >
-          <Image
-            src="/logos/solar-trade-hub-logo-dark.svg"
-            alt="Solar Trade Hub"
-            width={140}
-            height={50}
-            priority
-          />
-        </Link>
-
-        <div className="sth-mobile-header__actions">
-          <Link
-            href="/search"
-            aria-label="Search"
-            className="sth-mobile-header__action"
-          >
-            <Search size={18} strokeWidth={1.8} />
-          </Link>
-
-          <Link
-            href="/cart"
-            aria-label="Shopping cart"
-            className="sth-mobile-header__action"
-          >
-            <ShoppingCart
-              size={18}
-              strokeWidth={1.8}
-            />
-
-            <span className="sth-mobile-header__badge">
-              {cartCount}
-            </span>
-          </Link>
-
-          <Sheet>
-            <SheetTrigger asChild>
+            <div className="sth-mobile-header__actions">
               <button
                 type="button"
-                className="sth-mobile-header__action sth-mobile-header__menu-trigger"
-                aria-label="Open navigation"
+                className="sth-mobile-header__action"
+                aria-label="Search products"
+                onClick={openSearch}
               >
-                <Menu
+                <Search
                   size={19}
                   strokeWidth={1.8}
                 />
               </button>
-            </SheetTrigger>
 
-            <SheetContent
-              side="left"
-              className="sth-mobile-menu"
-            >
-              {/* Drawer header */}
-              <div className="sth-mobile-menu__header">
-                <SheetClose asChild>
-                  <Link
-                    href="/"
-                    className="sth-mobile-menu__logo"
-                    aria-label="Solar Trade Hub Home"
-                  >
-                    <Image
-                      src="/logos/solar-trade-hub-logo-dark.svg"
-                      alt="Solar Trade Hub"
-                      width={140}
-                      height={50}
-                    />
-                  </Link>
-                </SheetClose>
-
-                <SheetClose asChild>
+              <Sheet>
+                <SheetTrigger asChild>
                   <button
                     type="button"
-                    className="sth-mobile-menu__close"
-                    aria-label="Close navigation"
+                    className="sth-mobile-header__action"
+                    aria-label="Open navigation"
                   >
-                    <X
-                      size={18}
+                    <Menu
+                      size={21}
                       strokeWidth={1.8}
                     />
                   </button>
-                </SheetClose>
-              </div>
+                </SheetTrigger>
 
-              {/* Drawer body */}
-              <div className="sth-mobile-menu__body">
-                <p className="sth-mobile-menu__title">
-                  Navigation
-                </p>
-
-                <nav
-                  className="sth-mobile-menu__nav"
-                  aria-label="Mobile navigation"
+                <SheetContent
+                  side="right"
+                  className="sth-mobile-menu"
                 >
-                  {mainNavigation.map((item) => {
-                    const active =
-                      isActive(item.href);
+                  <div className="sth-mobile-menu__header">
+                    <span className="sth-mobile-menu__heading">
+                      Menu
+                    </span>
 
-                    const className = [
-                      "sth-mobile-menu__link",
-                      active
-                        ? "sth-mobile-menu__link--active"
-                        : "",
-                      item.accent
-                        ? "sth-mobile-menu__link--accent"
-                        : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ");
-
-                    return (
-                      <SheetClose
-                        key={item.href}
-                        asChild
+                    <SheetClose asChild>
+                      <button
+                        type="button"
+                        className="sth-mobile-menu__close"
+                        aria-label="Close navigation"
                       >
-                        <Link
-                          href={item.href}
-                          className={className}
-                        >
-                          <span>
-                            {item.label}
-                          </span>
+                        <X
+                          size={19}
+                          strokeWidth={1.8}
+                        />
+                      </button>
+                    </SheetClose>
+                  </div>
 
-                          <ChevronRight
-                            size={14}
-                            strokeWidth={1.7}
-                          />
-                        </Link>
-                      </SheetClose>
-                    );
-                  })}
-                </nav>
-              </div>
+                  <div className="sth-mobile-menu__body">
+                    <nav
+                      className="sth-mobile-menu__nav"
+                      aria-label="Mobile navigation"
+                    >
+                      {mainNavigation.map(
+                        (item) => {
+                          const active =
+                            isActive(
+                              item.href
+                            );
 
-              {/* Drawer footer */}
-              <div className="sth-mobile-menu__footer">
-                <SheetClose asChild>
-                  <Link
-                    href="/get-quote"
-                    className="sth-mobile-menu__quote"
-                  >
-                    Get Solar Quote
-                  </Link>
-                </SheetClose>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+                          const className = [
+                            "sth-mobile-menu__link",
+
+                            active
+                              ? "sth-mobile-menu__link--active"
+                              : "",
+
+                            item.accent
+                              ? "sth-mobile-menu__link--accent"
+                              : "",
+                          ]
+                            .filter(Boolean)
+                            .join(" ");
+
+                          return (
+                            <SheetClose
+                              key={`${item.label}-${item.href}`}
+                              asChild
+                            >
+                              <Link
+                                href={
+                                  item.href
+                                }
+                                className={
+                                  className
+                                }
+                              >
+                                <span>
+                                  {
+                                    item.label
+                                  }
+                                </span>
+
+                                <ChevronRight
+                                  size={14}
+                                  strokeWidth={
+                                    1.7
+                                  }
+                                />
+                              </Link>
+                            </SheetClose>
+                          );
+                        }
+                      )}
+                    </nav>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </>
+        ) : (
+          <form
+            className="sth-mobile-header__search-mode"
+            onSubmit={handleSearch}
+          >
+            <button
+              type="button"
+              className="sth-mobile-header__search-back"
+              aria-label="Close search"
+              onClick={closeSearch}
+            >
+              <ChevronLeft
+                size={20}
+                strokeWidth={1.8}
+              />
+            </button>
+
+            <div className="sth-mobile-header__search-box">
+              <Search
+                size={17}
+                strokeWidth={1.8}
+              />
+
+              <input
+                type="search"
+                autoFocus
+                value={searchQuery}
+                onChange={(event) =>
+                  setSearchQuery(
+                    event.target.value
+                  )
+                }
+                placeholder="Search products, brands..."
+                aria-label="Search products"
+              />
+
+              {searchQuery && (
+                <button
+                  type="button"
+                  className="sth-mobile-header__search-clear"
+                  aria-label="Clear search"
+                  onClick={() =>
+                    setSearchQuery("")
+                  }
+                >
+                  <X
+                    size={17}
+                    strokeWidth={1.8}
+                  />
+                </button>
+              )}
+            </div>
+          </form>
+        )}
       </div>
     </header>
   );

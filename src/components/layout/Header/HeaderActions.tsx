@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import {
-  FileText,
   Heart,
   ShoppingCart,
   UserRound,
@@ -15,40 +14,21 @@ import { useWishlistStore } from "@/store/wishlistStore";
 import "@/components/animations/css/header/header-actions.css";
 
 export function HeaderActions() {
-  const wishlistCount =
-    useWishlistStore(
-      (state) =>
-        state.items.length
-    );
+  const wishlistCount = useWishlistStore(
+    (state) => state.items.length
+  );
 
-  const cartCount =
-    useCartStore(
-      (state) =>
-        state.items.reduce(
-          (total, item) =>
-            total +
-            item.quantity,
-          0
-        )
-    );
+  const cartCount = useCartStore(
+    (state) =>
+      state.items.reduce(
+        (total, item) =>
+          total + item.quantity,
+        0
+      )
+  );
 
   return (
     <div className="sth-header-actions">
-      <Link
-        href="/get-quote"
-        className="sth-header-action"
-      >
-        <span className="sth-header-action__icon">
-          <FileText size={17} />
-        </span>
-
-        <span className="sth-header-action__label">
-          Get Quote
-        </span>
-      </Link>
-
-      <span className="sth-header-actions__divider" />
-
       <Link
         href="/login"
         className="sth-header-action"
@@ -85,6 +65,8 @@ export function HeaderActions() {
           Wishlist
         </span>
       </Link>
+
+      <span className="sth-header-actions__divider" />
 
       <Link
         href="/cart"
