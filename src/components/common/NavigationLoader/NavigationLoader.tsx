@@ -6,99 +6,26 @@ import {
   useState,
 } from "react";
 
-import {
-  usePathname,
-  useSearchParams,
-} from "next/navigation";
-
 import "@/components/animations/css/common/navigation-loader.css";
 
-const MINIMUM_LOADER_TIME = 650;
+const MINIMUM_LOADER_TIME = 700;
 
 export function NavigationLoader() {
-  const pathname = usePathname();
-  const searchParams =
-    useSearchParams();
+  const [
+    isLoading,
+    setIsLoading,
+  ] = useState(false);
 
-  const [isLoading, setIsLoading] =
-    useState(false);
-
-  const startedAtRef =
+  const timerRef =
     useRef<number | null>(null);
-
-  const hideTimerRef =
-    useRef<number | null>(null);
-
-  const showLoader = () => {
-    if (hideTimerRef.current) {
-      window.clearTimeout(
-        hideTimerRef.current
-      );
-
-      hideTimerRef.current = null;
-    }
-
-    startedAtRef.current =
-      Date.now();
-
-    setIsLoading(true);
-  };
-
-  const hideLoader = () => {
-    const startedAt =
-      startedAtRef.current;
-
-    /*
-     * Loader wasn't started by
-     * a navigation click.
-     */
-    if (!startedAt) {
-      setIsLoading(false);
-      return;
-    }
-
-    const elapsed =
-      Date.now() - startedAt;
-
-    const remaining =
-      Math.max(
-        MINIMUM_LOADER_TIME -
-          elapsed,
-        0
-      );
-
-    hideTimerRef.current =
-      window.setTimeout(
-        () => {
-          setIsLoading(false);
-
-          startedAtRef.current =
-            null;
-
-          hideTimerRef.current =
-            null;
-        },
-        remaining
-      );
-  };
-
-  /*
-   * Route navigation complete.
-   *
-   * Don't immediately hide.
-   * Respect minimum visible time.
-   */
-  useEffect(() => {
-    hideLoader();
-  }, [
-    pathname,
-    searchParams,
-  ]);
 
   useEffect(() => {
     const handleClick = (
       event: MouseEvent
     ) => {
+      /*
+       * Ignore modified clicks.
+       */
       if (
         event.ctrlKey ||
         event.metaKey ||
@@ -108,6 +35,9 @@ export function NavigationLoader() {
         return;
       }
 
+      /*
+       * Only left mouse click.
+       */
       if (event.button !== 0) {
         return;
       }
@@ -124,13 +54,12 @@ export function NavigationLoader() {
         return;
       }
 
+      /*
+       * New tab / downloads.
+       */
       if (
-        anchor.target === "_blank"
-      ) {
-        return;
-      }
-
-      if (
+        anchor.target ===
+          "_blank" ||
         anchor.hasAttribute(
           "download"
         )
@@ -147,6 +76,9 @@ export function NavigationLoader() {
         return;
       }
 
+      /*
+       * Ignore special links.
+       */
       if (
         href.startsWith(
           "mailto:"
@@ -173,24 +105,23 @@ export function NavigationLoader() {
         return;
       }
 
-      /*
-       * Don't show loader for
-       * external websites.
-       */
-      if (
-        destination.origin !==
-        window.location.origin
-      ) {
-        return;
-      }
-
       const current =
         new URL(
           window.location.href
         );
 
       /*
-       * Same exact page.
+       * External links.
+       */
+      if (
+        destination.origin !==
+        current.origin
+      ) {
+        return;
+      }
+
+      /*
+       * Exact same URL.
        */
       if (
         destination.href ===
@@ -200,26 +131,58 @@ export function NavigationLoader() {
       }
 
       /*
-       * Don't show fullscreen
-       * loader for same-page anchors.
+       * Same-page anchor links:
        *
-       * Example:
        * /#solar-prices
+       * /#featured-suppliers
+       *
+       * No fullscreen loader.
        */
-      const samePage =
+      const sameDocument =
         destination.pathname ===
           current.pathname &&
         destination.search ===
           current.search;
 
       if (
-        samePage &&
+        sameDocument &&
         destination.hash
       ) {
         return;
       }
 
-      showLoader();
+      /*
+       * Clear previous timer.
+       */
+      if (timerRef.current) {
+        window.clearTimeout(
+          timerRef.current
+        );
+      }
+
+      /*
+       * Show loader immediately.
+       */
+      setIsLoading(true);
+
+      /*
+       * Cosmetic minimum duration.
+       *
+       * We intentionally do not depend
+       * on usePathname/useSearchParams.
+       * This keeps RootLayout and
+       * /_not-found prerender safe.
+       */
+      timerRef.current =
+        window.setTimeout(
+          () => {
+            setIsLoading(false);
+
+            timerRef.current =
+              null;
+          },
+          MINIMUM_LOADER_TIME
+        );
     };
 
     document.addEventListener(
@@ -234,49 +197,10 @@ export function NavigationLoader() {
         handleClick,
         true
       );
-    };
-  }, []);
 
-  /*
-   * Absolute failsafe.
-   *
-   * If something goes wrong,
-   * loader cannot remain stuck.
-   */
-  useEffect(() => {
-    if (!isLoading) {
-      return;
-    }
-
-    const failsafe =
-      window.setTimeout(
-        () => {
-          setIsLoading(false);
-
-          startedAtRef.current =
-            null;
-        },
-        6000
-      );
-
-    return () => {
-      window.clearTimeout(
-        failsafe
-      );
-    };
-  }, [isLoading]);
-
-  /*
-   * Clean pending timer
-   * when component unmounts.
-   */
-  useEffect(() => {
-    return () => {
-      if (
-        hideTimerRef.current
-      ) {
+      if (timerRef.current) {
         window.clearTimeout(
-          hideTimerRef.current
+          timerRef.current
         );
       }
     };
@@ -308,6 +232,7 @@ export function NavigationLoader() {
         </div>
 
         <div className="sth-navigation-loader__brand">
+
           <span className="sth-navigation-loader__brand-orange">
             SOLAR
           </span>
@@ -315,6 +240,7 @@ export function NavigationLoader() {
           <span className="sth-navigation-loader__brand-purple">
             TRADE HUB
           </span>
+
         </div>
 
         <div className="sth-navigation-loader__progress">

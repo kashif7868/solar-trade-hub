@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { Suspense } from "react";
-
 import {
   Geist,
   Geist_Mono,
@@ -53,9 +51,7 @@ export default function RootLayout({
       >
         <Providers>
 
-          <Suspense fallback={null}>
-            <NavigationLoader />
-          </Suspense>
+          <NavigationLoader />
 
           <Header />
 
