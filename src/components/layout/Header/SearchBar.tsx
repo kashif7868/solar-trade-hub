@@ -1,23 +1,59 @@
 "use client";
 
-import { Search } from "lucide-react";
-import { useState } from "react";
+import { Search, X } from "lucide-react";
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 
 import "@/components/animations/css/header/search-bar.css";
 
 export function SearchBar() {
-  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const searchParams =
+    useSearchParams();
+
+  const currentSearch =
+    searchParams.get("search") ?? "";
+
+  const [query, setQuery] =
+    useState(currentSearch);
+
+  useEffect(() => {
+    setQuery(currentSearch);
+  }, [currentSearch]);
 
   const handleSubmit = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    const value = query.trim();
+    const value =
+      query.trim();
 
-    if (!value) return;
+    if (!value) {
+      router.push("/shop");
+      return;
+    }
 
-    console.log("Search:", value);
+    router.push(
+      `/shop?search=${encodeURIComponent(
+        value
+      )}`
+    );
+  };
+
+  const handleClear = () => {
+    setQuery("");
+
+    if (currentSearch) {
+      router.push("/shop");
+    }
   };
 
   return (
@@ -30,12 +66,28 @@ export function SearchBar() {
         type="search"
         value={query}
         onChange={(event) =>
-          setQuery(event.target.value)
+          setQuery(
+            event.target.value
+          )
         }
         placeholder="Search products, brands, categories..."
         aria-label="Search Solar Trade Hub"
         className="sth-search__input"
       />
+
+      {query && (
+        <button
+          type="button"
+          className="sth-search__clear"
+          aria-label="Clear search"
+          onClick={handleClear}
+        >
+          <X
+            size={15}
+            strokeWidth={1.7}
+          />
+        </button>
+      )}
 
       <button
         type="submit"
@@ -44,7 +96,7 @@ export function SearchBar() {
       >
         <Search
           size={16}
-          strokeWidth={1.8}
+          strokeWidth={1.7}
         />
       </button>
     </form>

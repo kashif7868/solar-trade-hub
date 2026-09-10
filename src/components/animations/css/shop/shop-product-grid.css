@@ -4,7 +4,6 @@
 
 .sth-shop-grid {
   width: 100%;
-
   margin-top: 14px;
 
   display: grid;
@@ -20,17 +19,12 @@
 
 
 /* ========================================
-   LIST VIEW LAYOUT
-
-   ProductCard ki visual styling yahan
-   redefine nahi hogi.
-
-   Sirf Shop list mode ka structural
-   layout control hoga.
+   LIST VIEW
    ======================================== */
 
 .sth-shop-grid--list {
-  grid-template-columns: 1fr;
+  grid-template-columns:
+    1fr;
 }
 
 .sth-shop-grid--list
@@ -76,7 +70,6 @@
 .sth-shop-grid--list
 .sth-product-card__price-row {
   margin-top: auto;
-
   padding-top: 12px;
 }
 
@@ -135,7 +128,6 @@
     var(--sth-gray-500);
 
   font-size: 9px;
-
   line-height: 1.5;
 }
 
@@ -410,7 +402,7 @@ button:disabled {
 
 
 /* ========================================
-   RESPONSIVE - DESKTOP
+   RESPONSIVE - MEDIUM DESKTOP
    ======================================== */
 
 @media (max-width: 1250px) {
@@ -431,9 +423,6 @@ button:disabled {
 
 /* ========================================
    RESPONSIVE - TABLET
-
-   Sidebar disappears around this point,
-   therefore three columns can fit again.
    ======================================== */
 
 @media (max-width: 1023px) {
@@ -443,6 +432,8 @@ button:disabled {
         3,
         minmax(0, 1fr)
       );
+
+    gap: 12px;
   }
 
   .sth-shop-grid--list {
@@ -498,7 +489,6 @@ button:disabled {
   .sth-shop-grid--list
   .sth-product-card__price-row {
     margin-top: 0;
-
     padding-top: 0;
   }
 
@@ -534,9 +524,31 @@ button:disabled {
 @media (max-width: 580px) {
   .sth-shop-grid {
     grid-template-columns:
-      1fr;
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
 
-    gap: 12px;
+    gap: 9px;
+  }
+
+  .sth-shop-grid--list {
+    grid-template-columns:
+      1fr;
+  }
+
+  .sth-shop-grid__skeleton {
+    min-height: 310px;
+  }
+
+  .sth-shop-grid__skeleton-image {
+    height: 145px;
+  }
+
+  .sth-shop-grid__skeleton-body {
+    padding: 10px;
+
+    gap: 7px;
   }
 
   .sth-shop-grid__footer {
@@ -547,6 +559,8 @@ button:disabled {
       column;
 
     gap: 10px;
+
+    margin-top: 14px;
   }
 
   .sth-shop-grid__pagination {
@@ -554,5 +568,36 @@ button:disabled {
 
     justify-content:
       flex-end;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 420px) {
+  .sth-shop-grid {
+    gap: 7px;
+  }
+
+  .sth-shop-grid__skeleton {
+    min-height: 290px;
+
+    border-radius: 12px;
+  }
+
+  .sth-shop-grid__skeleton-image {
+    height: 130px;
+  }
+
+  .sth-shop-grid__pagination {
+    justify-content:
+      center;
+  }
+
+  .sth-shop-grid__pagination button {
+    width: 31px;
+    height: 31px;
   }
 }

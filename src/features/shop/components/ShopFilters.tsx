@@ -4,9 +4,14 @@ import { useMemo } from "react";
 
 import {
   RotateCcw,
-  Search,
   Star,
 } from "lucide-react";
+
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 
 import { useProducts } from "@/hooks/useProducts";
 import { useShopStore } from "@/store/shopStore";
@@ -14,24 +19,27 @@ import { useShopStore } from "@/store/shopStore";
 import "@/components/animations/css/shop/shop-filters.css";
 
 export function ShopFilters() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const {
     data: products = [],
   } = useProducts();
 
   const {
-    search,
     category,
     brand,
     minPrice,
     maxPrice,
     minRating,
 
-    setSearch,
     setCategory,
     setBrand,
     setMinPrice,
     setMaxPrice,
     setMinRating,
+
     resetFilters,
   } = useShopStore();
 
@@ -65,27 +73,33 @@ export function ShopFilters() {
     [products]
   );
 
-  const categoryCounts = useMemo(() => {
-    return products.reduce<
-      Record<string, number>
-    >((counts, product) => {
-      counts[product.category] =
-        (counts[product.category] ?? 0) + 1;
+  const categoryCounts =
+    useMemo(() => {
+      return products.reduce<
+        Record<string, number>
+      >((counts, product) => {
+        counts[product.category] =
+          (counts[
+            product.category
+          ] ?? 0) + 1;
 
-      return counts;
-    }, {});
-  }, [products]);
+        return counts;
+      }, {});
+    }, [products]);
 
-  const brandCounts = useMemo(() => {
-    return products.reduce<
-      Record<string, number>
-    >((counts, product) => {
-      counts[product.brand] =
-        (counts[product.brand] ?? 0) + 1;
+  const brandCounts =
+    useMemo(() => {
+      return products.reduce<
+        Record<string, number>
+      >((counts, product) => {
+        counts[product.brand] =
+          (counts[
+            product.brand
+          ] ?? 0) + 1;
 
-      return counts;
-    }, {});
-  }, [products]);
+        return counts;
+      }, {});
+    }, [products]);
 
   const formatPrice = (
     value: number
@@ -94,17 +108,45 @@ export function ShopFilters() {
       "en-PK"
     ).format(value);
 
+  const handleResetFilters = () => {
+    resetFilters();
+
+    /*
+     * Important:
+     * Product search belongs to the
+     * main header, not sidebar filters.
+     *
+     * So Reset Filters should NOT remove
+     * the active ?search= query.
+     */
+    const params =
+      new URLSearchParams(
+        searchParams.toString()
+      );
+
+    const queryString =
+      params.toString();
+
+    router.replace(
+      queryString
+        ? `${pathname}?${queryString}`
+        : pathname,
+      {
+        scroll: false,
+      }
+    );
+  };
+
   const handleMinPriceChange = (
     value: number
   ) => {
-    const safeValue =
-      Math.max(
-        0,
-        Math.min(
-          value,
-          maxPrice
-        )
-      );
+    const safeValue = Math.max(
+      0,
+      Math.min(
+        value,
+        maxPrice
+      )
+    );
 
     setMinPrice(safeValue);
   };
@@ -112,20 +154,21 @@ export function ShopFilters() {
   const handleMaxPriceChange = (
     value: number
   ) => {
-    const safeValue =
-      Math.max(
-        minPrice,
-        Math.min(
-          value,
-          1000000
-        )
-      );
+    const safeValue = Math.max(
+      minPrice,
+      Math.min(
+        value,
+        1000000
+      )
+    );
 
     setMaxPrice(safeValue);
   };
 
   return (
     <div className="sth-shop-filters">
+
+      {/* HEADER */}
       <div className="sth-shop-filters__header">
         <div>
           <span className="sth-shop-filters__eyebrow">
@@ -140,7 +183,9 @@ export function ShopFilters() {
         <button
           type="button"
           className="sth-shop-filters__reset"
-          onClick={resetFilters}
+          onClick={
+            handleResetFilters
+          }
         >
           <RotateCcw
             size={13}
@@ -153,32 +198,7 @@ export function ShopFilters() {
         </button>
       </div>
 
-      <div className="sth-shop-filters__section">
-        <span className="sth-shop-filters__label">
-          Search Products
-        </span>
-
-        <label className="sth-shop-filters__search">
-          <Search
-            size={15}
-            strokeWidth={1.8}
-          />
-
-          <input
-            type="search"
-            placeholder="Search by name, brand, SKU..."
-            value={search}
-            onChange={(event) =>
-              setSearch(
-                event.target.value
-              )
-            }
-          />
-        </label>
-      </div>
-
-      <div className="sth-shop-filters__divider" />
-
+      {/* CATEGORIES */}
       <div className="sth-shop-filters__section">
         <span className="sth-shop-filters__label">
           Categories
@@ -228,7 +248,9 @@ export function ShopFilters() {
                 </span>
 
                 <span className="sth-shop-filters__count">
-                  {categoryCounts[item] ?? 0}
+                  {categoryCounts[
+                    item
+                  ] ?? 0}
                 </span>
               </button>
             )
@@ -238,6 +260,7 @@ export function ShopFilters() {
 
       <div className="sth-shop-filters__divider" />
 
+      {/* BRANDS */}
       <div className="sth-shop-filters__section">
         <span className="sth-shop-filters__label">
           Brands
@@ -287,7 +310,9 @@ export function ShopFilters() {
                 </span>
 
                 <span className="sth-shop-filters__count">
-                  {brandCounts[item] ?? 0}
+                  {brandCounts[
+                    item
+                  ] ?? 0}
                 </span>
               </button>
             )
@@ -297,6 +322,7 @@ export function ShopFilters() {
 
       <div className="sth-shop-filters__divider" />
 
+      {/* PRICE */}
       <div className="sth-shop-filters__section">
         <span className="sth-shop-filters__label">
           Price Range
@@ -362,17 +388,24 @@ export function ShopFilters() {
 
         <div className="sth-shop-filters__price-values">
           <span>
-            Rs. {formatPrice(minPrice)}
+            Rs.{" "}
+            {formatPrice(
+              minPrice
+            )}
           </span>
 
           <span>
-            Rs. {formatPrice(maxPrice)}
+            Rs.{" "}
+            {formatPrice(
+              maxPrice
+            )}
           </span>
         </div>
       </div>
 
       <div className="sth-shop-filters__divider" />
 
+      {/* RATING */}
       <div className="sth-shop-filters__section">
         <span className="sth-shop-filters__label">
           Minimum Rating
@@ -385,13 +418,15 @@ export function ShopFilters() {
                 key={rating}
                 type="button"
                 className={`sth-shop-filters__rating ${
-                  minRating === rating
+                  minRating ===
+                  rating
                     ? "sth-shop-filters__rating--active"
                     : ""
                 }`}
                 onClick={() =>
                   setMinRating(
-                    minRating === rating
+                    minRating ===
+                      rating
                       ? 0
                       : rating
                   )
@@ -403,13 +438,23 @@ export function ShopFilters() {
                   {Array.from({
                     length: 5,
                   }).map(
-                    (_, index) => (
+                    (
+                      _,
+                      index
+                    ) => (
                       <Star
-                        key={index}
-                        size={12}
-                        strokeWidth={1.4}
+                        key={
+                          index
+                        }
+                        size={
+                          12
+                        }
+                        strokeWidth={
+                          1.4
+                        }
                         fill={
-                          index < rating
+                          index <
+                          rating
                             ? "currentColor"
                             : "none"
                         }
@@ -419,7 +464,8 @@ export function ShopFilters() {
                 </span>
 
                 <span className="sth-shop-filters__rating-text">
-                  {rating}.0 & up
+                  {rating}.0
+                  & up
                 </span>
               </button>
             )

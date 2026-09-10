@@ -5,7 +5,14 @@ import {
   Grid2X2,
   List,
   SlidersHorizontal,
+  X,
 } from "lucide-react";
+
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 
 import { useShopStore } from "@/store/shopStore";
 
@@ -28,36 +35,87 @@ interface ShopToolbarProps {
 export function ShopToolbar({
   totalProducts,
 }: ShopToolbarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const {
+    search,
     sortBy,
     viewMode,
+    setSearch,
     setSortBy,
     setViewMode,
   } = useShopStore();
 
+  const activeSearch = search.trim();
+
+  const handleClearSearch = () => {
+    setSearch("");
+
+    const params =
+      new URLSearchParams(
+        searchParams.toString()
+      );
+
+    params.delete("search");
+
+    const queryString =
+      params.toString();
+
+    router.replace(
+      queryString
+        ? `${pathname}?${queryString}`
+        : pathname,
+      {
+        scroll: false,
+      }
+    );
+  };
+
   return (
     <div className="sth-shop-toolbar">
-      <div className="sth-shop-toolbar__summary">
-        <span className="sth-shop-toolbar__summary-icon">
-          <SlidersHorizontal
-            size={16}
-            strokeWidth={1.8}
-          />
-        </span>
 
+      {/* RESULT SUMMARY */}
+      <div className="sth-shop-toolbar__summary">
         <div className="sth-shop-toolbar__summary-copy">
           <strong>
             {totalProducts}{" "}
             {totalProducts === 1
               ? "Product"
               : "Products"}
-          </strong>
 
-          <span>
-            Showing the best solar products for you
-          </span>
+            {activeSearch && (
+              <>
+                {" "}
+                found for{" "}
+                <span className="sth-shop-toolbar__query">
+                  &ldquo;{activeSearch}&rdquo;
+                </span>
+              </>
+            )}
+          </strong>
         </div>
 
+        {activeSearch && (
+          <button
+            type="button"
+            className="sth-shop-toolbar__clear-search"
+            aria-label="Clear product search"
+            onClick={handleClearSearch}
+          >
+            <X
+              size={13}
+              strokeWidth={1.8}
+            />
+
+            <span>
+              Clear
+            </span>
+          </button>
+        )}
+
+        {/* MOBILE FILTER */}
         <Sheet>
           <SheetTrigger asChild>
             <button
@@ -93,8 +151,12 @@ export function ShopToolbar({
         </Sheet>
       </div>
 
+      {/* RIGHT CONTROLS */}
       <div className="sth-shop-toolbar__controls">
+
+        {/* GRID / LIST */}
         <div className="sth-shop-toolbar__view-switcher">
+
           <button
             type="button"
             aria-label="Grid view"
@@ -140,13 +202,16 @@ export function ShopToolbar({
               List
             </span>
           </button>
+
         </div>
 
+        {/* SORT */}
         <div className="sth-shop-toolbar__sort">
+
           <span className="sth-shop-toolbar__sort-label">
             <ArrowDownAZ
               size={14}
-              strokeWidth={1.8}
+              strokeWidth={1.7}
             />
 
             <span>
@@ -184,8 +249,11 @@ export function ShopToolbar({
               Newest
             </option>
           </select>
+
         </div>
+
       </div>
+
     </div>
   );
 }

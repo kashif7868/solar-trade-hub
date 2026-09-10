@@ -5,31 +5,51 @@
 .sth-header-actions {
   display: flex;
   align-items: center;
+
   gap: 3px;
+
   flex-shrink: 0;
 }
+
 
 /* ========================================
    ACTION
    ======================================== */
 
 .sth-header-action {
-  min-width: 58px;
-  padding: 2px 6px;
+  min-width: 56px;
+
+  padding:
+    2px 5px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   gap: 3px;
 
-  color: var(--sth-black);
+  color:
+    var(--sth-black);
+
   text-decoration: none;
+
+  border-radius: 10px;
+
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
 }
 
+.sth-header-action:hover {
+  background:
+    var(--sth-purple-light);
+}
+
+
 /* ========================================
-   ALL ICONS
+   ICON
    ======================================== */
 
 .sth-header-action__icon {
@@ -44,34 +64,71 @@
 
   flex-shrink: 0;
 
-  border: 1px solid #e7e9ec;
+  border:
+    1px solid
+    var(--sth-border);
+
   border-radius: 50%;
 
-  background: var(--sth-white);
+  background:
+    var(--sth-white);
 
-  /* all icons orange */
-  color: var(--sth-orange);
+  color:
+    var(--sth-orange);
+
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-header-action:hover
+.sth-header-action__icon {
+  border-color:
+    var(--sth-border-purple);
+
+  background:
+    var(--sth-white);
+
+  color:
+    var(--sth-purple);
+
+  transform:
+    translateY(-1px);
 }
 
 .sth-header-action__icon svg {
   width: 17px;
   height: 17px;
-  stroke-width: 1.8;
 }
+
 
 /* ========================================
    LABEL
    ======================================== */
 
 .sth-header-action__label {
-  color: var(--sth-black);
+  color:
+    var(--sth-black);
 
   font-size: 9px;
   font-weight: 650;
+
   line-height: 1;
 
   white-space: nowrap;
+
+  transition:
+    color 0.16s ease;
 }
+
+.sth-header-action:hover
+.sth-header-action__label {
+  color:
+    var(--sth-purple);
+}
+
 
 /* ========================================
    DIVIDER
@@ -81,15 +138,18 @@
   width: 1px;
   height: 32px;
 
-  margin: 0 2px;
+  margin:
+    0 2px;
 
   flex-shrink: 0;
 
-  background: #e5e7ea;
+  background:
+    var(--sth-gray-200);
 }
 
+
 /* ========================================
-   PURPLE COUNTER
+   COUNTER BADGE
    ======================================== */
 
 .sth-header-action__badge {
@@ -101,22 +161,35 @@
   min-width: 15px;
   height: 15px;
 
-  padding: 0 4px;
+  padding:
+    0 4px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 2px solid var(--sth-white);
+  border:
+    2px solid
+    var(--sth-white);
+
   border-radius: 999px;
 
-  background: var(--sth-purple);
-  color: var(--sth-white);
+  background:
+    var(--sth-purple);
+
+  color:
+    var(--sth-white);
 
   font-size: 7px;
   font-weight: 800;
+
   line-height: 1;
+
+  box-shadow:
+    0 2px 5px
+    rgba(91, 46, 255, 0.18);
 }
+
 
 /* ========================================
    RESPONSIVE
@@ -124,19 +197,23 @@
 
 @media (max-width: 1360px) {
   .sth-header-action {
-    min-width: 52px;
+    min-width: 50px;
+
     padding-left: 4px;
     padding-right: 4px;
   }
 
   .sth-header-action__label {
-    font-size: 8.5px;
+    font-size: 8.3px;
   }
 }
 
 @media (max-width: 1180px) {
   .sth-header-action {
     min-width: 36px;
+
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
   .sth-header-action__label {
@@ -145,5 +222,8 @@
 
   .sth-header-actions__divider {
     height: 26px;
+
+    margin:
+      0 1px;
   }
 }
