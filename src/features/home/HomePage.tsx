@@ -1,3 +1,5 @@
+import { ScrollReveal } from "@/components/common/ScrollReveal/ScrollReveal";
+
 import { FeaturedBrands } from "./components/FeaturedBrands";
 import { FeaturedSuppliers } from "./components/FeaturedSuppliers";
 import { HeroSection } from "./components/HeroSection";
@@ -15,16 +17,57 @@ export function HomePage() {
       <HeroSection />
 
       <div className="sth-home__marketplace-group">
-        <ShopByCategory />
-        <PopularProducts />
+        <ScrollReveal
+          variant="up"
+          duration={700}
+        >
+          <ShopByCategory />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="up"
+          delay={80}
+          duration={720}
+        >
+          <PopularProducts />
+        </ScrollReveal>
       </div>
 
       <div className="sth-home__trust-group">
-        <FeaturedSuppliers />
-        <WhySolarTradeHub />
-        <SolarPricesSection />
-        <FeaturedBrands />
-        <PromoBanners />
+        <ScrollReveal
+          variant="left"
+          duration={720}
+        >
+          <FeaturedSuppliers />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="right"
+          duration={720}
+        >
+          <WhySolarTradeHub />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="up"
+          duration={720}
+        >
+          <SolarPricesSection />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="scale"
+          duration={700}
+        >
+          <FeaturedBrands />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="up"
+          duration={720}
+        >
+          <PromoBanners />
+        </ScrollReveal>
       </div>
     </div>
   );

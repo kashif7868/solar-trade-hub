@@ -2,8 +2,8 @@
   "products": [
     {
       "id": 1,
-      "name": "Jinko Tiger Neo N-Type Solar Panel",
-      "slug": "jinko-tiger-neo-n-type-solar-panel",
+      "name": "Jinko Tiger Neo N-Type 585W Solar Panel",
+      "slug": "jinko-tiger-neo-n-type-585w-solar-panel",
       "sku": "M-JIN-585W-NT",
       "category": "Solar Panels",
       "brand": "Jinko Solar",
@@ -16,13 +16,13 @@
       "rating": 4.9,
       "reviewCount": 48,
       "badge": "Featured",
-      "image": "https://pngimg.com/uploads/solar_panel/solar_panel_PNG42.png",
-      "description": "High-efficiency N-Type solar panel designed for residential and commercial solar systems."
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSO5rtvvjz_u10U7jF-5lVFkjauSwnvgdjjEZjPqSEhw&s=10",
+      "description": "High-efficiency N-Type TOPCon solar panel designed for residential, commercial and industrial solar systems."
     },
     {
       "id": 2,
-      "name": "JA Solar DeepBlue N-Type Solar Panel",
-      "slug": "ja-solar-deepblue-n-type-solar-panel",
+      "name": "JA Solar DeepBlue N-Type 585W Solar Panel",
+      "slug": "ja-solar-deepblue-n-type-585w-solar-panel",
       "sku": "M-JAS-585W-NT",
       "category": "Solar Panels",
       "brand": "JA Solar",
@@ -35,13 +35,51 @@
       "rating": 4.8,
       "reviewCount": 32,
       "badge": "Popular",
-      "image": "https://pngimg.com/uploads/solar_panel/solar_panel_PNG42.png",
+      "image": "https://buysolar.pk/wp-content/uploads/2023/05/buy-ja-solar-550-watt.jpg",
       "description": "Reliable N-Type solar module with strong performance and high conversion efficiency."
     },
     {
       "id": 3,
+      "name": "LONGi Hi-MO 7 610W Bifacial Solar Panel",
+      "slug": "longi-hi-mo-7-610w-bifacial-solar-panel",
+      "sku": "M-LON-610W-BIF",
+      "category": "Solar Panels",
+      "brand": "LONGi",
+      "type": "Material",
+      "capacity": "610W",
+      "price": 31500,
+      "oldPrice": 33500,
+      "stock": 29,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 27,
+      "badge": "New",
+      "image": "https://enontraders.com/wp-content/uploads/2025/07/Longi-Himo-7-610W.jpg",
+      "description": "High-output bifacial solar module designed for commercial, industrial and utility-scale photovoltaic systems."
+    },
+    {
+      "id": 4,
+      "name": "Canadian Solar TOPHiKu6 585W N-Type Panel",
+      "slug": "canadian-solar-tophiku6-585w-n-type-panel",
+      "sku": "M-CAN-585W-NT",
+      "category": "Solar Panels",
+      "brand": "Canadian Solar",
+      "type": "Material",
+      "capacity": "585W",
+      "price": 30250,
+      "oldPrice": 32500,
+      "stock": 24,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 24,
+      "badge": "Premium",
+      "image": "https://res.cloudinary.com/sonix-solar-gmbh/e_make_transparent:1/q_auto,f_auto,h_600,w_600,c_pad/xlinkkkhkyfgz70yxxav",
+      "description": "Premium N-Type solar panel engineered for high efficiency, low degradation and dependable long-term output."
+    },
+    {
+      "id": 5,
       "name": "Solis 12kW Three Phase Hybrid Solar Inverter",
-      "slug": "solis-12kw-three-phase-hybrid-inverter",
+      "slug": "solis-12kw-three-phase-hybrid-solar-inverter",
       "sku": "I-SOL-12KW-HYB",
       "category": "Inverters",
       "brand": "Solis",
@@ -54,11 +92,11 @@
       "rating": 4.9,
       "reviewCount": 21,
       "badge": "Hot",
-      "image": "https://www.solisinverters.com/uploads/20230323/641c14cb1bfa5.png",
-      "description": "Three-phase hybrid inverter for modern solar and battery energy systems."
+      "image": "https://alladin.pk/cdn/shop/files/solis12kw_1_large.jpg?v=1772171035",
+      "description": "Three-phase hybrid inverter for modern solar generation, battery backup and intelligent energy management."
     },
     {
-      "id": 4,
+      "id": 6,
       "name": "GoodWe 10kW Smart Hybrid Inverter",
       "slug": "goodwe-10kw-smart-hybrid-inverter",
       "sku": "I-GOO-10KW-HYB",
@@ -73,11 +111,49 @@
       "rating": 4.7,
       "reviewCount": 18,
       "badge": "Featured",
-      "image": "https://www.goodwe.com/Ftp/EN/Downloads/User%20Manual/GW_ET_PLUS+_Series.png",
-      "description": "Smart hybrid inverter designed for efficient solar generation and battery integration."
+      "image": "https://www.damiasolar.com/10271-large_default/inversor-de-red-goodwe-trifasico-hibrido-gw10kw-et-16a.jpg",
+      "description": "Smart hybrid inverter designed for efficient solar generation, lithium battery integration and reliable backup."
     },
     {
-      "id": 5,
+      "id": 7,
+      "name": "Sungrow SH10RT 10kW Hybrid Inverter",
+      "slug": "sungrow-sh10rt-10kw-hybrid-inverter",
+      "sku": "I-SUN-10KW-HYB",
+      "category": "Inverters",
+      "brand": "Sungrow",
+      "type": "Equipment",
+      "capacity": "10kW",
+      "price": 475000,
+      "oldPrice": 499000,
+      "stock": 13,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 16,
+      "badge": "Premium",
+      "image": "https://www.solarfy.de/media/image/product/5309/lg/sungrow-sh10rt-10kw-hybrid-v112.png",
+      "description": "High-efficiency three-phase hybrid inverter with smart battery management and dependable backup support."
+    },
+    {
+      "id": 8,
+      "name": "Growatt SPH 10kW Three Phase Hybrid Inverter",
+      "slug": "growatt-sph-10kw-three-phase-hybrid-inverter",
+      "sku": "I-GRO-10KW-HYB",
+      "category": "Inverters",
+      "brand": "Growatt",
+      "type": "Equipment",
+      "capacity": "10kW",
+      "price": 429000,
+      "oldPrice": 455000,
+      "stock": 15,
+      "status": "In Stock",
+      "rating": 4.7,
+      "reviewCount": 15,
+      "badge": "Popular",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuQUgjacw3kF6_nSRxdFzZdWcIv4RvgKORneZSV-CKrg&s=10",
+      "description": "Smart hybrid inverter designed for solar production, energy storage and backup power applications."
+    },
+    {
+      "id": 9,
       "name": "KNOX 16kWh LiFePO4 Solar Battery",
       "slug": "knox-16kwh-lifepo4-solar-battery",
       "sku": "B-KNO-16KWH-LFP",
@@ -92,18 +168,18 @@
       "rating": 4.8,
       "reviewCount": 26,
       "badge": "Best Seller",
-      "image": "https://placehold.co/700x700/ffffff/5b2eff?text=KNOX+16kWh+Battery",
-      "description": "LiFePO4 battery storage solution for long-duration solar backup and hybrid systems."
+      "image": "https://kamalsolar.pk/cdn/shop/files/Powerwall3.025.6v100A_1066x.png?v=1762176444",
+      "description": "LiFePO4 battery storage solution designed for daily solar cycling, long-duration backup and hybrid energy systems."
     },
     {
-      "id": 6,
-      "name": "Huawei LUNA Smart Energy Storage Battery",
-      "slug": "huawei-luna-smart-energy-storage-battery",
-      "sku": "B-HUA-LUNA-ESS",
+      "id": 10,
+      "name": "Huawei LUNA2000 10kWh Energy Storage System",
+      "slug": "huawei-luna2000-10kwh-energy-storage-system",
+      "sku": "B-HUA-LUNA-10KWH",
       "category": "Batteries",
       "brand": "Huawei",
       "type": "Equipment",
-      "capacity": "14kWh",
+      "capacity": "10kWh",
       "price": 485000,
       "oldPrice": 510000,
       "stock": 7,
@@ -111,10 +187,87 @@
       "rating": 4.9,
       "reviewCount": 14,
       "badge": "Premium",
-      "image": "https://placehold.co/700x700/ffffff/ff4b1f?text=Huawei+LUNA+ESS",
-      "description": "Smart modular residential energy storage system for Huawei solar installations."
+      "image": "https://image.made-in-china.com/202f0j00mLJkwPiKedoD/Huawei-Energy-Storage-System-Huawei-Luna-2000-5kw-10kw-15kw-for-Home-LiFePO4-Solar-Storage-Battery.webp",
+      "description": "Smart modular lithium energy storage system for solar self-consumption, residential backup and energy management."
+    },
+    {
+      "id": 11,
+      "name": "Dyness PowerBrick 14.3kWh LiFePO4 Battery",
+      "slug": "dyness-powerbrick-14-3kwh-lifepo4-battery",
+      "sku": "B-DYN-14P3KWH-LFP",
+      "category": "Batteries",
+      "brand": "Dyness",
+      "type": "Equipment",
+      "capacity": "14.3kWh",
+      "price": 515000,
+      "oldPrice": 545000,
+      "stock": 11,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 12,
+      "badge": "New",
+      "image": "https://images.prom.ua/6532101256_akumulyator-dyness-powerbrick.jpg",
+      "description": "High-capacity LiFePO4 battery designed for scalable residential solar storage and dependable backup operation."
+    },
+    {
+      "id": 12,
+      "name": "Pylontech Force H2 Lithium Battery System",
+      "slug": "pylontech-force-h2-lithium-battery-system",
+      "sku": "B-PYL-FH2-ESS",
+      "category": "Batteries",
+      "brand": "Pylontech",
+      "type": "Equipment",
+      "capacity": "14.2kWh",
+      "price": 565000,
+      "oldPrice": 595000,
+      "stock": 8,
+      "status": "In Stock",
+      "rating": 4.8,
+      "reviewCount": 13,
+      "badge": "Premium",
+      "image": "https://www.offgridtec.com/media/4c/f5/49/1681798658/1-88-016805_3273f71a324d8c09.jpg?ts=1681798658",
+      "description": "Modular high-voltage lithium battery system developed for hybrid solar and residential energy-storage applications."
+    },
+    {
+      "id": 13,
+      "name": "Solar DC Protection Distribution Box",
+      "slug": "solar-dc-protection-distribution-box",
+      "sku": "A-STH-DCBOX",
+      "category": "Accessories",
+      "brand": "Solar Trade Hub",
+      "type": "Accessory",
+      "capacity": "1000V DC",
+      "price": 36500,
+      "oldPrice": 39000,
+      "stock": 31,
+      "status": "In Stock",
+      "rating": 4.6,
+      "reviewCount": 11,
+      "badge": "Essential",
+      "image": "https://cdn2.zohoecommerce.com/product-images/pro-shot-48b3cd3e-7a1b-4a2b-8398-ed006c380ced.png/1451193000006104128/800x800?storefront_domain=www.daystarsolutions.in",
+      "description": "DC protection distribution box designed for photovoltaic circuit protection, isolation and safer solar installations."
+    },
+    {
+      "id": 14,
+      "name": "Premium Solar DC Cable 6mm²",
+      "slug": "premium-solar-dc-cable-6mm",
+      "sku": "A-SOL-6MM-DC",
+      "category": "Accessories",
+      "brand": "Solar Cable",
+      "type": "Accessory",
+      "capacity": "6mm²",
+      "price": 29500,
+      "oldPrice": 31500,
+      "stock": 75,
+      "status": "In Stock",
+      "rating": 4.7,
+      "reviewCount": 19,
+      "badge": "Popular",
+      "image": "https://media.diy.com/is/image/KingfisherDigital/solar-panel-black-6mm-pv-cable-dc-rated-insulated-wire-25-meters-coil-~5061006934602_01c_MP?$MOB_PREV$=&$height=768&$width=768",
+      "description": "UV-resistant 6mm² photovoltaic DC cable engineered for safe and durable solar power installations."
     }
   ],
+
   "categories": [
     {
       "id": 1,
@@ -137,6 +290,7 @@
       "slug": "accessories"
     }
   ],
+
   "brands": [
     {
       "id": 1,
@@ -150,23 +304,63 @@
     },
     {
       "id": 3,
+      "name": "LONGi",
+      "slug": "longi"
+    },
+    {
+      "id": 4,
+      "name": "Canadian Solar",
+      "slug": "canadian-solar"
+    },
+    {
+      "id": 5,
       "name": "Solis",
       "slug": "solis"
     },
     {
-      "id": 4,
+      "id": 6,
       "name": "GoodWe",
       "slug": "goodwe"
     },
     {
-      "id": 5,
+      "id": 7,
+      "name": "Sungrow",
+      "slug": "sungrow"
+    },
+    {
+      "id": 8,
+      "name": "Growatt",
+      "slug": "growatt"
+    },
+    {
+      "id": 9,
       "name": "KNOX",
       "slug": "knox"
     },
     {
-      "id": 6,
+      "id": 10,
       "name": "Huawei",
       "slug": "huawei"
+    },
+    {
+      "id": 11,
+      "name": "Dyness",
+      "slug": "dyness"
+    },
+    {
+      "id": 12,
+      "name": "Pylontech",
+      "slug": "pylontech"
+    },
+    {
+      "id": 13,
+      "name": "Solar Trade Hub",
+      "slug": "solar-trade-hub"
+    },
+    {
+      "id": 14,
+      "name": "Solar Cable",
+      "slug": "solar-cable"
     }
   ]
 }
