@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,8 +29,12 @@ export function HeaderMain() {
 
         <div className="sth-header-main__search-area">
           <CategoryDropdown />
-          <SearchBar />
+
+          <Suspense fallback={null}>
+            <SearchBar />
+          </Suspense>
         </div>
+
         <div className="sth-header-main__actions">
           <HeaderActions />
         </div>
