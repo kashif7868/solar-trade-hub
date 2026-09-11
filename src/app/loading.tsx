@@ -32,7 +32,7 @@ export default function Loading() {
         </div>
 
         <p className="sth-global-loader__text">
-          Loading marketplace...
+          Loading Solar Trade Hub...
         </p>
       </div>
     </div>

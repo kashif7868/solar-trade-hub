@@ -11,10 +11,6 @@ export const footerCompanyLinks = [
     label: "Careers",
     href: "/careers",
   },
-  {
-    label: "News & Guides",
-    href: "/news",
-  },
 ];
 
 export const footerMarketplaceLinks = [
@@ -24,7 +20,7 @@ export const footerMarketplaceLinks = [
   },
   {
     label: "Suppliers",
-    href: "/suppliers",
+    href: "/#featured-suppliers",
   },
   {
     label: "Installers",
@@ -32,42 +28,38 @@ export const footerMarketplaceLinks = [
   },
   {
     label: "Solar Prices",
-    href: "/solar-prices",
+    href: "/#solar-prices",
   },
   {
     label: "Solar Tenders",
     href: "/tenders",
-  },
-  {
-    label: "Get Solar Quote",
-    href: "/get-quote",
   },
 ];
 
 export const footerCategoryLinks = [
   {
     label: "Solar Panels",
-    href: "/shop/solar-panels",
+    href: "/category/solar-panels",
   },
   {
     label: "On-Grid Inverters",
-    href: "/shop/on-grid-inverters",
+    href: "/category/hybrid-inverters",
   },
   {
     label: "Hybrid Inverters",
-    href: "/shop/hybrid-inverters",
+    href: "/category/hybrid-inverters",
   },
   {
     label: "Lithium Batteries",
-    href: "/shop/lithium-batteries",
+    href: "/category/batteries-ess",
   },
   {
     label: "Energy Storage",
-    href: "/shop/energy-storage-systems",
+    href: "/category/batteries-ess",
   },
   {
     label: "Solar Accessories",
-    href: "/shop/accessories",
+    href: "/category/accessories",
   },
 ];
 
