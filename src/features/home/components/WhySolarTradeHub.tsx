@@ -84,8 +84,8 @@ const processSteps = [
   {
     number: "04",
     icon: Zap,
-    label: "Get Quote",
-    description: "Request pricing",
+    label: "Decide",
+    description: "Choose the right option",
   },
   {
     number: "05",
@@ -128,15 +128,11 @@ export function WhySolarTradeHub() {
                     className={`sth-why__benefit sth-why__benefit--${item.variant}`}
                   >
                     <span className="sth-why__benefit-icon">
-                      <Icon
-                        size={17}
-                        strokeWidth={1.8}
-                      />
+                      <Icon size={17} strokeWidth={1.8} />
                     </span>
 
                     <div className="sth-why__benefit-content">
                       <h3>{item.title}</h3>
-
                       <p>{item.description}</p>
                     </div>
                   </article>
@@ -163,9 +159,7 @@ export function WhySolarTradeHub() {
                   Video Guide
                 </span>
 
-                <h3>
-                  Understand the System Before You Invest
-                </h3>
+                <h3>Understand the System Before You Invest</h3>
 
                 <p>
                   Learn how to evaluate solar panels, inverters, batteries,
@@ -173,16 +167,10 @@ export function WhySolarTradeHub() {
                 </p>
               </div>
 
-              <Link
-                href="/shop"
-                className="sth-why__tutorial-link"
-              >
+              <Link href="/shop" className="sth-why__tutorial-link">
                 <span>Explore Products</span>
 
-                <ArrowRight
-                  size={15}
-                  strokeWidth={1.8}
-                />
+                <ArrowRight size={15} strokeWidth={1.8} />
               </Link>
             </div>
           </article>
@@ -201,8 +189,8 @@ export function WhySolarTradeHub() {
             </h3>
 
             <p>
-              A simple path from product discovery to a verified
-              purchase decision.
+              A simple path from product discovery to a verified purchase
+              decision.
             </p>
           </div>
 
@@ -211,31 +199,20 @@ export function WhySolarTradeHub() {
               const Icon = step.icon;
 
               return (
-                <div
-                  key={step.number}
-                  className="sth-why__step"
-                >
+                <div key={step.number} className="sth-why__step">
                   <div className="sth-why__step-top">
                     <span className="sth-why__step-icon">
-                      <Icon
-                        size={18}
-                        strokeWidth={1.8}
-                      />
+                      <Icon size={18} strokeWidth={1.8} />
                     </span>
 
                     {index !== processSteps.length - 1 && (
                       <span className="sth-why__step-line">
-                        <ArrowRight
-                          size={13}
-                          strokeWidth={1.7}
-                        />
+                        <ArrowRight size={13} strokeWidth={1.7} />
                       </span>
                     )}
                   </div>
 
-                  <span className="sth-why__step-number">
-                    {step.number}
-                  </span>
+                  <span className="sth-why__step-number">{step.number}</span>
 
                   <strong>{step.label}</strong>
 
@@ -247,16 +224,10 @@ export function WhySolarTradeHub() {
             })}
           </div>
 
-          <Link
-            href="/shop"
-            className="sth-why__process-link"
-          >
+          <Link href="/shop" className="sth-why__process-link">
             <span>Start Exploring</span>
 
-            <ArrowRight
-              size={15}
-              strokeWidth={1.8}
-            />
+            <ArrowRight size={15} strokeWidth={1.8} />
           </Link>
         </div>
 
@@ -275,53 +246,35 @@ export function WhySolarTradeHub() {
             </h3>
 
             <p>
-              Get support with product selection, compatibility
-              and supplier evaluation.
+              Get support with product selection, compatibility and supplier
+              evaluation.
             </p>
           </div>
 
-          <Link
-            href="/get-quote"
-            className="sth-why__footer-cta"
-          >
-            <span>Get Solar Quote</span>
+          <Link href="/contact" className="sth-why__footer-cta">
+            <span>Contact Support</span>
 
-            <ArrowRight
-              size={15}
-              strokeWidth={1.8}
-            />
+            <ArrowRight size={15} strokeWidth={1.8} />
           </Link>
 
           <div className="sth-why__footer-features">
             <span>
-              <UsersRound
-                size={14}
-                strokeWidth={1.8}
-              />
+              <UsersRound size={14} strokeWidth={1.8} />
               People
             </span>
 
             <span>
-              <PackageCheck
-                size={14}
-                strokeWidth={1.8}
-              />
+              <PackageCheck size={14} strokeWidth={1.8} />
               Products
             </span>
 
             <span>
-              <BadgeCheck
-                size={14}
-                strokeWidth={1.8}
-              />
+              <BadgeCheck size={14} strokeWidth={1.8} />
               Partnerships
             </span>
 
             <span>
-              <BatteryCharging
-                size={14}
-                strokeWidth={1.8}
-              />
+              <BatteryCharging size={14} strokeWidth={1.8} />
               Cleaner Pakistan
             </span>
           </div>

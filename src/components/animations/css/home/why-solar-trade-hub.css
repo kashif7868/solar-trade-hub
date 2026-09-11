@@ -354,7 +354,7 @@
 .sth-why__steps {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
 }
 
@@ -414,7 +414,7 @@
 
 .sth-why__step-number {
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   color: #9d82ff;
   font-size: 14px;
   font-weight: 850;
@@ -426,14 +426,16 @@
   color: var(--sth-black);
   font-size: 10px;
   font-weight: 800;
+  line-height: 1.25;
 }
 
 .sth-why__step-description {
   display: block;
-  margin-top: 3px;
+  max-width: 105px;
+  margin-top: 4px;
   color: #777f8b;
   font-size: 8px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .sth-why__process-link {
@@ -469,7 +471,7 @@
   position: relative;
   margin-top: 16px;
   min-height: 160px;
-  padding: 30px 320px 30px 32px;
+  padding: 30px 345px 30px 32px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -544,12 +546,14 @@
   right: 198px;
   top: 50%;
   transform: translateY(-50%);
+  min-width: 132px;
   min-height: 42px;
-  padding: 0 18px;
+  padding: 0 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  white-space: nowrap;
   border-radius: 999px;
   background: #ffffff;
   color: var(--sth-purple);
@@ -558,10 +562,12 @@
   text-decoration: none;
   transition:
     box-shadow 0.16s ease,
-    transform 0.16s ease;
+    transform 0.16s ease,
+    color 0.16s ease;
 }
 
 .sth-why__footer-cta:hover {
+  color: var(--sth-orange);
   transform: translateY(calc(-50% - 1px));
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
 }
@@ -610,7 +616,7 @@
   }
 
   .sth-why__footer {
-    padding-right: 245px;
+    padding-right: 220px;
   }
 
   .sth-why__footer-cta {
@@ -700,6 +706,10 @@
 
   .sth-why__step-line {
     display: none;
+  }
+
+  .sth-why__step-description {
+    max-width: 100%;
   }
 
   .sth-why__footer {
