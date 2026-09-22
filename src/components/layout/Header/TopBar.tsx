@@ -17,50 +17,58 @@ import {
 
 import "@/components/animations/css/header/topbar.css";
 
+/* ========================================
+   SOCIAL LINKS
+======================================== */
+
 const socialLinks = [
   {
     label: "WhatsApp",
-    href: "https://wa.me/923001234567",
+    href: "https://wa.me/923111163264",
     icon: FaWhatsapp,
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://facebook.com/zoraysinc",
     icon: FaFacebookF,
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://instagram.com/zoraysinc",
     icon: FaInstagram,
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/showcase/zorays'%E2%80%8B-careers/",
     icon: FaLinkedinIn,
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://youtube.com/zorays",
     icon: FaYoutube,
   },
 ];
+
+/* ========================================
+   TOP BAR
+======================================== */
 
 export function TopBar() {
   return (
     <div className="sth-topbar">
       <div className="sth-topbar__container">
+        {/* SOCIAL LINKS */}
         <div className="sth-topbar__socials">
           {socialLinks.map((item) => {
             const Icon = item.icon;
-            const isExternal = item.href.startsWith("http");
 
             return (
               <Link
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="sth-topbar__social-link"
               >
                 <Icon />
@@ -69,9 +77,13 @@ export function TopBar() {
           })}
         </div>
 
+        {/* TRUST MESSAGE */}
         <div className="sth-topbar__trust">
           <div className="sth-topbar__trust-item">
-            <ShieldCheck size={14} strokeWidth={1.9} />
+            <ShieldCheck
+              size={14}
+              strokeWidth={1.9}
+            />
 
             <span>
               Pakistan&apos;s Trusted Solar Energy Partner
@@ -81,7 +93,10 @@ export function TopBar() {
           <span className="sth-topbar__divider" />
 
           <div className="sth-topbar__trust-item">
-            <Star size={14} strokeWidth={1.9} />
+            <Star
+              size={14}
+              strokeWidth={1.9}
+            />
 
             <span>
               10+ Years of Excellence
@@ -89,28 +104,35 @@ export function TopBar() {
           </div>
         </div>
 
+        {/* CONTACT */}
         <div className="sth-topbar__contact">
           <a
-            href="tel:+923001234567"
+            href="tel:+923111163264"
             className="sth-topbar__contact-link"
           >
-            <Phone size={14} strokeWidth={1.9} />
+            <Phone
+              size={14}
+              strokeWidth={1.9}
+            />
 
             <span>
-              +92 300 1234567
+              +92 311 1163264
             </span>
           </a>
 
           <span className="sth-topbar__divider" />
 
           <a
-            href="mailto:info@solartradehub.pk"
+            href="mailto:sales@solartradehub.co"
             className="sth-topbar__contact-link"
           >
-            <Mail size={14} strokeWidth={1.9} />
+            <Mail
+              size={14}
+              strokeWidth={1.9}
+            />
 
             <span>
-              info@solartradehub.pk
+              sales@solartradehub.co
             </span>
           </a>
         </div>

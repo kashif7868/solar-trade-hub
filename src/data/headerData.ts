@@ -11,7 +11,7 @@ export type CategoryNavItem = {
 
 /* ========================================
    TOP BAR
-   ======================================== */
+======================================== */
 
 export const topBarLinks: HeaderNavItem[] = [
   {
@@ -30,7 +30,7 @@ export const topBarLinks: HeaderNavItem[] = [
 
 /* ========================================
    MAIN NAVIGATION
-   ======================================== */
+======================================== */
 
 export const mainNavigation: HeaderNavItem[] = [
   {
@@ -78,7 +78,7 @@ export const mainNavigation: HeaderNavItem[] = [
 
 /* ========================================
    CATEGORY DROPDOWN
-   ======================================== */
+======================================== */
 
 export const categoryNavigation: CategoryNavItem[] = [
   {
@@ -108,9 +108,33 @@ export const categoryNavigation: CategoryNavItem[] = [
 ];
 
 /* ========================================
-   HEADER CONTACT
-   ======================================== */
+   CONTACT INFORMATION
+======================================== */
 
 export const headerContact = {
-  phone: "+92 300 0000000",
+  mobile: "+92 311 1163264",
+
+  telephone: [
+    "042 302020320",
+    "042 32020320",
+  ],
+
+  email: "sales@solartradehub.co",
+};
+
+/* ========================================
+   SOCIAL MEDIA
+======================================== */
+
+export const socialLinks = {
+  facebook: "https://facebook.com/zoraysinc",
+
+  linkedin:
+    "https://www.linkedin.com/showcase/zorays'%E2%80%8B-careers/",
+
+  instagram:
+    "https://instagram.com/zoraysinc",
+
+  youtube:
+    "https://youtube.com/zorays",
 };

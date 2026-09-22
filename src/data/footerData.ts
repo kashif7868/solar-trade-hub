@@ -90,27 +90,46 @@ export const footerSupportLinks = [
   },
 ];
 
+/* ========================================
+   CONTACT
+======================================== */
+
 export const footerContact = {
-  phone: "+92 300 0000000",
-  email: "info@solartradehub.com",
+telephone: [
+  {
+    label: "042 302020320",
+    href: "tel:+9242302020320",
+  },
+  {
+    label: "042 32020320",
+    href: "tel:+924232020320",
+  },
+],
+
+  email: "sales@solartradehub.co",
+
   address: "Pakistan",
 };
+
+/* ========================================
+   SOCIAL MEDIA
+======================================== */
 
 export const footerSocialLinks = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://facebook.com/zoraysinc",
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/showcase/zorays'%E2%80%8B-careers/",
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://instagram.com/zoraysinc",
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://youtube.com/zorays",
   },
 ];

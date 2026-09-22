@@ -31,6 +31,8 @@ const socialIcons = {
 export function FooterContact() {
   return (
     <div className="sth-footer-contact">
+      {/* LOGO */}
+
       <Link
         href="/"
         aria-label="Solar Trade Hub Home"
@@ -45,31 +47,60 @@ export function FooterContact() {
         />
       </Link>
 
+      {/* DESCRIPTION */}
+
       <p className="sth-footer-contact__description">
         Pakistan&apos;s solar marketplace for products, suppliers,
         installers, pricing insights and renewable energy solutions.
       </p>
 
+      {/* CONTACT INFORMATION */}
+
       <div className="sth-footer-contact__list">
-        <a
-          href={`tel:${footerContact.phone.replace(/\s+/g, "")}`}
-          className="sth-footer-contact__item"
-        >
+        {/* TELEPHONE */}
+
+        <div className="sth-footer-contact__item">
           <span className="sth-footer-contact__icon">
-            <Phone size={15} strokeWidth={1.8} />
+            <Phone
+              size={15}
+              strokeWidth={1.8}
+            />
           </span>
 
-          <span className="sth-footer-contact__text">
-            {footerContact.phone}
-          </span>
-        </a>
+          <div className="sth-footer-contact__text">
+            {footerContact.telephone.map(
+              (telephone, index) => (
+                <span key={telephone.href}>
+                  {index > 0 && (
+                    <span aria-hidden="true">
+                      {" | "}
+                    </span>
+                  )}
+
+                  <a
+                    href={telephone.href}
+                    aria-label={`Call ${telephone.label}`}
+                  >
+                    {telephone.label}
+                  </a>
+                </span>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* EMAIL */}
 
         <a
           href={`mailto:${footerContact.email}`}
           className="sth-footer-contact__item"
+          aria-label={`Email ${footerContact.email}`}
         >
           <span className="sth-footer-contact__icon">
-            <Mail size={15} strokeWidth={1.8} />
+            <Mail
+              size={15}
+              strokeWidth={1.8}
+            />
           </span>
 
           <span className="sth-footer-contact__text">
@@ -77,9 +108,14 @@ export function FooterContact() {
           </span>
         </a>
 
+        {/* ADDRESS */}
+
         <div className="sth-footer-contact__item">
           <span className="sth-footer-contact__icon">
-            <MapPin size={15} strokeWidth={1.8} />
+            <MapPin
+              size={15}
+              strokeWidth={1.8}
+            />
           </span>
 
           <span className="sth-footer-contact__text">
@@ -87,6 +123,8 @@ export function FooterContact() {
           </span>
         </div>
       </div>
+
+      {/* SOCIAL MEDIA */}
 
       <div className="sth-footer-contact__socials">
         {footerSocialLinks.map((item) => {
@@ -99,20 +137,13 @@ export function FooterContact() {
             return null;
           }
 
-          const external =
-            item.href.startsWith("http");
-
           return (
             <Link
               key={item.label}
               href={item.href}
               aria-label={item.label}
-              target={external ? "_blank" : undefined}
-              rel={
-                external
-                  ? "noopener noreferrer"
-                  : undefined
-              }
+              target="_blank"
+              rel="noopener noreferrer"
               className="sth-footer-contact__social"
             >
               <Icon />
