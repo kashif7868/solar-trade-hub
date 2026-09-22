@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import Script from "next/script";
-
 import {
   Geist,
   Geist_Mono,
@@ -23,14 +21,15 @@ import "./globals.css";
    FONTS
 ========================================================= */
 
-const geistSans = Geist({
-  variable:
-    "--font-geist-sans",
+const geistSans =
+  Geist({
+    variable:
+      "--font-geist-sans",
 
-  subsets: [
-    "latin",
-  ],
-});
+    subsets: [
+      "latin",
+    ],
+  });
 
 const geistMono =
   Geist_Mono({
@@ -46,19 +45,34 @@ const geistMono =
    METADATA
 ========================================================= */
 
-export const metadata: Metadata =
-  {
-    title: {
-      default:
-        "Solar Trade Hub",
+export const metadata: Metadata = {
+  title: {
+    default:
+      "Solar Trade Hub",
 
-      template:
-        "%s | Solar Trade Hub",
-    },
+    template:
+      "%s | Solar Trade Hub",
+  },
 
-    description:
-      "Pakistan's marketplace for solar products, suppliers, installers, pricing insights, and renewable energy solutions.",
-  };
+  description:
+    "Pakistan's marketplace for solar products, suppliers, installers, pricing insights, and renewable energy solutions.",
+
+  /*
+   * Google AdSense account verification.
+   *
+   * Generates:
+   *
+   * <meta
+   *   name="google-adsense-account"
+   *   content="ca-pub-4990748076053357"
+   * />
+   */
+
+  other: {
+    "google-adsense-account":
+      "ca-pub-4990748076053357",
+  },
+};
 
 /* =========================================================
    ROOT LAYOUT
@@ -81,18 +95,14 @@ export default function RootLayout({
 
             Global AdSense loader.
 
-            Loaded once for the complete public website.
-
-            Publisher:
-            ca-pub-4990748076053357
+            This script is included in the generated HTML
+            <head>, including static `out/` builds.
         ================================================= */}
 
-        <Script
-          id="google-adsense"
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4990748076053357"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
         />
       </head>
 
