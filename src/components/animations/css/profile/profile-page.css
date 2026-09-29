@@ -1,0 +1,218 @@
+/* ========================================
+   PROFILE PAGE
+   ======================================== */
+
+.sth-profile {
+  min-height: 75vh;
+  padding: 22px 0 64px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fbfbfd 48%,
+      #f8f9fc 100%
+    );
+}
+
+.sth-profile__container {
+  width: min(1440px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ========================================
+   BREADCRUMB
+   ======================================== */
+
+.sth-profile__breadcrumb {
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #667085;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sth-profile__breadcrumb a {
+  color: #344054;
+
+  text-decoration: none;
+
+  transition: color 0.16s ease;
+}
+
+.sth-profile__breadcrumb a:hover {
+  color: var(--sth-purple);
+}
+
+.sth-profile__breadcrumb svg {
+  flex-shrink: 0;
+
+  color: #98a2b3;
+}
+
+.sth-profile__breadcrumb span {
+  color: #101828;
+
+  font-weight: 750;
+}
+
+/* ========================================
+   MAIN LAYOUT
+   ======================================== */
+
+.sth-profile__layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    360px;
+
+  align-items: start;
+
+  gap: 20px;
+}
+
+.sth-profile__main {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* ========================================
+   LOADING
+   ======================================== */
+
+.sth-profile__loading {
+  min-height: 440px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  color: #667085;
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.sth-profile__loading-spinner {
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid #ece9ff;
+  border-top-color: var(--sth-purple);
+  border-radius: 50%;
+
+  animation:
+    sth-profile-spin 0.75s linear infinite;
+}
+
+@keyframes sth-profile-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   DESKTOP / TABLET
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .sth-profile__layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      320px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .sth-profile__container {
+    width: min(
+      100% - 32px,
+      1440px
+    );
+  }
+
+  .sth-profile__layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      290px;
+
+    gap: 16px;
+  }
+
+  .sth-profile__main {
+    gap: 16px;
+  }
+}
+
+/* ========================================
+   STACKED LAYOUT
+   ======================================== */
+
+@media (max-width: 850px) {
+  .sth-profile__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sth-profile__main {
+    order: 2;
+  }
+
+  .sth-account-menu {
+    order: 1;
+  }
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .sth-profile {
+    padding: 14px 0 92px;
+  }
+
+  .sth-profile__container {
+    width: calc(100% - 20px);
+  }
+
+  .sth-profile__breadcrumb {
+    margin-bottom: 11px;
+
+    gap: 5px;
+
+    font-size: 10px;
+  }
+
+  .sth-profile__layout {
+    gap: 13px;
+  }
+
+  .sth-profile__main {
+    gap: 13px;
+  }
+
+  .sth-profile__loading {
+    min-height: 340px;
+
+    font-size: 10px;
+  }
+
+  .sth-profile__loading-spinner {
+    width: 27px;
+    height: 27px;
+  }
+}

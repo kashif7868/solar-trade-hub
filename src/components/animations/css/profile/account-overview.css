@@ -1,0 +1,373 @@
+/* ========================================
+   ACCOUNT OVERVIEW
+   ======================================== */
+
+.sth-account-overview {
+  padding: 20px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 28px rgba(16, 24, 40, 0.045);
+}
+
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.sth-account-overview__header {
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sth-account-overview__header-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(81, 58, 255, 0.08);
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f5f2ff,
+      #eeeaff
+    );
+
+  color: var(--sth-purple);
+}
+
+.sth-account-overview__header h2 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 16px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.sth-account-overview__header p {
+  margin: 3px 0 0;
+
+  color: #667085;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+
+/* ========================================
+   GRID
+   ======================================== */
+
+.sth-account-overview__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   CARD
+   ======================================== */
+
+.sth-account-overview__item {
+  position: relative;
+
+  min-width: 0;
+  min-height: 96px;
+
+  padding: 13px 14px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  overflow: hidden;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+
+/* ========================================
+   CARD COLORS
+   ======================================== */
+
+.sth-account-overview__item--orders {
+  border-color:
+    rgba(81, 58, 255, 0.07);
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf9ff 0%,
+      #f0edff 100%
+    );
+}
+
+.sth-account-overview__item--wishlist {
+  border-color:
+    rgba(255, 75, 31, 0.07);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf8 0%,
+      #fff0e9 100%
+    );
+}
+
+.sth-account-overview__item--coupons {
+  border-color:
+    rgba(0, 159, 92, 0.07);
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fffb 0%,
+      #e9f9ef 100%
+    );
+}
+
+.sth-account-overview__item:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 22px rgba(16, 24, 40, 0.07);
+}
+
+.sth-account-overview__item--orders:hover {
+  border-color:
+    rgba(81, 58, 255, 0.18);
+}
+
+.sth-account-overview__item--wishlist:hover {
+  border-color:
+    rgba(255, 75, 31, 0.18);
+}
+
+.sth-account-overview__item--coupons:hover {
+  border-color:
+    rgba(0, 159, 92, 0.18);
+}
+
+
+/* ========================================
+   ICON
+   ======================================== */
+
+.sth-account-overview__icon {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    rgba(81, 58, 255, 0.09);
+
+  color: var(--sth-purple);
+}
+
+.sth-account-overview__icon--orange {
+  background:
+    rgba(255, 75, 31, 0.09);
+
+  color: var(--sth-orange);
+}
+
+.sth-account-overview__icon--green {
+  background:
+    rgba(0, 159, 92, 0.1);
+
+  color: #009f5c;
+}
+
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.sth-account-overview__content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sth-account-overview__value {
+  color: #101828;
+
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+.sth-account-overview__label {
+  margin-top: 3px;
+
+  color: #475467;
+
+  font-size: 9px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+
+/* ========================================
+   CARD ACTION
+   ======================================== */
+
+.sth-account-overview__action {
+  margin-top: 9px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  color: var(--sth-purple);
+
+  font-size: 8px;
+  font-weight: 750;
+  line-height: 1;
+}
+
+.sth-account-overview__item--wishlist
+.sth-account-overview__action {
+  color: var(--sth-orange);
+}
+
+.sth-account-overview__item--coupons
+.sth-account-overview__action {
+  color: #009f5c;
+}
+
+.sth-account-overview__action svg {
+  transition:
+    transform 0.16s ease;
+}
+
+.sth-account-overview__item:hover
+.sth-account-overview__action svg {
+  transform: translateX(2px);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1050px) {
+  .sth-account-overview {
+    padding: 18px;
+  }
+
+  .sth-account-overview__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .sth-account-overview__item:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .sth-account-overview {
+    padding: 15px;
+
+    border-radius: 14px;
+  }
+
+  .sth-account-overview__header {
+    margin-bottom: 13px;
+
+    gap: 9px;
+  }
+
+  .sth-account-overview__header-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+
+    border-radius: 10px;
+  }
+
+  .sth-account-overview__header h2 {
+    font-size: 14px;
+  }
+
+  .sth-account-overview__header p {
+    font-size: 9px;
+  }
+
+  .sth-account-overview__grid {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+  }
+
+  .sth-account-overview__item,
+  .sth-account-overview__item:last-child {
+    min-height: 88px;
+
+    padding: 12px;
+
+    grid-column: auto;
+
+    border-radius: 11px;
+  }
+
+  .sth-account-overview__icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .sth-account-overview__value {
+    font-size: 18px;
+  }
+
+  .sth-account-overview__action {
+    margin-top: 7px;
+  }
+}

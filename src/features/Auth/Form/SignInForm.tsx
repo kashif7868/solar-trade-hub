@@ -1,30 +1,108 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useState,
+} from "react";
+import { useRouter } from "next/navigation";
 
 import {
   ArrowRight,
   Eye,
   EyeOff,
   LockKeyhole,
-  Mail,
   UserRound,
 } from "lucide-react";
+
+import { useAuthStore } from "@/store/authStore";
 
 import "@/components/animations/css/auth/sign-in-form.css";
 
 interface SignInFormProps {
   onSwitchToSignUp: () => void;
+  onForgotPassword: () => void;
 }
 
 export function SignInForm({
   onSwitchToSignUp,
+  onForgotPassword,
 }: SignInFormProps) {
+  const router = useRouter();
+
+  const [identifier, setIdentifier] =
+    useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+  const [rememberMe, setRememberMe] =
+    useState(false);
+
   const [
     showPassword,
     setShowPassword,
   ] = useState(false);
+
+  const [
+    localError,
+    setLocalError,
+  ] = useState<string | null>(null);
+
+  const {
+    login,
+    isLoading,
+    error,
+    clearError,
+  } = useAuthStore();
+
+  useEffect(() => {
+    return () => {
+      clearError();
+    };
+  }, [clearError]);
+
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+
+    clearError();
+    setLocalError(null);
+
+    const normalizedIdentifier =
+      identifier.trim();
+
+    if (
+      !normalizedIdentifier ||
+      !password
+    ) {
+      setLocalError(
+        "Please enter your email or mobile number and password."
+      );
+
+      return;
+    }
+
+    const success =
+      await login(
+        {
+          identifier:
+            normalizedIdentifier,
+          password,
+        },
+        rememberMe
+      );
+
+    if (!success) {
+      return;
+    }
+
+    router.push("/profile");
+  };
+
+  const displayedError =
+    localError || error;
 
   return (
     <div className="sth-sign-in">
@@ -48,21 +126,33 @@ export function SignInForm({
         </div>
       </div>
 
-      <form className="sth-sign-in__form">
+      <form
+        className="sth-sign-in__form"
+        onSubmit={handleSubmit}
+      >
         <label className="sth-sign-in__field">
           <span>
-            Email Address
+            Email or Mobile Number
           </span>
 
           <div className="sth-sign-in__input">
-            <Mail
+            <UserRound
               size={16}
               strokeWidth={1.8}
             />
 
             <input
-              type="email"
-              placeholder="name@example.com"
+              type="text"
+              placeholder="Email or mobile number"
+              value={identifier}
+              onChange={(event) =>
+                setIdentifier(
+                  event.target.value
+                )
+              }
+              autoComplete="username"
+              disabled={isLoading}
+              required
             />
           </div>
         </label>
@@ -85,6 +175,15 @@ export function SignInForm({
                   : "password"
               }
               placeholder="Enter your password"
+              value={password}
+              onChange={(event) =>
+                setPassword(
+                  event.target.value
+                )
+              }
+              autoComplete="current-password"
+              disabled={isLoading}
+              required
             />
 
             <button
@@ -96,6 +195,12 @@ export function SignInForm({
                     !current
                 )
               }
+              disabled={isLoading}
+              aria-label={
+                showPassword
+                  ? "Hide password"
+                  : "Show password"
+              }
             >
               {showPassword ? (
                 <EyeOff size={16} />
@@ -106,10 +211,26 @@ export function SignInForm({
           </div>
         </label>
 
+        {displayedError && (
+          <div
+            role="alert"
+            className="sth-sign-in__error"
+          >
+            {displayedError}
+          </div>
+        )}
+
         <div className="sth-sign-in__options">
           <label className="sth-sign-in__remember">
             <input
               type="checkbox"
+              checked={rememberMe}
+              onChange={(event) =>
+                setRememberMe(
+                  event.target.checked
+                )
+              }
+              disabled={isLoading}
             />
 
             <span>
@@ -117,25 +238,32 @@ export function SignInForm({
             </span>
           </label>
 
-          <Link
-            href="/forgot-password"
+          <button
+            type="button"
             className="sth-sign-in__forgot"
+            onClick={onForgotPassword}
+            disabled={isLoading}
           >
             Forgot Password?
-          </Link>
+          </button>
         </div>
 
         <button
           type="submit"
           className="sth-sign-in__submit"
+          disabled={isLoading}
         >
           <span>
-            Login to Account
+            {isLoading
+              ? "Signing In..."
+              : "Login to Account"}
           </span>
 
-          <ArrowRight
-            size={16}
-          />
+          {!isLoading && (
+            <ArrowRight
+              size={16}
+            />
+          )}
         </button>
       </form>
 
@@ -149,6 +277,7 @@ export function SignInForm({
           onClick={
             onSwitchToSignUp
           }
+          disabled={isLoading}
         >
           Create Account
         </button>

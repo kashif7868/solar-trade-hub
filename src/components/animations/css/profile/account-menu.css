@@ -1,0 +1,345 @@
+/* ========================================
+   ACCOUNT MENU
+   ======================================== */
+
+.sth-account-menu {
+  position: sticky;
+  top: 24px;
+
+  width: 100%;
+
+  padding: 20px;
+
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 7px 24px rgba(16, 24, 40, 0.045);
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.sth-account-menu__header {
+  padding: 2px 4px 17px;
+}
+
+.sth-account-menu__eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--sth-purple);
+
+  font-size: 9px;
+  font-weight: 850;
+
+  line-height: 1;
+
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.sth-account-menu__header h2 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.sth-account-menu__header p {
+  max-width: 100%;
+
+  margin: 5px 0 0;
+
+  overflow: hidden;
+
+  color: #667085;
+
+  font-size: 9px;
+  font-weight: 550;
+
+  line-height: 1.4;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.sth-account-menu__nav,
+.sth-account-menu__secondary {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.sth-account-menu__link {
+  position: relative;
+
+  min-height: 43px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  color: #475467;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    color 0.16s ease,
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-account-menu__link svg {
+  flex-shrink: 0;
+
+  color: #98a2b3;
+
+  transition:
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sth-account-menu__link:hover {
+  border-color: #f0eef8;
+
+  background: #faf9ff;
+  color: var(--sth-purple);
+
+  transform: translateX(2px);
+}
+
+.sth-account-menu__link:hover svg {
+  color: var(--sth-purple);
+}
+
+/* ========================================
+   ACTIVE LINK
+   ======================================== */
+
+.sth-account-menu__link--active {
+  border-color: rgba(81, 58, 255, 0.1);
+
+  background:
+    linear-gradient(
+      90deg,
+      #f1eeff 0%,
+      #f8f6ff 100%
+    );
+
+  color: var(--sth-purple);
+
+  font-weight: 850;
+}
+
+.sth-account-menu__link--active svg {
+  color: var(--sth-purple);
+}
+
+.sth-account-menu__link--active::before {
+  position: absolute;
+
+  top: 9px;
+  bottom: 9px;
+  left: -1px;
+
+  width: 3px;
+
+  border-radius: 0 4px 4px 0;
+
+  background: var(--sth-purple);
+
+  content: "";
+}
+
+/* ========================================
+   SUPPLIER LINK
+   ======================================== */
+
+.sth-account-menu__link--supplier {
+  border-color: rgba(0, 159, 92, 0.1);
+
+  background: #f6fdf9;
+  color: #087a4c;
+}
+
+.sth-account-menu__link--supplier svg {
+  color: #009f5c;
+}
+
+.sth-account-menu__link--supplier:hover {
+  border-color: rgba(0, 159, 92, 0.2);
+
+  background: #ecfdf3;
+  color: #087a4c;
+}
+
+.sth-account-menu__link--supplier:hover svg {
+  color: #009f5c;
+}
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+
+.sth-account-menu__divider {
+  height: 1px;
+
+  margin: 13px 3px;
+
+  background: #eaecf0;
+}
+
+/* ========================================
+   LOGOUT
+   ======================================== */
+
+.sth-account-menu__logout {
+  width: 100%;
+  min-height: 43px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #b42318;
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    opacity 0.16s ease;
+}
+
+.sth-account-menu__logout svg {
+  flex-shrink: 0;
+
+  color: #d92d20;
+}
+
+.sth-account-menu__logout:hover:not(:disabled) {
+  border-color: #fee4e2;
+
+  background: #fff6f5;
+}
+
+.sth-account-menu__logout:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.55;
+}
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1050px) {
+  .sth-account-menu {
+    padding: 17px;
+  }
+
+  .sth-account-menu__link,
+  .sth-account-menu__logout {
+    padding: 0 10px;
+  }
+}
+
+/* ========================================
+   MOBILE / STACKED LAYOUT
+   ======================================== */
+
+@media (max-width: 850px) {
+  .sth-account-menu {
+    position: static;
+
+    padding: 16px;
+
+    border-radius: 14px;
+  }
+
+  .sth-account-menu__header {
+    padding: 0 2px 14px;
+  }
+
+  .sth-account-menu__header h2 {
+    font-size: 16px;
+  }
+
+  .sth-account-menu__nav {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .sth-account-menu__link {
+    min-width: 0;
+  }
+
+  .sth-account-menu__secondary {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 520px) {
+  .sth-account-menu__nav,
+  .sth-account-menu__secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .sth-account-menu__link,
+  .sth-account-menu__logout {
+    min-height: 41px;
+
+    font-size: 9.5px;
+  }
+}

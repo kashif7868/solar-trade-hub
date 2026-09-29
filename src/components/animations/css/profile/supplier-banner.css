@@ -1,0 +1,334 @@
+/* ========================================
+   SUPPLIER BANNER
+   ======================================== */
+
+.sth-supplier-banner {
+  position: relative;
+
+  min-height: 112px;
+  padding: 20px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(81, 58, 255, 0.12);
+  border-radius: 14px;
+
+  background: #241273;
+
+  box-shadow:
+    0 8px 24px rgba(16, 24, 40, 0.07);
+}
+
+
+/* ========================================
+   SOLAR IMAGE
+   ======================================== */
+
+.sth-supplier-banner__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 52%;
+
+  background-image:
+    url("/images/profile/supplier-marketplace-banner.png");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* ========================================
+   OVERLAY
+   ======================================== */
+
+.sth-supplier-banner__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #271278 0%,
+      #321a82 33%,
+      rgba(49, 25, 127, 0.94) 45%,
+      rgba(44, 24, 112, 0.58) 61%,
+      rgba(22, 20, 62, 0.14) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.sth-supplier-banner__content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+  max-width: 650px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+/* ========================================
+   ICON
+   ======================================== */
+
+.sth-supplier-banner__icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.18);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.11);
+
+  color: #ffffff;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* ========================================
+   COPY
+   ======================================== */
+
+.sth-supplier-banner__copy {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sth-supplier-banner__eyebrow {
+  margin-bottom: 6px;
+
+  color: var(--sth-orange);
+
+  font-size: 8px;
+  font-weight: 850;
+  line-height: 1;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sth-supplier-banner__copy h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+}
+
+.sth-supplier-banner__copy p {
+  max-width: 500px;
+
+  margin: 6px 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   ACTION
+   ======================================== */
+
+.sth-supplier-banner__action {
+  position: relative;
+  z-index: 3;
+
+  min-width: 106px;
+  min-height: 40px;
+
+  padding: 0 14px;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #241273;
+
+  font-size: 9px;
+  font-weight: 850;
+  line-height: 1;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 5px 16px
+    rgba(16, 24, 40, 0.18);
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    color 0.16s ease;
+}
+
+.sth-supplier-banner__action svg {
+  flex-shrink: 0;
+
+  transition:
+    transform 0.16s ease;
+}
+
+.sth-supplier-banner__action:hover {
+  color: var(--sth-purple);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(16, 24, 40, 0.22);
+}
+
+.sth-supplier-banner__action:hover svg {
+  transform: translateX(2px);
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1050px) {
+  .sth-supplier-banner {
+    padding: 19px;
+
+    gap: 18px;
+  }
+
+  .sth-supplier-banner__image {
+    width: 48%;
+  }
+
+  .sth-supplier-banner__content {
+    max-width: 520px;
+  }
+
+  .sth-supplier-banner__copy p {
+    max-width: 400px;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .sth-supplier-banner {
+    min-height: 220px;
+
+    padding: 18px;
+
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+
+    gap: 15px;
+
+    border-radius: 14px;
+  }
+
+  .sth-supplier-banner__image {
+    inset: 0;
+
+    width: 100%;
+
+    background-position: 65% center;
+  }
+
+  .sth-supplier-banner__overlay {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(32, 15, 105, 0.98) 0%,
+        rgba(38, 18, 118, 0.94) 45%,
+        rgba(24, 17, 69, 0.3) 100%
+      );
+  }
+
+  .sth-supplier-banner__content {
+    align-items: flex-start;
+
+    gap: 11px;
+  }
+
+  .sth-supplier-banner__icon {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+
+    border-radius: 11px;
+  }
+
+  .sth-supplier-banner__icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .sth-supplier-banner__copy h2 {
+    font-size: 17px;
+  }
+
+  .sth-supplier-banner__copy p {
+    max-width: none;
+
+    font-size: 8.5px;
+  }
+
+  .sth-supplier-banner__action {
+    width: 100%;
+    min-height: 40px;
+  }
+}

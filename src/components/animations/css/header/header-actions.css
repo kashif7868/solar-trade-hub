@@ -19,19 +19,16 @@
 .sth-header-action {
   min-width: 56px;
 
-  padding:
-    2px 5px;
+  padding: 2px 5px;
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
   gap: 3px;
 
-  color:
-    var(--sth-black);
+  color: var(--sth-black);
 
   text-decoration: none;
 
@@ -43,8 +40,7 @@
 }
 
 .sth-header-action:hover {
-  background:
-    var(--sth-purple-light);
+  background: var(--sth-purple-light);
 }
 
 
@@ -64,17 +60,14 @@
 
   flex-shrink: 0;
 
-  border:
-    1px solid
-    var(--sth-border);
+  overflow: visible;
 
+  border: 1px solid var(--sth-border);
   border-radius: 50%;
 
-  background:
-    var(--sth-white);
+  background: var(--sth-white);
 
-  color:
-    var(--sth-orange);
+  color: var(--sth-orange);
 
   transition:
     border-color 0.16s ease,
@@ -85,17 +78,13 @@
 
 .sth-header-action:hover
 .sth-header-action__icon {
-  border-color:
-    var(--sth-border-purple);
+  border-color: var(--sth-border-purple);
 
-  background:
-    var(--sth-white);
+  background: var(--sth-white);
 
-  color:
-    var(--sth-purple);
+  color: var(--sth-purple);
 
-  transform:
-    translateY(-1px);
+  transform: translateY(-1px);
 }
 
 .sth-header-action__icon svg {
@@ -109,8 +98,7 @@
    ======================================== */
 
 .sth-header-action__label {
-  color:
-    var(--sth-black);
+  color: var(--sth-black);
 
   font-size: 9px;
   font-weight: 650;
@@ -125,8 +113,16 @@
 
 .sth-header-action:hover
 .sth-header-action__label {
-  color:
-    var(--sth-purple);
+  color: var(--sth-purple);
+}
+
+
+/* ========================================
+   LOGIN ACTION
+   ======================================== */
+
+.sth-header-action--account-login {
+  min-width: 78px;
 }
 
 
@@ -138,13 +134,11 @@
   width: 1px;
   height: 32px;
 
-  margin:
-    0 2px;
+  margin: 0 2px;
 
   flex-shrink: 0;
 
-  background:
-    var(--sth-gray-200);
+  background: var(--sth-gray-200);
 }
 
 
@@ -158,27 +152,23 @@
   top: -5px;
   right: -5px;
 
+  z-index: 4;
+
   min-width: 15px;
   height: 15px;
 
-  padding:
-    0 4px;
+  padding: 0 4px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border:
-    2px solid
-    var(--sth-white);
-
+  border: 2px solid var(--sth-white);
   border-radius: 999px;
 
-  background:
-    var(--sth-purple);
+  background: var(--sth-purple);
 
-  color:
-    var(--sth-white);
+  color: var(--sth-white);
 
   font-size: 7px;
   font-weight: 800;
@@ -188,6 +178,19 @@
   box-shadow:
     0 2px 5px
     rgba(91, 46, 255, 0.18);
+}
+
+
+/* ========================================
+   ACCOUNT DROPDOWN ALIGNMENT
+   ======================================== */
+
+.sth-header-actions
+.sth-account-dropdown {
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
 }
 
 
@@ -203,10 +206,15 @@
     padding-right: 4px;
   }
 
+  .sth-header-action--account-login {
+    min-width: 70px;
+  }
+
   .sth-header-action__label {
     font-size: 8.3px;
   }
 }
+
 
 @media (max-width: 1180px) {
   .sth-header-action {
@@ -216,6 +224,10 @@
     padding-right: 2px;
   }
 
+  .sth-header-action--account-login {
+    min-width: 36px;
+  }
+
   .sth-header-action__label {
     display: none;
   }
@@ -223,7 +235,6 @@
   .sth-header-actions__divider {
     height: 26px;
 
-    margin:
-      0 1px;
+    margin: 0 1px;
   }
 }

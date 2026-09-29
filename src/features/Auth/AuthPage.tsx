@@ -10,12 +10,16 @@ import {
 
 import { SignInForm } from "./Form/SignInForm";
 import { SignUpForm } from "./Form/SignUpForm";
+import { PhoneOtpForm } from "./Form/PhoneOtpForm";
+import { ForgotPasswordForm } from "./Form/ForgotPasswordForm";
 
 import styles from "@/components/animations/css/auth/auth.module.css";
 
 type AuthMode =
   | "login"
-  | "signup";
+  | "signup"
+  | "verify-phone"
+  | "forgot-password";
 
 export function AuthPage() {
   const [mode, setMode] =
@@ -23,6 +27,15 @@ export function AuthPage() {
 
   const isLogin =
     mode === "login";
+
+  const isSignup =
+    mode === "signup";
+
+  const isVerifyPhone =
+    mode === "verify-phone";
+
+  const isForgotPassword =
+    mode === "forgot-password";
 
   return (
     <section className={styles.auth}>
@@ -106,45 +119,75 @@ export function AuthPage() {
 
           <main className={styles.panel}>
             <div className={styles.panelInner}>
-              <div className={styles.switcher}>
-                <button
-                  type="button"
-                  className={`${styles.switchButton} ${
-                    isLogin
-                      ? styles.switchButtonActive
-                      : ""
-                  }`}
-                  onClick={() =>
-                    setMode("login")
-                  }
-                >
-                  Login
-                </button>
+              {!isVerifyPhone &&
+                !isForgotPassword && (
+                  <div className={styles.switcher}>
+                    <button
+                      type="button"
+                      className={`${styles.switchButton} ${
+                        isLogin
+                          ? styles.switchButtonActive
+                          : ""
+                      }`}
+                      onClick={() =>
+                        setMode("login")
+                      }
+                    >
+                      Login
+                    </button>
 
-                <button
-                  type="button"
-                  className={`${styles.switchButton} ${
-                    !isLogin
-                      ? styles.switchButtonActive
-                      : ""
-                  }`}
-                  onClick={() =>
-                    setMode("signup")
-                  }
-                >
-                  Sign Up
-                </button>
-              </div>
+                    <button
+                      type="button"
+                      className={`${styles.switchButton} ${
+                        isSignup
+                          ? styles.switchButtonActive
+                          : ""
+                      }`}
+                      onClick={() =>
+                        setMode("signup")
+                      }
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                )}
 
-              {isLogin ? (
+              {isLogin && (
                 <SignInForm
                   onSwitchToSignUp={() =>
                     setMode("signup")
                   }
+                  onForgotPassword={() =>
+                    setMode("forgot-password")
+                  }
                 />
-              ) : (
+              )}
+
+              {isSignup && (
                 <SignUpForm
                   onSwitchToSignIn={() =>
+                    setMode("login")
+                  }
+                  onRegistrationSuccess={() =>
+                    setMode("verify-phone")
+                  }
+                />
+              )}
+
+              {isVerifyPhone && (
+                <PhoneOtpForm
+                  onVerified={() =>
+                    setMode("login")
+                  }
+                  onBack={() =>
+                    setMode("signup")
+                  }
+                />
+              )}
+
+              {isForgotPassword && (
+                <ForgotPasswordForm
+                  onBack={() =>
                     setMode("login")
                   }
                 />
